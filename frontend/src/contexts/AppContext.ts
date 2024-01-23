@@ -3,7 +3,6 @@ import { ToastMessage } from "../components/Toast";
 import { Stripe,  } from "@stripe/stripe-js";
 
 
-
 interface AppContextType {
   isLoggedIn: boolean;
   showToast: (toastMessage: ToastMessage) => void;

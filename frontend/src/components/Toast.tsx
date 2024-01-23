@@ -13,8 +13,7 @@ interface ToastProps {
 
 const Toast = ({ message, type, onClose }: ToastProps) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
+    const timer = setTimeout(() => {onClose();
     }, 1500);
 
     return () => clearTimeout(timer);
