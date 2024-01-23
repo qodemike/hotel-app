@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useLogin from "./useSignIn";
+import googleIcon from '../../assets/google.svg';
 
 export type SignInFormData = {
   email: string;
@@ -21,54 +22,71 @@ const SignIn = () => {
   });
 
   return (
-    <form
-      className="flex mt-10 max-w-sm md:max-w-xl m-auto flex-col gap-5"
-      onSubmit={onSubmit}
-    >
-      <h2 className="text-3xl text-gray-900 font-bold">Sign In</h2>
-      <label className="text-gray-700 text-sm font-bold flex-1">
-        Email
-        <input
-          type="email"
-          className="border border-gray-400 rounded w-full py-1 px-2 font-normal"
-          {...register("email", { required: "Enter your email" })}
-        ></input>
-        {errors.email && (
-          <span className="text-red-500">{errors.email.message}</span>
-        )}
-      </label>
-      <label className="text-gray-700 text-sm font-bold flex-1">
-        Password
-        <input
-          type="password"
-          className="border border-gray-400 rounded w-full py-1 px-2 font-normal"
-          {...register("password", {
-            required: "Enter your password",
-            minLength: {
-              value: 6,
-              message: "Password must be at least 6 characters",
-            },
-          })}
-        ></input>
-        {errors.password && (
-          <span className="text-red-500">{errors.password.message}</span>
-        )}
-      </label>
-      <span className="flex items-center justify-between">
-        <span className="text-sm">
-          Not Registered?{" "}
-          <Link className="underline" to="/register">
-            Create an account here
-          </Link>
-        </span>
-        <button
-          type="submit"
-          className="bg-gray-800 text-white py-2 px-5 font-bold hover:bg-gray-700 text-xl"
+    <>
+    <div className="">
+        <form
+          className="flex flex-col gap-4"
+          onSubmit={onSubmit}
         >
-          Login
+          <h2 className="text-3xl text-black font-bold self-center">
+            Login
+          </h2>
+          <div>
+          <label className="text-black text-md font-bold">
+            Email
+          </label>
+            <input
+              type="email"
+              className="w-full h-[43px] px-5 my-2 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none"
+              placeholder="Enter your email"
+              {...register("email", { required: "Enter your email" })}
+            ></input>
+            {errors.email && (
+              <span className="text-red-500">{errors.email.message}</span>
+            )}
+          </div>
+          <div>
+          <label className="text-black text-md font-bold ">
+            Password
+          </label>
+
+            <input
+              type="password"
+              className="w-full h-[43px] px-5 my-2 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none "
+              placeholder="Enter your password"
+              {...register("password", {
+                required: "Enter your password",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+            ></input>
+            {errors.password && (
+              <span className="text-red-500">{errors.password.message}</span>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="bg-primary text-white py-3 hover:bg-neutral-800 rounded-lg font-bold  text-xl "
+          >
+            Sign In
+          </button>
+          <span className="text-sm font-medium mt-3">
+            Not Registered?{" "}
+            <Link className="underline font-bold" to="/auth/register">
+              Create an account here
+            </Link>
+          </span>
+        </form>
+
+        <button className="border-solid border-2 border-neutral-500 rounded-lg mt-10 font-bold w-full py-2.5">
+          <img src={googleIcon} alt="google icon" className="inline mr-3"/>
+              Sign In with Google
         </button>
-      </span>
-    </form>
+
+        </div>
+    </>
   );
 };
 

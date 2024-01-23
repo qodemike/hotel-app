@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SignOutButton from "./SignOutButton/SignOutButton";
 import { useAppContext } from "../contexts/AppContext";
+import BrandLogo from '../assets/Logo-white.svg'
 
 const NavBar = () => {
   const { isLoggedIn } = useAppContext();
@@ -9,7 +10,9 @@ const NavBar = () => {
     <nav className="bg-primary py-5">
       <header className=" mx-5 md:mx-10 flex justify-between">
         <span className="text-xl md:text-4xl  font-bold tracking-tight text-white">
-          <Link to="/">Hotel App</Link>
+          <Link to="/">
+            <img src={BrandLogo} alt="brand logo" />
+          </Link>
         </span>
         <span className="flex space-x-2">
           {isLoggedIn ? (
@@ -30,8 +33,8 @@ const NavBar = () => {
             </>
           ) : (
             <Link
-              to="/sign-in"
-              className="flex items-center py-2 px-5 font-bold "
+              to="/auth/sign-in"
+              className="flex items-center py-2 px-5 font-bold text-white"
             >
               Sign In
             </Link>

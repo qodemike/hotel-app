@@ -2,10 +2,18 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
-    colors: {
-      primary: "#191818",
-      white: '#ffffff'
+    extend: {
+      fontFamily:{
+        'sans': ['Inter', 'san-serif'],
+        'inter': ['Inter'],
+        'poppins':['Poppins']
+      },
+      colors:{
+        primary: '#191818',
+        secondary: '#fcfcf9',
+        silver: '#ECECEC'
+
+      }
     },
   },
   plugins: [],
