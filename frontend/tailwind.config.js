@@ -3,10 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
-    container: {
-      padding: {
-        // md: "10rem",
-      },
+    colors: {
+      primary: "#191818",
+      white: '#ffffff'
     },
   },
   plugins: [],

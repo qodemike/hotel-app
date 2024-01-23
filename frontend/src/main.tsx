@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { AppContextProvider } from "./contexts/AppContextProvider.tsx";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes.tsx";
-import { SearchContextProvider } from "./components/SearchBar/SearchContextProvider.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,9 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AppContextProvider>
-        <SearchContextProvider>
           <RouterProvider router={router} />
-        </SearchContextProvider>
       </AppContextProvider>
     </QueryClientProvider>
   </React.StrictMode>
