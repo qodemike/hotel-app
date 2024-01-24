@@ -4,7 +4,7 @@ import HotelDisplayGrid from "../components/HotelsDisplayGrid";
 const HomePage = () => {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="">
         <Hero />
         <HotelDisplayGrid />
       </div>

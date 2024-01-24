@@ -1,6 +1,5 @@
 import {  useMutation, useQueryClient } from "react-query";
 import { useAppContext } from "../../contexts/AppContext";
-import APICLIENT from "../../services/api-client";
 
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
