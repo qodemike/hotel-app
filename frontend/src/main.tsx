@@ -9,6 +9,7 @@ import router from "./routes.tsx";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      refetchOnWindowFocus: false,
       retry: 0,
     },
   },

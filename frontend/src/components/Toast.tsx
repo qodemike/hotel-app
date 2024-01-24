@@ -18,10 +18,12 @@ const Toast = ({ message, type, closeToast }: Props) => {
   useEffect( () => {
       toast.current.style.transform ='translateX(0)'
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       toast.current.style.transform ='translateX(120%)'
       
-    }, 1500)
+    }, 2000)
+
+    return () => clearTimeout(timeout)
   }, [closeToast])
 
   return (
@@ -29,7 +31,7 @@ const Toast = ({ message, type, closeToast }: Props) => {
       ref={toast}
       className={`fixed bottom-20 right-4 z-50  text-white max-w-md bg-primary flex flex-row transition translate-x-[120%]`}
     >
-      <div className={" w-[12px] h-[70px] " + styles}></div>
+      <div className={" w-[10px] h-[70px] " + styles}></div>
       <div className="flex justify-center items-center p-5 ">
         <span className="">{message}</span>
       </div>

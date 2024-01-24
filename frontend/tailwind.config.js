@@ -11,7 +11,8 @@ export default {
       colors:{
         primary: '#191818',
         secondary: '#fcfcf9',
-        silver: '#ECECEC'
+        silver: '#ECECEC',
+        grayedText: '#9ca3af'
 
       }
     },
