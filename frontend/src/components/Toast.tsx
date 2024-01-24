@@ -1,34 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export interface ToastMessage {
   message: string;
   type: "SUCCESS" | "ERROR";
 }
 
-interface ToastProps {
+interface Props {
   message: string;
   type: "SUCCESS" | "ERROR";
-  onClose: () => void;
+  closeToast: () => void;
 }
 
-const Toast = ({ message, type, onClose }: ToastProps) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {onClose();
-    }, 1500);
+const Toast = ({ message, type, closeToast }: Props) => {
+  const styles = type === "SUCCESS" ? "bg-emerald-500" : "bg-red-600 ";
+  const toast = useRef<HTMLDivElement>({} as HTMLDivElement);
 
-    return () => clearTimeout(timer);
-  }, [onClose]);
+  useEffect( () => {
+      toast.current.style.transform ='translateX(0)'
 
-  const styles = type === "SUCCESS" ? "bg-green-600" : "bg-red-600 ";
+    setTimeout(() => {
+      toast.current.style.transform ='translateX(120%)'
+      
+    }, 1500)
+  }, [closeToast])
 
   return (
     <div
-      className={
-        " fixed top-4 right-4 z-50 p4 text-white max-w-md rounded-md" + styles
-      }
+      ref={toast}
+      className={`fixed bottom-20 right-4 z-50  text-white max-w-md bg-primary flex flex-row transition translate-x-[120%]`}
     >
-      <div className="flex justify-center items-center">
-        <span className="text-lg font-semibold">{message}</span>
+      <div className={" w-[12px] h-[70px] " + styles}></div>
+      <div className="flex justify-center items-center p-5 ">
+        <span className="">{message}</span>
       </div>
     </div>
   );

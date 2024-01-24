@@ -8,7 +8,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY || "";
 
-const stripePromise =  loadStripe(STRIPE_PUB_KEY);
+const stripePromise = loadStripe(STRIPE_PUB_KEY);
 
 interface Props {
   children: ReactNode;
@@ -17,7 +17,7 @@ interface Props {
 const apiClient = new APICLIENT();
 
 export const AppContextProvider = ({ children }: Props) => {
-  const [toast, setToast] = useState<ToastMessage | undefined>(undefined);
+  const [toast, setToast] = useState<ToastMessage | null>(null);
 
   const { isError } = useQuery({
     queryKey: ["validateToken"],
@@ -29,9 +29,7 @@ export const AppContextProvider = ({ children }: Props) => {
     <AppContext.Provider
       value={{
         stripePromise,
-        showToast: (toastMessage) => {
-          setToast(toastMessage);
-        },
+        showToast: (toastMessage) => { setToast(toastMessage);},
         isLoggedIn: !isError,
       }}
     >
@@ -39,7 +37,7 @@ export const AppContextProvider = ({ children }: Props) => {
         <Toast
           message={toast.message}
           type={toast.type}
-          onClose={() => setToast(undefined)}
+          closeToast={ () => setToast(null)}
         />
       )}
       {children}
