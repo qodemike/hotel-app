@@ -5,7 +5,7 @@ import style from './Hero.module.css';
 
 const Hero = () => {
   return (
-    <div className="mt-[70px] lg:mt-0">
+    <div className="mt-[70px] lg:mt-0 ">
       <div className={style.imgWrapper}>
         <picture>
           <source media='(max-width: 500px)' srcSet={banner1mobile}/>
@@ -13,7 +13,7 @@ const Hero = () => {
           <img src={banner1} alt="" className="w-screen" />
         </picture>
 
-      <div className="absolute top-[45%] ml-4 md:mx-16 ">
+      <div className="absolute top-[45%] mx-4 md:mx-16 ">
         <h1 className="text-5xl text-white font-bold text-[34px] md:text-[48px]">Find your next stay,</h1>
         <p className="text-sm md:text-xl text-base text-white mt-2 pl-[2vw]">
           Search for low price hotels for your dream vacation all around the world...

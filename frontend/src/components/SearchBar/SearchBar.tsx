@@ -4,7 +4,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "./SearchContext";
-import verticalLine from "../../assets/Vertical_line.svg";
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -122,8 +121,8 @@ const SearchBar = () => {
 
         {/* =============================================================== */}
 
-        <div className="  justify-self-center self-end col-span-full lg:col-span-1">
-          <button className="px-16 rounded border border-2 border-solid border-neutral-300 text-neutral-200 p-2 hover:bg-neutral-200 hover:text-black  ">
+        <div className="mt-5 md:mt-0  justify-self-center self-end col-span-full lg:col-span-1">
+          <button className=" px-16 rounded border border-2 border-solid border-neutral-300 text-neutral-200 p-2 hover:bg-neutral-200 hover:text-black">
             Search
           </button>
         </div>
