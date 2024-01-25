@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "./SearchContext";
+import { IoSearchOutline } from "react-icons/io5";
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -122,8 +123,9 @@ const SearchBar = () => {
         {/* =============================================================== */}
 
         <div className="mt-5 md:mt-0  justify-self-center self-end col-span-full lg:col-span-1">
-          <button className=" px-16 rounded border border-2 border-solid border-neutral-300 text-neutral-200 p-2 hover:bg-neutral-200 hover:text-black">
-            Search
+          <button className=" py-2 pl-10 pr-16  rounded border-2 border-solid border-neutral-300 text-neutral-200  hover:bg-neutral-200 hover:text-black flex ">
+           <IoSearchOutline size={23} className="mr-3"/>
+           Search
           </button>
         </div>
       </div>
