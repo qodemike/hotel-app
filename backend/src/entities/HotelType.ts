@@ -1,5 +1,6 @@
 import { BookingType } from "./BookingType";
 
+
 export interface HotelType {
   _id: string;
   userId: string;

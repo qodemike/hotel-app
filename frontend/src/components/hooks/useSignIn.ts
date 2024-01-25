@@ -1,27 +1,31 @@
-import { RegisterFormData } from "./Register";
 import { useMutation, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { SignInFormData } from "../SignIn/SignIn";
 import APICLIENT from "../../services/api-client";
 import { useAppContext } from "../../contexts/AppContext";
 
 const apiClient = new APICLIENT();
 
-const useRegister = () => {
+const useSignin = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { showToast } = useAppContext();
 
   return useMutation({
-    mutationFn: (data: RegisterFormData) => apiClient.create<RegisterFormData>(data, '/api/users/register'),
+    mutationFn: (data: SignInFormData) =>
+      apiClient.create<SignInFormData>(data, "/api/auth/login"),
 
     onSuccess: async () => {
-      showToast({ message: "Registration Successful!", type: "SUCCESS" });
+      showToast({ message: "Sign in Successful!", type: "SUCCESS" });
       await queryClient.invalidateQueries("validateToken");
-      navigate("/");
+      navigate(location.state?.from?.pathname || "/");
     },
     onError: (error: Error) => {
       showToast({ message: error.message, type: "ERROR" });
     },
   });
 };
-export default useRegister;
+
+export default useSignin;

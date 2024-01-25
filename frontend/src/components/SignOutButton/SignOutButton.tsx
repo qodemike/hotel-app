@@ -1,4 +1,4 @@
-import useSignOut from "./useSignOut";
+import useSignOut from "../hooks/useSignOut";
 
 const SignOutButton = () => {
   const mutation = useSignOut();

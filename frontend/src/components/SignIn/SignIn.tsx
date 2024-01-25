@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useLogin from "./useSignIn";
-import googleIcon from '../../assets/google.svg';
+import useLogin from "../hooks/useSignIn";
+import googleIcon from "../../assets/google.svg";
 
 export type SignInFormData = {
   email: string;
@@ -23,18 +23,11 @@ const SignIn = () => {
 
   return (
     <>
-    <div className="">
-        <form
-          className="flex flex-col gap-4"
-          onSubmit={onSubmit}
-        >
-          <h2 className="text-3xl text-black font-bold self-center">
-            Login
-          </h2>
+      <div className="">
+        <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+          <h2 className="text-3xl text-black font-bold self-center">Login</h2>
           <div>
-          <label className="text-black text-md font-bold">
-            Email
-          </label>
+            <label className="text-black text-md font-bold">Email</label>
             <input
               type="email"
               className="w-full h-[43px] px-5 my-2 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none"
@@ -46,9 +39,7 @@ const SignIn = () => {
             )}
           </div>
           <div>
-          <label className="text-black text-md font-bold ">
-            Password
-          </label>
+            <label className="text-black text-md font-bold ">Password</label>
 
             <input
               type="password"
@@ -81,11 +72,10 @@ const SignIn = () => {
         </form>
 
         <button className="border-solid border-2 border-neutral-500 rounded-lg mt-10 font-bold w-full py-2.5">
-          <img src={googleIcon} alt="google icon" className="inline mr-3"/>
-              Sign In with Google
+          <img src={googleIcon} alt="google icon" className="inline mr-3" />
+          Sign In with Google
         </button>
-
-        </div>
+      </div>
     </>
   );
 };

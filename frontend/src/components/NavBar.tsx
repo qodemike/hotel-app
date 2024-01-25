@@ -18,13 +18,13 @@ const NavBar = () => {
           {isLoggedIn ? (
             <>
               <Link
-                className=" px-4 text-sm md:text-md font-light  text-neutral-300 flex items-center hover:text-white   "
+                className=" px-4 text-xs md:text-md font-light  text-neutral-300 flex items-center hover:text-white   "
                 to="/my-bookings"
               >
                 MY BOOKINGS
               </Link>
               <Link
-                className=" pr-5 text-sm md:text-md  text-neutral-300 hover:text-white flex items-center"
+                className=" pr-5 text-xs md:text-md  text-neutral-300 hover:text-white flex items-center"
                 to="/my-hotels"
               >
                 MY HOTELS

@@ -35,7 +35,7 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-5 bg-primary shadow-md max-w-[1150px] m-auto relative md:top-[-20px] lg:top-[-80px] "
+      className="p-5 bg-primary shadow-md max-w-[1270px] m-auto relative md:top-[-20px] lg:top-[-80px] "
     >
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 items-center gap-4 ">
         <div>

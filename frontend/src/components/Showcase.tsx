@@ -4,8 +4,8 @@ import showCaseImage2 from "../assets/hotel_showcase_2.webp";
 const Showcase = () => {
   return (
     <>
-    <section className="max-w-[1150px] mx-auto  pt-[50px] pb-7 lg:pb-[100px] flex flex-col lg:flex-row  ">
-      <div className="flex gap-4 justify-center  ">
+    <section className=" pt-[50px] pb-7 lg:pb-[50px] max-w-[1200px] mx-auto  flex flex-col lg:flex-row  ">
+      <div className="flex gap-4 justify-center ">
           <img src={showCaseImage1} alt="hotel interior sample 1" className="" />
           <img src={showCaseImage2} alt="hotel interior sample 2" className=" hidden md:block relative top-[50px]"/>
       </div>

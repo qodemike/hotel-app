@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
-import useRegister from "./useRegister";
+import useRegister from "../hooks/useRegister";
 import { Link } from "react-router-dom";
-import googleIcon from '../../assets/google.svg';
-
+import googleIcon from "../../assets/google.svg";
 
 export type RegisterFormData = {
   firstName: string;
@@ -35,9 +34,9 @@ const Register = () => {
           </h2>
           <div className="flex flex-col md:flex-row gap-5">
             <div>
-            <label className="text-black text-sm font-bold flex-1">
-              First Name
-            </label>
+              <label className="text-black text-sm font-bold flex-1">
+                First Name
+              </label>
               <input
                 className="w-full h-[43px] px-5 my-1 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none"
                 placeholder="Enter your first name"
@@ -50,9 +49,9 @@ const Register = () => {
               )}
             </div>
             <div>
-            <label className="text-black text-sm font-bold flex-1">
-              Last Name
-            </label>
+              <label className="text-black text-sm font-bold flex-1">
+                Last Name
+              </label>
 
               <input
                 className="w-full h-[43px] px-5 my-1 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none"
@@ -67,9 +66,7 @@ const Register = () => {
             </div>
           </div>
           <div>
-          <label className="text-black text-sm font-bold flex-1">
-            Email
-          </label>
+            <label className="text-black text-sm font-bold flex-1">Email</label>
 
             <input
               type="email"
@@ -82,9 +79,9 @@ const Register = () => {
             )}
           </div>
           <div>
-          <label className="text-black text-sm font-bold flex-1">
-            Password
-          </label>
+            <label className="text-black text-sm font-bold flex-1">
+              Password
+            </label>
 
             <input
               type="password"
@@ -103,9 +100,9 @@ const Register = () => {
             )}
           </div>
           <div>
-          <label className="text-black text-sm font-bold flex-1 ">
-            Confirm Password
-          </label>
+            <label className="text-black text-sm font-bold flex-1 ">
+              Confirm Password
+            </label>
 
             <input
               type="password"
@@ -142,9 +139,9 @@ const Register = () => {
             </Link>
           </span>
           <button className="border-solid border-2 border-neutral-500 rounded-lg font-bold w-full py-2.5">
-          <img src={googleIcon} alt="google icon" className="inline mr-3"/>
-              Sign In with Google
-        </button>
+            <img src={googleIcon} alt="google icon" className="inline mr-3" />
+            Sign In with Google
+          </button>
         </form>
       </div>
     </>
