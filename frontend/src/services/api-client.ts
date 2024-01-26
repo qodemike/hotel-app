@@ -1,5 +1,4 @@
 
-
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 class APICLIENT {
@@ -53,4 +52,3 @@ class APICLIENT {
 
 
 export default APICLIENT;
-

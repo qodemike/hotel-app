@@ -7,7 +7,7 @@ const NavBar = () => {
   const { isLoggedIn } = useAppContext();
 
   return (
-    <nav className="fixed bg-primary py-5 px-5 md:px-20 w-screen " style={{zIndex:'5'}}>
+    <nav className="fixed bg-primary bg-opacity-70 py-5 px-5 md:px-20 w-screen " style={{zIndex:'5'}}>
       <header className=" flex justify-between items-center">
         <span className="text-xl md:text-4xl  font-bold tracking-tight text-white">
           <Link to="/">
@@ -34,7 +34,7 @@ const NavBar = () => {
           ) : (
             <Link
               to="/auth/sign-in"
-              className=" py-3 px-7 border-2 border-solid border-neutral-300 rounded-md text-sm  text-neutral-300  flex items-center  hover:text-black hover:bg-neutral-200"
+              className=" py-3 px-7 border-2 border-solid border-neutral-300 rounded text-sm  text-neutral-300  flex items-center  hover:text-black hover:bg-neutral-200"
             >
               Sign In
             </Link>

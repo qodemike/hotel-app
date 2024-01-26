@@ -9,19 +9,15 @@ interface Props {
 
 const HotelCard = ({ hotel }: Props) => {
 
-  const card = useRef<HTMLDivElement>(null);
+  const card = useRef<HTMLDivElement>(null!);
   const [ hover, sethover]  = useState(false);
-
-
-    card.current?.addEventListener('mouseover', () =>  sethover(true));
-    card.current?.addEventListener('mouseleave', () => sethover(false) );
 
   return (
     <Link
       to={`/detail/${hotel._id}`}
       className="relative cursor-pointer overflow-hidden rounded-md "
     >
-      <div ref={card}>
+      <div ref={card} onMouseEnter={() => sethover(true)} onMouseLeave={() => sethover(false)}>
         <div className="h-[400px] overflow-hidden before:content-[''] before:bg-black before:w-full before:h-full before: ">
           <img
             src={hotel.imageUrls[0]}
