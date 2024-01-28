@@ -5,7 +5,7 @@ import { AiFillStar } from "react-icons/ai";
 import GuestInfoForm from "../components/GuestInfoForm";
 import { HotelType } from "../../../backend/src/entities";
 import { useState } from "react";
-import { BsMap } from "react-icons/bs";
+import { FaLocationDot } from "react-icons/fa6";
 
 
 const apiClient = new APICLIENT();
@@ -25,7 +25,7 @@ const HotelDetailPage = () => {
   }
 
   return (
-    <div className="mt-[95px]   max-w-[1370px] mx-5 md:mx-10 lg:mx-auto">
+    <div className="mt-[95px] max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
       <div>
         <div className="flex mb-2">
           <span className="flex mt-1">
@@ -38,8 +38,8 @@ const HotelDetailPage = () => {
 
         <h1 className="text-4xl font-medium font-poppins">{hotel.name}</h1>
 
-        <div className="mt-2 font-medium text-neutral-500">
-          <BsMap/>
+        <div className="mt-2 font-medium text-neutral-500 flex">
+          <FaLocationDot size={15} className=" mt-1 mr-2"/>
           <span>{hotel.city}</span>
           <span>{", " + hotel.country}</span>
         </div>

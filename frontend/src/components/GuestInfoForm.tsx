@@ -68,7 +68,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
   return (
     <>
-      <div className=" p-8 bg-primary rounded lg:fixed flex flex-col gap-4">
+      <div className=" p-7 bg-primary rounded  flex flex-col gap-4">
         <div>
           <span className="block mb-1 text-grayedText">Price per night</span>
           <span className="text-md font-bold text-white ">
@@ -161,11 +161,11 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
             {/* ===================================================================== */}
 
             {isLoggedIn ? (
-              <button className=" py-3 mt-5 rounded  text-white font-medium border-2 border-solid border-white transition  hover:text-black hover:bg-neutral-200">
+              <button className=" py-3 mt-2 rounded  text-white font-medium border-2 border-solid border-white transition  hover:text-black hover:bg-neutral-200">
                 BOOK NOW
               </button>
             ) : (
-              <button className=" py-3 mt-5 rounded  text-white font-medium  border-2 border-solid border-white transition  hover:text-black hover:bg-neutral-200 ">
+              <button className=" py-3 mt-2 rounded  text-white font-medium  border-2 border-solid border-white transition  hover:text-black hover:bg-neutral-200 ">
                 SIGN IN TO BOOK
               </button>
             )}

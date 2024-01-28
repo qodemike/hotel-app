@@ -7,6 +7,8 @@ import HomePage from "./pages/HomePage";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import HotelDetailPage from "./pages/HotelDetailsPage";
 import SearchPage from "./pages/SearchPage";
+import MyHotelsPage from "./pages/MyHotelsPage";
+import AddHotelPage from "./pages/AddHotelPage";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,11 @@ const router = createBrowserRouter([
       { path: "/search", element: <SearchPage /> },
       {
         element: <PrivateRoutes />,
-        children: [],
+        children: [
+          { path: "/my-hotels", element: <MyHotelsPage /> },
+          { path: "/add-hotel", element: <AddHotelPage /> },
+
+        ],
       },
     ],
   },
