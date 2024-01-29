@@ -65,19 +65,7 @@ const HotelDetailPage = () => {
           </div>
 
           <p className="my-5">
-            {hotel.description} Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Delectus vitae, fuga voluptates explicabo commodi
-            officia exercitationem quaerat consectetur? Labore aspernatur
-            adipisci quia commodi aliquid dicta, praesentium temporibus
-            quibusdam asperiores hic repellat pariatur nemo, odit ut aut
-            consequuntur tenetur mollitia voluptatibus vel minima natus.
-            Pariatur delectus neque ipsum, architecto odio ratione vel animi
-            placeat? Quia libero voluptates sequi maiores, aliquid, iusto nisi
-            officiis, laboriosam earum doloremque autem perspiciatis delectus!
-            Delectus enim porro, maxime, recusandae facilis libero totam aliquid
-            dolorum nihil eligendi animi incidunt reiciendis earum atque rerum,
-            a officiis consequatur! Nihil obcaecati eius ab corrupti, culpa
-            necessitatibus expedita aliquam nam tempore.
+            {hotel.description}
           </p>
         </div>
 

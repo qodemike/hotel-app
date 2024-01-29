@@ -24,7 +24,7 @@ const TypeSection = () => {
             className={
               typeWatch === type
                 ? "cursor-pointer bg-primary text-white text-xs md:text-sm rounded-full px-5 py-2 font-semibold"
-                : "cursor-pointer bg-white hover:bg-gray-300 border  text-xs md:text-sm rounded-full px-5 py-2 font-semibold"
+                : "cursor-pointer bg-white hover:bg-gray-300 border-2 border-neutral-300  text-xs md:text-sm rounded-full px-5 py-2 font-semibold"
             }
           >
             <input

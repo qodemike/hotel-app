@@ -1,6 +1,3 @@
 
-
-const formData = new FormData();
-
-formData.append('name', "Michael")
-console.log(formData)
+const date = new Date()
+console.log(date.toDateString().split(' ')[1])

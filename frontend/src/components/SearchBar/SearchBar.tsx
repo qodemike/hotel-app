@@ -17,7 +17,13 @@ const SearchBar = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    search.saveSearchValues( destination, checkIn, checkOut, adultCount,childCount);
+    search.saveSearchValues(
+      destination,
+      checkIn,
+      checkOut,
+      adultCount,
+      childCount
+    );
     navigate("/search");
   };
 
@@ -26,61 +32,60 @@ const SearchBar = () => {
   maxDate.setFullYear(maxDate.getFullYear() + 1);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="p-5 bg-primary shadow-md"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 items-center gap-4 ">
-        <div>
-          <span className="text-grayedText">Destination</span>
-          <div className="flex flex-row mt-3 items-center flex-1 bg-white p-2 rounded ">
+    <form onSubmit={handleSubmit} className=" bg-white shadow-lg">
+      <div className="p-5   lg:p-0  grid grid-cols-1 md:grid-cols-[1.3fr_1.2fr_1fr_1fr]  lg:grid-cols-[1.2fr_1.2fr_1fr_1fr_1fr] items-center gap-8 md:gap-0 ">
+        <div className="md:p-6 flex items-center md:block">
+          <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
+          <div className=" md:mt-5 flex flex-row  items-center flex-1 bg-white ">
             <MdTravelExplore size={25} className="mr-2" />
             <input
               placeholder="Where are you going?"
-              className=" w-full focus:outline-none"
+              className=" w-full focus:outline-none md:text-sm"
               value={destination}
               onChange={(event) => setDestination(event.target.value)}
             />
           </div>
         </div>
         {/* =============================================================== */}
-        <div>
-          <span className="text-grayedText">Persons</span>
+        <div className=" flex items-center md:block ">
+          <p className="text-xs md:mb-1 mr-[58px] md:mr-0">GUESTS</p>
           <div className="flex">
-            <div className="flex bg-white px-2 py-1 rounded mt-3 w-full">
-              <label className="items-center flex">
-                Adults:
+            <div className=" flex gap-2">
+              <div className="flex ">
+                <label className="items-end flex text-sm mr-2 mb-1 ">Adults</label>
                 <input
-                  className="w-full p-1 focus:outline-none font-bold"
+                  className="focus:outline-none text-4xl w-12 h-10"
                   type="number"
                   min={1}
-                  max={20}
+                  max={9}
                   value={adultCount}
                   onChange={(event) =>
                     setAdultCount(parseInt(event.target.value))
                   }
                 />
-              </label>
-              <label className="items-center flex">
-                Children:
+              </div>
+
+              <div className="flex">
+                <label className="items-end flex text-sm mr-2 mb-1 ">Children</label>
                 <input
-                  className="w-full p-1 focus:outline-none font-bold"
+                  className=" focus:outline-none text-4xl  w-12 "
                   type="number"
                   min={0}
-                  max={20}
+                  max={9}
                   value={childCount}
                   onChange={(event) =>
                     setChildCount(parseInt(event.target.value))
                   }
                 />
-              </label>
+              </div>
             </div>
           </div>
         </div>
-      {/* =============================================================== */}
 
-        <div className=" justify-self-center w-full">
-          <span className="text-grayedText block">Check In</span>
+        {/* =============================================================== */}
+
+        <div className="  md:justify-self-center md:w-32 flex md:flex-col items-center md:items-start ">
+          <span className="text-xs whitespace-nowrap mr-[47px] md:mr-0 ">CHECK-IN</span>
           <DatePicker
             title={"check In"}
             selected={checkIn}
@@ -90,15 +95,14 @@ const SearchBar = () => {
             endDate={checkOut}
             minDate={minDate}
             maxDate={maxDate}
-            placeholderText="Check-in Date"
-            className="p-2 focus:outline-none rounded mt-3 w-[100%]"
+            className=" focus:outline-none  md:mt-5  text-lg  w-full font-medium"
           />
         </div>
 
-      {/* =============================================================== */}
+        {/* =============================================================== */}
 
-        <div className=" justify-self-center w-full">
-          <span className="text-grayedText block">Check Out</span>
+        <div className=" md:justify-self-center md:w-32 flex md:flex-col items-center md:items-start ">
+          <span className="text-xs whitespace-nowrap mr-[34px] md:mr-0 ">CHECK-OUT</span>
           <DatePicker
             title={"check Out"}
             selected={checkOut}
@@ -109,17 +113,15 @@ const SearchBar = () => {
             minDate={minDate}
             maxDate={maxDate}
             placeholderText="Check-out Date"
-            className="p-2 focus:outline-none mt-3 rounded w-[100%]"
+            className=" focus:outline-none md:mt-5 text-lg  w-full font-medium inline "
           />
         </div>
 
-      {/* =============================================================== */}
+        {/* =============================================================== */}
 
-        <div className="mt-5 md:mt-0  justify-self-center self-end col-span-full lg:col-span-1">
-          <button  className=" py-2 px-12 rounded border-2 border-solid border-neutral-300 text-neutral-200  hover:bg-neutral-200 hover:text-black flex ">
-           Search
-          </button>
-        </div>
+        <button className=" w-full h-full p-5  col-span-full lg:col-span-1 text-sm bg-primary  text-neutral-200   hover:bg-neutral-800  ">
+          SEARCH
+        </button>
       </div>
     </form>
   );

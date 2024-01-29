@@ -6,11 +6,13 @@ export default {
       fontFamily:{
         'sans': ['Inter', 'san-serif'],
         'inter': ['Inter'],
-        'poppins':['Poppins']
+        'poppins':['Poppins'],
+        'jost': ['jost'],
       },
       colors:{
         primary: '#191818',
         secondary: '#fcfcf9',
+        accent: '#222222',
         silver: '#ECECEC',
         grayedText: '#9ca3af'
 

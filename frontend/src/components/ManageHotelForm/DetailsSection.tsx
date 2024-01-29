@@ -45,7 +45,7 @@ const DetailsSection = () => {
         </label>
       </div>
       <div >
-      <label className="text-gray-700 text-sm font-bold  flex-1"> Description <span className="text-xs  text-neutral-700 ml-1 ">(maximum 1000 characters)</span></label>
+      <label className="text-gray-700 text-sm font-bold  flex-1"> Description <span className="text-xs  text-neutral-500 ml-1 ">(maximum 1000 characters)</span></label>
         <textarea
           rows={5}
           placeholder="Write a description of your hotel"
