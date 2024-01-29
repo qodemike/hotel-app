@@ -9,12 +9,12 @@ const FacilitiesSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-silver border-2 p-7 rounded " >
-      <div className="mb-4">
-      <h3 className="text-xl font-medium inline ">Facilities</h3>
-      <span className="text-sm text-grayedText ml-2"> (select facilities available)</span>
+    <div className="bg-silver border-2 border-neutral-300 p-7 rounded " >
+      <div className="mb-5">
+      <h3 className="text-2xl font-medium inline ">Facilities</h3>
+      <span className="text-sm text-neutral-700 ml-3"> (select facilities available in your hotel)</span>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
         {hotelFacilities.map((facility, index) => (
           <label
             key={index}
@@ -39,7 +39,7 @@ const FacilitiesSection = () => {
         ))}
       </div>
       {errors.facilities && (
-        <span className="text-red-500 text-sm font-bold">
+        <span className="text-red-500 text-sm font-bold ">
           {errors.facilities.message}
         </span>
       )}

@@ -23,9 +23,12 @@ const ImagesSection = () => {
   };
 
   return (
-    <div className="bg-silver border rounded p-7">
-      <h2 className="text-xl font-medium mb-3">Images</h2>
-      <div className="bg-white border border-gray-400 rounded p-4 flex flex-col gap-4">
+    <div className="bg-silver border-2 border-neutral-300 rounded p-7">
+      <div className=" mb-3">
+      <h2 className="text-xl font-medium  inline">Images</h2>
+      <span className="text-sm text-neutral-700 mr-2 " > (maximum 5 images) </span>
+      </div>
+      <div className="bg-white border border-gray-400 rounded p-4 flex flex-col gap-4 mb-2">
         {existingImageUrls && (
           <div className="grid grid-cols-6 gap-4">
             { existingImageUrls.map((url, index) => (

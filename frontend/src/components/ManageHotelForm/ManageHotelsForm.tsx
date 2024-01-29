@@ -5,8 +5,8 @@ import FacilitiesSection from "./FacilitiesSection";
 import GuestsSection from "./GuestsSection";
 import ImagesSection from "./ImagesSection";
 import { HotelType } from "../../../../backend/src/entities";
-import { useEffect } from "react";
-import { TailSpin } from "react-loader-spinner";
+import {  useEffect } from "react";
+import { Oval } from "react-loader-spinner";
 
 export type HotelFormData = {
   name: string;
@@ -29,6 +29,7 @@ interface Props {
   isLoading: boolean;
 }
 
+
 const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
   const formMethods = useForm<HotelFormData>({
     defaultValues: {
@@ -36,13 +37,17 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
       childCount: 0,
     },
   });
+
   const { handleSubmit, reset } = formMethods;
 
+
   useEffect(() => {
-    // If we are editing a hotel, prepopulate the input fields with data fetched from database.
     reset(hotel);
   }, [hotel, reset]);
 
+
+
+  
   const onSubmit = (formDataJson: HotelFormData) => {
     const formData = new FormData();
 
@@ -61,11 +66,14 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
     formData.append("adultCount", formDataJson.adultCount.toString());
     formData.append("childCount", formDataJson.childCount.toString());
 
+
     formDataJson.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);
     });
 
-    // If In edit mode
+    /**
+     * If in edit more and some image alredy exist
+     */
     if (formDataJson.imageUrls) {
       formDataJson.imageUrls.forEach((url, index) => {
         formData.append(`imageUrls[${index}]`, url);
@@ -82,10 +90,10 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
   return (
     <FormProvider {...formMethods}>
       <form
-        className=" my-[120px]  px-5 md:p-0  md:max-w-4xl m-auto flex flex-col gap-5  "
+        className=" my-[110px]  px-5 md:p-0  md:max-w-4xl m-auto flex flex-col gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2 className="text-3xl">Please fill hotel information</h2>
+        <h2 className="text-3xl font-bold ">Please fill the form below</h2>
         <DetailsSection />
         <TypeSection />
         <FacilitiesSection />
@@ -95,9 +103,20 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
           <button
             disabled={isLoading}
             type="submit"
-            className="py-3  w-[138px] text-white font-medium font- rounded bg-primary  hover:bg-neutral-800 disabled:bg-gray-500"
+            className="py-3  w-[138px] text-white font-medium font- rounded bg-primary  hover:bg-neutral-800 disabled:bg-neutral-800"
           >
-            {isLoading ?  (< TailSpin color="white" height={'30px'} width={'30px'} />) : 'SUBMIT'} 
+            {isLoading ? (
+              <div className="flex justify-center">
+                <Oval
+                  secondaryColor="#ECECEC"
+                  color="white"
+                  height={"30px"}
+                  width={"30px"}
+                />
+              </div>
+            ) : (
+              "SUBMIT"
+            )}
           </button>
         </span>
       </form>

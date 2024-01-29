@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { HotelType } from "../../../backend/src/entities";
 import { AiFillStar } from "react-icons/ai";
 import { useRef, useState } from "react";
+import { FaLocationDot } from "react-icons/fa6";
 
 interface Props {
   hotel: HotelType;
@@ -28,14 +29,15 @@ const HotelCard = ({ hotel }: Props) => {
             className={`rounded object-cover w-full h-full `}
           />
           <div
-            className={`px-3 py-3 text-white bg-black relative top-[-28%] bg-opacity-50 transition duration-500 ${
+            className={`px-3 py-3 text-white bg-black relative top-[-25%] bg-opacity-50 transition duration-500 ${
               hover ? "translate-y-full" : ""
             } flex flex-col font-poppins gap-2 `}
           >
-            <span className="font-bold text-lg">{hotel.name}</span>
-            <div>
-              <span className="text-sm">{hotel.city}</span>,
-              <span className="text-sm ml-2">{hotel.country}</span>
+            <span className=" font-bold text-lg">{hotel.name}</span>
+            <div className="flex">
+              <FaLocationDot size={14} className="mr-1 mt-[3px]"/>
+              <span className="text-sm">{hotel.city+','}</span>
+              <span className="text-sm ml-1">{hotel.country}</span>
             </div>
             <div className="flex justify-between">
               <div className="flex mt-1">

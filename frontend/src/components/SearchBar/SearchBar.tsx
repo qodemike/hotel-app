@@ -4,7 +4,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "./SearchContext";
-import { IoSearchOutline } from "react-icons/io5";
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-5 bg-primary shadow-md  "
+      className="p-5 bg-primary shadow-md"
     >
       <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 items-center gap-4 ">
         <div>
@@ -78,7 +77,7 @@ const SearchBar = () => {
             </div>
           </div>
         </div>
-        {/* =============================================================== */}
+      {/* =============================================================== */}
 
         <div className=" justify-self-center w-full">
           <span className="text-grayedText block">Check In</span>
@@ -96,7 +95,7 @@ const SearchBar = () => {
           />
         </div>
 
-        {/* =============================================================== */}
+      {/* =============================================================== */}
 
         <div className=" justify-self-center w-full">
           <span className="text-grayedText block">Check Out</span>
@@ -114,11 +113,10 @@ const SearchBar = () => {
           />
         </div>
 
-        {/* =============================================================== */}
+      {/* =============================================================== */}
 
         <div className="mt-5 md:mt-0  justify-self-center self-end col-span-full lg:col-span-1">
-          <button  className=" py-2 px-12  rounded border-2 border-solid border-neutral-300 text-neutral-200  hover:bg-neutral-200 hover:text-black flex ">
-           <IoSearchOutline size={23} className="mr-3"/>
+          <button  className=" py-2 px-12 rounded border-2 border-solid border-neutral-300 text-neutral-200  hover:bg-neutral-200 hover:text-black flex ">
            Search
           </button>
         </div>

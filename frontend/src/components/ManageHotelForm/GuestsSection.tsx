@@ -8,8 +8,8 @@ const GuestsSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-silver border p-7 " >
-      <h2 className="text-xl font-medium mb-3">Number of guests per hotel</h2>
+    <div className="bg-silver border-2  border-neutral-300 rounded p-7 " >
+      <h2 className="text-xl font-medium mb-3">Maximum number of guests per room</h2>
       <div className="grid grid-cols-2 gap-5">
         <label className="text-gray-700 text-sm font-semibold">
           Adults

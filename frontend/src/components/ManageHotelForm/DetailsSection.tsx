@@ -8,8 +8,8 @@ const DetailsSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-silver border-2  p-7 rounded flex flex-col gap-4">
-      <h3 className=" text-xl font-medium">Hotel details</h3>
+    <div className="bg-silver border-2 border-neutral-300  p-7 rounded flex flex-col gap-4">
+      <h3 className=" text-2xl font-medium">Hotel details</h3>
       <label className="text-gray-700  text-sm font-bold flex-1">
         Hotel Name
         <input
@@ -44,18 +44,18 @@ const DetailsSection = () => {
           )}
         </label>
       </div>
-      <label className="text-gray-700 text-sm font-bold flex-1">
-        Description
+      <div >
+      <label className="text-gray-700 text-sm font-bold  flex-1"> Description <span className="text-xs  text-neutral-700 ml-1 ">(maximum 1000 characters)</span></label>
         <textarea
           rows={5}
           placeholder="Write a description of your hotel"
-          className="border border-gray-400 focus:outline-none   focus:border-blue-500 rounded w-full  p-4 font-normal "
-          {...register("description", { required: "This field is required" })}
+          className="border border-gray-400 focus:outline-none   focus:border-blue-500 rounded w-full  p-4 font-normal  mt-1"
+          {...register("description", { required: "This field is required", max: 'Exceeding 1000 characters limit' })}
         ></textarea>
         {errors.description && (
           <span className="text-red-500">{errors.description.message}</span>
         )}
-      </label>
+      </div>
       <label className="text-gray-700 text-sm font-bold max-w-[50%]">
         Price Per Night
         <input

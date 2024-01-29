@@ -1,8 +1,8 @@
-import ManageHotelsForm, { HotelFormData,
-} from "../components/ManageHotelForm/ManageHotelsForm";
+import ManageHotelsForm, { HotelFormData } from "../components/ManageHotelForm/ManageHotelsForm";
 import QueryHotel from "../hooks/useMyHotels";
 
 const queryHotel = new QueryHotel();
+
 
 const AddHotelPage = () => {
   const { mutate, isLoading } = queryHotel.createHotel();
@@ -17,12 +17,12 @@ const AddHotelPage = () => {
   //   },
   // });
 
+
+
   return (
     <div className="">
     <ManageHotelsForm
-      onSave={(hotelFormData: FormData) => {
-        mutate(hotelFormData);
-      }}
+      onSave={(hotelFormData: FormData) => { mutate(hotelFormData) ;}}
       isLoading={isLoading}
     />
     </div>

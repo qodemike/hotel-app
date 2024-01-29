@@ -30,18 +30,21 @@ class QueryHotel {
 
     return useMutation({
       mutationFn: async (data: FormData) => {
-        console.log(data);
-        return await fetch(API_BASE_URL + route, {
+        const response =  await fetch(API_BASE_URL + route, {
           method: "POST",
           credentials: "include",
           body: data,
         });
+
+        const body = await response.json();
+
+        if (!response.ok) throw new Error(body.message);
       },
       onSuccess: () => {
         showToast({ message: "Hotel Saved!", type: "SUCCESS" });
       },
       onError: () => {
-        showToast({ message: "Error Saving Hotel", type: "ERROR" });
+        showToast({ message: "Error Saving Hotel!", type: "ERROR" });
       },
     });
   };
@@ -55,7 +58,7 @@ class QueryHotel {
         showToast({ message: "Hotel Saved!", type: "SUCCESS" });
       },
       onError: () => {
-        showToast({ message: "Error Saving Hotel", type: "ERROR" });
+        showToast({ message: "Error Saving Hotel!", type: "ERROR" });
       },
     });
   };
