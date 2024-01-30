@@ -5,13 +5,14 @@ import verifyToken from "../middleware/auth";
 import { HotelType } from "../entities/HotelType";
 import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import validateHotel from "../middleware/validateHotel";
+import { rmSync } from "fs";
 
 const router = express.Router();
 
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB
+    fileSize: 2 * 1024 * 1024, // 2MB
   },
 });
 
@@ -19,16 +20,14 @@ router.get("/", verifyToken, async (req: Request, res: Response) => {
   try {
     const hotels = await Hotel.find({ userId: req.userId });
     res.json(hotels);
-
   } catch (error) {
-
     res.status(500).json({ message: "Error fetching hotels!" });
   }
 });
 
 router.get("/:id", verifyToken, async (req: Request, res: Response) => {
   const id = req.params.id.toString();
-  
+
   try {
     const hotel = await Hotel.findOne({
       _id: id,
@@ -36,22 +35,17 @@ router.get("/:id", verifyToken, async (req: Request, res: Response) => {
     });
 
     res.json(hotel);
-
   } catch (error) {
-
     res.status(500).json({ message: "Error fetching hotels!" });
   }
 });
 
-
 router.post(
   "/",
   verifyToken,
-  validateHotel()
-,
+  validateHotel(),
   upload.array("imageFiles", 6),
   async (req: Request, res: Response) => {
-    
     try {
       const imageFiles = req.files as Express.Multer.File[];
       const newHotel: HotelType = req.body;
@@ -68,23 +62,14 @@ router.post(
       await hotel.save();
 
       res.status(201).send(hotel);
-
     } catch (e) {
-
       console.log(e);
       res.status(500).json({ message: "Something went wrong!" });
     }
   }
 );
 
-
-
-router.put(
-  "/:hotelId",
-  verifyToken,
-  validateHotel(),
-
-  upload.array("imageFiles"),
+router.put( "/:hotelId", verifyToken, validateHotel(), upload.array("imageFiles"),
   async (req: Request, res: Response) => {
     try {
       const updatedHotel: HotelType = req.body;
@@ -101,7 +86,7 @@ router.put(
       );
 
       if (!hotel) {
-        return res.status(404).json({ message: "Hotel not found" });
+        return res.status(404).json({ message: "Hotel not found!" });
       }
 
       const files = req.files as Express.Multer.File[];
@@ -114,11 +99,22 @@ router.put(
 
       await hotel.save();
       res.status(201).json(hotel);
-
     } catch (error) {
       res.status(500).json({ message: "Something went wrong" });
     }
   }
 );
+
+router.delete("/:hotelId", verifyToken, async (req: Request, res: Response) => {
+  try {
+    const hotel = await Hotel.findByIdAndDelete(req.params.hotelId);
+
+    if (!hotel) return res.status(404).json({ message: "Hotel not found!" });
+
+    return res.status(201).json(hotel);
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
 
 export default router;

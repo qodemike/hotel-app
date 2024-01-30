@@ -11,6 +11,8 @@ import useSearch from "../components/hooks/useSearch";
 
 const SearchPage = () => {
   const search = useSearchContext();
+
+  const option = [''];
   
   const [page, setPage] = useState<number>(1);
   const [selectedStars, setSelectedStars] = useState<string[]>([]);
@@ -106,7 +108,7 @@ const SearchPage = () => {
             <select
               value={sortOption}
               onChange={(event) => setSortOption(event.target.value)}
-              className="p-2 border rounded-md"
+              className="p-2 text-sm border-2 rounded-md outline-none  focus:border-blue-300 focus:border-2 "
             >
               <option value="">Sort By</option>
               <option value="starRating">Star Rating</option>

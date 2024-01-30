@@ -45,7 +45,7 @@ const HotelCard = ({ hotel }: Props) => {
                   <AiFillStar key={index} className="fill-yellow-400" />
                 ))}
                 {Array.from({ length: 5 - hotel.starRating }).map(
-                  (i, index) => (<AiOutlineStar key={index} className="fill-white" />)
+                  (i, index) => (<AiOutlineStar key={index} className="fill-yellow-400" />)
                 )}
               </div>
               <div>

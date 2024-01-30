@@ -8,10 +8,12 @@ import { IoIosAddCircle } from "react-icons/io";
 const queryHotel = new QueryHotel();
 
 const MyHotelsPage = () => {
+
   const { data: hotelData } = queryHotel.fetchMyHotels();
+  const { mutate } = queryHotel.deleteHotelById();
 
   return (
-    <section className="pt-[120px] h-full mx-5 md:mx-10 lg:mx-20 pb-20  ">
+    <section className="pt-[120px] h-full mx-5 md:mx-10 lg:mx-20 pb-10  ">
       <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-0">
         <div className="self-end">
           <h1 className="text-2xl font-bold inline">Your Hotel Listings</h1>
@@ -30,7 +32,7 @@ const MyHotelsPage = () => {
       <div className="border border-neutral-300 my-5"></div>
 
       {hotelData?.length ? (
-        <div className="grid grid-cols-1 gap-3  ">
+        <div className="grid grid-cols-1 gap-10  ">
           {hotelData?.map((hotel, index) => (
             <div
               key={index}
@@ -38,11 +40,15 @@ const MyHotelsPage = () => {
               className="flex  flex-col justify-between bg-silver border-2 border-gray-400  shadow-lg rounded-lg p-8 gap-5"
             >
               <div className=" grid grid-cols-1 lg:grid-cols-2  gap-6">
-                <img src={hotel.imageUrls[0]} className=" object-cover rounded" alt="" />
+                <img
+                  src={hotel.imageUrls[0]}
+                  className=" object-cover rounded"
+                  alt=""
+                />
                 <div>
                   <h2 className="text-2xl font-bold mb-4">{hotel.name}</h2>
                   <div className="whitespace-pre-line">
-                    {hotel.description.substring(0, 450) + "..."}
+                    {hotel.description.substring(0, 400) + "..."}
                   </div>
                 </div>
               </div>
@@ -68,16 +74,21 @@ const MyHotelsPage = () => {
                   {hotel.starRating} Star Rating
                 </div>
               </div>
-              <span className="flex justify-end gap-3">
-                <button className="py-3 px-5 text-sm text-black font-bold rounded border border-neutral-400 bg-white hover:bg-neutral-200   " >DELETE HOTEL</button>
-
-                <Link
+              <div className="flex justify-end gap-3">
+              <Link
                   to={`/edit-my-hotel/${hotel._id}`}
-                  className="flex bg-primary text-sm text-white font-bold px-5 py-3 rounded  hover:bg-neutral-800"
+                  className="py-3  px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800"
                 >
                   EDIT DETAILS
                 </Link>
-              </span>
+                <button
+                onClick={ () => mutate(hotel._id) }
+                  className="py-3 px-5 text-xs bg-red-600 text-white font-bold rounded   hover:bg-red-700   "
+                >
+                  DELETE HOTEL
+                </button>
+               
+              </div>
             </div>
           ))}
         </div>

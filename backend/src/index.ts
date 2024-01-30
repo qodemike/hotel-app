@@ -9,6 +9,7 @@ import hotelRoutes from "./routes/hotels";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
+import morgan from "morgan";
 
 const app = express();
 
@@ -27,6 +28,7 @@ mongoose
   .connect(databaseConnectionString as string)
   .then(() => console.log("Connected to MongoDB..."));
 
+app.use(morgan('tiny'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +41,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 

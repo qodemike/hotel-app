@@ -43,11 +43,30 @@ class APICLIENT {
     const body = await response.json();
 
     if (!response.ok) {
-      throw new Error();
+      throw new Error(body.message);
     }
 
     return body;
   };
+
+  delete = async (route: string) => {
+    const response = await fetch(API_BASE_URL + route, {
+      method: 'DELETE',
+      credentials: "include",
+      headers:{
+        "Content-Type": "application/json"
+      }
+    })
+
+    const body = await response.json();
+
+    if (!response.ok){
+      throw new Error(body.message);
+    }
+
+    return body;
+
+  }
 }
 
 

@@ -7,7 +7,6 @@ const queryHotel = new QueryHotel();
 const AddHotelPage = () => {
   const { mutate, isLoading } = queryHotel.createHotel();
 
-
   return (
     <div className="">
     <ManageHotelsForm

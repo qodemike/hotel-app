@@ -26,7 +26,7 @@ const ImagesSection = () => {
     <div className="bg-silver border-2 border-neutral-300 rounded p-7">
       <div className=" mb-3">
       <h2 className="text-xl font-medium  inline">Images</h2>
-      <span className="text-sm text-neutral-700 mr-2 " > (5 images max) </span>
+      <span className="text-sm text-neutral-800 font-medium mr-2 " > ( 5 images, max size: 2MB ) </span>
       </div>
       <div className="bg-white border border-gray-400 rounded p-4 flex flex-col gap-4 mb-2">
         {existingImageUrls && (

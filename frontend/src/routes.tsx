@@ -9,6 +9,7 @@ import HotelDetailPage from "./pages/HotelDetailsPage";
 import SearchPage from "./pages/SearchPage";
 import MyHotelsPage from "./pages/MyHotelsPage";
 import AddHotelPage from "./pages/AddHotelPage";
+import EditHotelPage from "./pages/EditMyHotelPage";
 
 const router = createBrowserRouter([
   {

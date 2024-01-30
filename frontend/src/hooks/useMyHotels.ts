@@ -4,12 +4,11 @@ import { HotelType } from "../../../backend/src/entities";
 import { useAppContext } from "../contexts/AppContext";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
-
 const apiClient = new APICLIENT();
-
 const route = "/api/my-hotels/";
 
 class QueryHotel {
+
   fetchMyHotels = () => {
     return useQuery({
       queryKey: ["MyHotels"],
@@ -62,6 +61,20 @@ class QueryHotel {
       },
     });
   };
+
+  deleteHotelById = () => {
+    const { showToast } = useAppContext();
+
+    return useMutation({
+      mutationFn:(hotelId: string) => apiClient.delete(route + `${hotelId}`),
+      onSuccess: () => {
+        showToast({message: "Hotel Deleted!", type:"SUCCESS"});
+      },
+      onError: () => {
+        showToast({message: "Failed to Delete Hotel!", type: "ERROR"})
+      }
+    })
+  }
 }
 
 export default QueryHotel;
