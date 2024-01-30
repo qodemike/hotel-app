@@ -1,69 +1,92 @@
 import { Link } from "react-router-dom";
 import { BsBuilding } from "react-icons/bs";
-import { BiHotel, BiMoney, BiStar,  } from "react-icons/bi";
+import { BiHotel, BiMoney, BiStar } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import QueryHotel from "../hooks/useMyHotels";
+import { IoIosAddCircle } from "react-icons/io";
 
 const queryHotel = new QueryHotel();
 
 const MyHotelsPage = () => {
   const { data: hotelData } = queryHotel.fetchMyHotels();
 
-  if (!hotelData) {}
-
   return (
-    <div className="space-y-5 mt-[100px] mx-10 ">
-      <span className="flex justify-between">
-        <h1 className="text-3xl font-bold">My Hotels</h1>
+    <section className="pt-[120px] h-full mx-5 md:mx-10 lg:mx-20 pb-20  ">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-0">
+        <div className="self-end">
+          <h1 className="text-2xl font-bold inline">Your Hotel Listings</h1>
+          <span className="font-md font-bold ml-2 text-neutral-500 ">
+            {`(${hotelData?.length})`}{" "}
+          </span>
+        </div>
         <Link
           to="/add-hotel"
-          className="flex bg-blue-600 text-white font-bold p-2 hover:bg-blue-500"
+          className=" bg-primary rounded py-3 px-4 text-sm text-white font-bold p-2 hover:bg-neutral-800 self-end flex items-center  "
         >
-          Add Hotel
+          <IoIosAddCircle className="mr-2" size={16} />
+          CREATE A NEW HOTEL
         </Link>
-      </span>
-      <div className="grid grid-cols-1 gap-3">
-        {hotelData?.map((hotel, index) => (
-          <div
-            key={index}
-            data-testid="hotel-card"
-            className="flex  flex-col justify-between border border-gray-400 bg-white shadow-lg rounded-lg p-8 gap-5"
-          >
-            <h2 className="text-2xl font-bold">{hotel.name}</h2>
-            <div className="whitespace-pre-line">{hotel.description}</div>
-            <div className="grid  grid-cols-2 md:grid-cols-5 gap-2">
-              <div className="border border-gray-400 rounded-sm p-3 flex items-center">
-                <FaLocationDot className="mr-1" />
-                {hotel.city}, {hotel.country}
-              </div>
-              <div className="border border-gray-400 rounded-sm p-3 flex items-center">
-                <BsBuilding className="mr-1" />
-                {hotel.type}
-              </div>
-              <div className="border border-gray-400 rounded-sm p-3 flex items-center">
-                <BiMoney className="mr-1" />${hotel.pricePerNight} per night
-              </div>
-              <div className="border border-gray-400 rounded-sm p-3 flex items-center">
-                <BiHotel className="mr-1" />
-                {hotel.adultCount} adults, {hotel.childCount} children
-              </div>
-              <div className="border border-gray-400 rounded-sm p-3 flex items-center">
-                <BiStar className="mr-1" />
-                {hotel.starRating} Star Rating
-              </div>
-            </div>
-            <span className="flex justify-end">
-              <Link
-                to={`/edit-my-hotel/${hotel._id}`}
-                className="flex bg-blue-600 text-white  font-bold p-2 hover:bg-blue-500"
-              >
-                Edit Details
-              </Link>
-            </span>
-          </div>
-        ))}
       </div>
-    </div>
+      <div className="border border-neutral-300 my-5"></div>
+
+      {hotelData?.length ? (
+        <div className="grid grid-cols-1 gap-3  ">
+          {hotelData?.map((hotel, index) => (
+            <div
+              key={index}
+              data-testid="hotel-card"
+              className="flex  flex-col justify-between bg-silver border-2 border-gray-400  shadow-lg rounded-lg p-8 gap-5"
+            >
+              <div className=" grid grid-cols-1 lg:grid-cols-2  gap-6">
+                <img src={hotel.imageUrls[0]} className=" object-cover rounded" alt="" />
+                <div>
+                  <h2 className="text-2xl font-bold mb-4">{hotel.name}</h2>
+                  <div className="whitespace-pre-line">
+                    {hotel.description.substring(0, 450) + "..."}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid  grid-cols-2 lg:grid-cols-5 gap-2">
+                <div className="border-2 border-gray-400 rounded-sm p-3 font-medium flex items-center ">
+                  <FaLocationDot className="mr-1" />
+                  {hotel.city}, {hotel.country}
+                </div>
+                <div className="border-2 border-gray-400 rounded-sm p-3 font-medium flex items-center">
+                  <BsBuilding className="mr-1" />
+                  {hotel.type}
+                </div>
+                <div className="border-2 border-gray-400 rounded-sm p-3 font-medium flex items-center">
+                  <BiMoney className="mr-1" />${hotel.pricePerNight} per night
+                </div>
+                <div className="border-2 border-gray-400 rounded-sm p-3 font-medium flex items-center">
+                  <BiHotel className="mr-1" />
+                  {hotel.adultCount} adults, {hotel.childCount} children
+                </div>
+                <div className="border-2 border-gray-400 rounded-sm p-3 font-medium  flex items-center">
+                  <BiStar className="mr-1" />
+                  {hotel.starRating} Star Rating
+                </div>
+              </div>
+              <span className="flex justify-end gap-3">
+                <button className="py-3 px-5 text-sm text-black font-bold rounded border border-neutral-400 bg-white hover:bg-neutral-200   " >DELETE HOTEL</button>
+
+                <Link
+                  to={`/edit-my-hotel/${hotel._id}`}
+                  className="flex bg-primary text-sm text-white font-bold px-5 py-3 rounded  hover:bg-neutral-800"
+                >
+                  EDIT DETAILS
+                </Link>
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className=" w-full h-full flex justify-center  items-center">
+          <p className="text-2xl font-bold text-neutral-500">No Hotels Found</p>{" "}
+        </div>
+      )}
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const NavBar = () => {
   const { isLoggedIn } = useAppContext();
 
   return (
-    <nav className="fixed bg-primary bg-opacity-70 py-4 px-5 md:px-20 w-screen " style={{zIndex:'5'}}>
+    <nav className="fixed bg-primary  py-4 px-5 md:px-10 lg:px-16 w-screen " style={{zIndex:'5'}}>
       <header className=" flex justify-between items-center">
         <span className="text-xl md:text-4xl  font-bold tracking-tight text-white">
           <Link to="/">

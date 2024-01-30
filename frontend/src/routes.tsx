@@ -23,6 +23,7 @@ const router = createBrowserRouter([
         children: [
           { path: "/my-hotels", element: <MyHotelsPage /> },
           { path: "/add-hotel", element: <AddHotelPage /> },
+          { path: "/edit-my-hotel/:hotelId", element: <EditHotelPage /> },
 
         ],
       },

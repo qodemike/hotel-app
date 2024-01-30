@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { HotelType } from "../../../backend/src/entities";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useRef, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -35,8 +35,8 @@ const HotelCard = ({ hotel }: Props) => {
           >
             <span className=" font-bold text-lg">{hotel.name}</span>
             <div className="flex">
-              <FaLocationDot size={14} className="mr-1 mt-[3px]"/>
-              <span className="text-sm">{hotel.city+','}</span>
+              <FaLocationDot size={14} className="mr-1 mt-[3px]" />
+              <span className="text-sm">{hotel.city + ","}</span>
               <span className="text-sm ml-1">{hotel.country}</span>
             </div>
             <div className="flex justify-between">
@@ -44,6 +44,9 @@ const HotelCard = ({ hotel }: Props) => {
                 {Array.from({ length: hotel.starRating }).map((i, index) => (
                   <AiFillStar key={index} className="fill-yellow-400" />
                 ))}
+                {Array.from({ length: 5 - hotel.starRating }).map(
+                  (i, index) => (<AiOutlineStar key={index} className="fill-white" />)
+                )}
               </div>
               <div>
                 <span className="font-bold font-inter text-sm">

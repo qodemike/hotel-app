@@ -20,7 +20,7 @@ const Hero = () => {
             Find your next stay,
           </h1>
           <p className=" text-base md:text-xl  text-white mt-2 ">
-            Search for low price hotels for your dream vacation all around the
+            Explore low price hotels for your dream vacation all around the
             world...
           </p>
         </div>

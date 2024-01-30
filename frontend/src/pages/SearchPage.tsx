@@ -70,10 +70,10 @@ const SearchPage = () => {
 
   return (
     <>
-      <div className=" mt-[100px]  grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6">
-        <div className="rounded-lg border border-slate-300 p-5 h-fit top">
-          <div className="space-y-5">
-            <h3 className="text-lg font-semibold border-b border-slate-300 pb-5">
+      <div className=" mt-[100px]  grid grid-cols-1 lg:grid-cols-[250px_1fr]">
+        <div className="rounded-lg border border-slate-300 bg-white shadow-lg p-5 pb-10 ml-3 mb-4">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold border-b border-slate-300 ">
               Filter by:
             </h3>
             <StarRatingFilter
@@ -94,8 +94,8 @@ const SearchPage = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-5">
-          <div className="flex justify-start ">
+        <div className="flex flex-col gap-5 px-5">
+          <div className="flex">
             <SearchBar />
           </div>
           <div className="flex justify-between items-center">

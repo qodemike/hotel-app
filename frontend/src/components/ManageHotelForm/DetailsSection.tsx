@@ -56,14 +56,17 @@ const DetailsSection = () => {
           <span className="text-red-500">{errors.description.message}</span>
         )}
       </div>
-      <label className="text-gray-700 text-sm font-bold max-w-[50%]">
+      <label className="text-gray-700 text-sm font-bold max-w-[50%]  ">
+        <div className="relative h-[58px] overflow-hidden">
+        <div className="absolute inset-0 font-bold text-lg top-5 pt-1 pl-3 bg-silver  border border-gray-400 rounded-tl rounded-bl  w-8 ">$</div>
         Price Per Night
         <input
           type="number"
           min={1}
-          className="border border-gray-400   focus:border-blue-500 focus:outline-none rounded w-full py-2 px-2 font-normal"
+          className="border border-gray-400   focus:border-blue-500 focus:outline-none rounded w-full py-2 pl-12 px-2 font-normal"
           {...register("pricePerNight", { required: "This field is required" })}
-        ></input>
+        />
+        </div>
         {errors.pricePerNight && (
           <span className="text-red-500">{errors.pricePerNight.message}</span>
         )}
@@ -74,7 +77,7 @@ const DetailsSection = () => {
           {...register("starRating", {
             required: "This field is required",
           })}
-          className="border border-gray-400 focus:border-blue-500 focus:outline-none rounded w-full p-2 text-gray-700 font-normal"
+          className="border border-gray-400 focus:border-blue-500 focus:outline-none rounded w-full p-2  text-gray-700 font-normal"
         >
           <option value="" className="text-sm font-bold">
             Select a Rating

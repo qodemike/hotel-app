@@ -15,7 +15,7 @@ const TypeSection = () => {
     <div className="bg-silver border-2 border-neutral-300 p-7 rounded flex flex-col gap-4">
       <div>
       <h3 className="text-2xl font-medium mb-5 inline">Hotel type</h3>
-      <span className="text-sm text-neutral-700 ml-3 ">(select your hotel type)</span>
+      <span className="text-sm text-neutral-700 ml-2 ">(select your hotel type)</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
         {hotelTypes.map((type, index) => (

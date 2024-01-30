@@ -45,8 +45,6 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
     reset(hotel);
   }, [hotel, reset]);
 
-
-
   
   const onSubmit = (formDataJson: HotelFormData) => {
     const formData = new FormData();
@@ -103,7 +101,7 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
           <button
             disabled={isLoading}
             type="submit"
-            className="py-3  w-[138px] text-white font-medium font- rounded bg-primary  hover:bg-neutral-800 disabled:bg-neutral-800"
+            className="py-3 w-[138px] text-white font-medium font- rounded bg-primary  hover:bg-neutral-800 disabled:bg-neutral-800"
           >
             {isLoading ? (
               <div className="flex justify-center">

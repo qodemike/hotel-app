@@ -12,7 +12,7 @@ const FacilitiesSection = () => {
     <div className="bg-silver border-2 border-neutral-300 p-7 rounded " >
       <div className="mb-5">
       <h3 className="text-2xl font-medium inline ">Facilities</h3>
-      <span className="text-sm text-neutral-700 ml-3"> (select facilities available in your hotel)</span>
+      <span className="text-sm text-neutral-700 ml-1"> (select facilities available in your hotel)</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
         {hotelFacilities.map((facility, index) => (

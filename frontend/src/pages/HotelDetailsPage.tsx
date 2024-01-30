@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import APICLIENT from "../services/api-client";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import GuestInfoForm from "../components/GuestInfoForm";
 import { HotelType } from "../../../backend/src/entities";
 import { useState } from "react";
@@ -31,6 +31,9 @@ const HotelDetailPage = () => {
             {Array.from({ length: hotel.starRating }).map((_, index) => (
               <AiFillStar key={index} className="fill-yellow-400" />
             ))}
+            {Array.from({ length: 5 - hotel.starRating }).map((i, index) => (
+              <AiOutlineStar key={index} className="fill-yellow-400" />
+            ))}
           </span>
           <span>{", " + hotel.type}</span>
         </div>
@@ -44,8 +47,8 @@ const HotelDetailPage = () => {
         </div>
       </div>
 
-      <div className=" mt-2 grid grid-cols-1  lg:grid-cols-[2fr_1fr] gap-7">
-        <div className="flex flex-col gap-5 ">
+      <div className=" mt-2 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-7">
+        <div className="flex flex-col gap-4 ">
           <picture className="  ">
             <img
               src={hotel.imageUrls[0]}
@@ -54,19 +57,17 @@ const HotelDetailPage = () => {
             />
           </picture>
 
-          <div className="grid grid-cols-5">
+          <div className="grid grid-cols-5 gap-3">
             {hotel.imageUrls.map((url, index) => (
               <img
                 key={index}
                 src={url}
-                className=" w-full h-[100px]  rounded object-cover  "
+                className=" w-full h-[100px] rounded object-cover  "
               />
             ))}
           </div>
 
-          <p className="my-5">
-            {hotel.description}
-          </p>
+          <p className="my-5">{hotel.description}</p>
         </div>
 
         <div className="">

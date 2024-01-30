@@ -16,7 +16,7 @@ export default {
         silver: '#ECECEC',
         grayedText: '#9ca3af'
 
-      }
+      },
     },
   },
   plugins: [],
