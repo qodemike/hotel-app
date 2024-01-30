@@ -1,4 +1,7 @@
+
+
 export const constructSearchQuery = (queryParams: any) => {
+  
   let constructedQuery: any = {};
 
   if (queryParams.destination) {
@@ -37,9 +40,7 @@ export const constructSearchQuery = (queryParams: any) => {
   }
 
   if (queryParams.stars) {
-    const starRatings = Array.isArray(queryParams.stars)
-      ? queryParams.stars.map((star: string) => parseInt(star))
-      : parseInt(queryParams.stars);
+    const starRatings = Array.isArray(queryParams.stars) ? queryParams.stars.map((star: string) => parseInt(star)) : parseInt(queryParams.stars);
 
     constructedQuery.starRating = { $in: starRatings };
   }
@@ -49,6 +50,5 @@ export const constructSearchQuery = (queryParams: any) => {
       $lte: parseInt(queryParams.maxPrice).toString(),
     };
   }
-
   return constructedQuery;
 };

@@ -134,9 +134,10 @@ const SearchBar = () => {
         </div>
         {/* =============================================================== */}
 
-        <button className=" w-full h-full p-5 text-sm text-neutral-200 font-medium col-span-full lg:col-span-1  bg-primary   hover:bg-neutral-800  ">
+        <button className=" w-full h-full p-5 text-sm text-neutral-200 font-medium col-span-full lg:col-span-1 bg-primary hover:bg-neutral-800 ">
           SEARCH
         </button>
+
       </div>
     </form>
   );

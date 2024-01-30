@@ -1,17 +1,15 @@
-import express, { Request, Response } from "express";
-import Hotel from "../models/hotel";
-import { HotelSearchResponse } from "../entities/HotelSearchResponse";
 import { param, validationResult } from "express-validator";
-import { constructSearchQuery } from "../utils/constructSearchQuery";
 import Stripe from "stripe";
 import { BookingType } from "../entities";
 import verifyToken from "../middleware/auth";
-
+import express, {Request, Response} from 'express';
+import { constructSearchQuery } from "../utils/constructSearchQuery";
+import { HotelSearchResponse } from "../entities/HotelSearchResponse";
+import Hotel from '../models/hotel';
 
 const router = express.Router();
 
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string);
-
 
 router.get("/", async (req: Request, res: Response) => {
   try {
@@ -28,33 +26,12 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
-router.get(
-  "/:id",
-  [param("id").notEmpty().withMessage("Hotel ID is required")],
-  async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const id = req.params.id.toString();
-
-    try {
-      const hotel = await Hotel.findById(id);
-      res.json(hotel);
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Error fetching hotel" });
-    }
-  }
-);
-
-
 router.get("/search", async (req: Request, res: Response) => {
   try {
     const query = constructSearchQuery(req.query);
 
     let sortOptions = {};
+
     switch (req.query.sortOption) {
       case "starRating":
         sortOptions = { starRating: -1 };
@@ -96,8 +73,25 @@ router.get("/search", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/:id",
+  [param("id").notEmpty().withMessage("Hotel ID is required")],
+  async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
+    const id = req.params.id.toString();
 
+    try {
+      const hotel = await Hotel.findById(id);
+      res.json(hotel);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Error fetching the hotel." });
+    }
+  }
+);
 
 router.post(
   "/:hotelId/bookings/payment-intent",

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { HotelType } from "../../../backend/src/entities/HotelType";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 interface Props {
   hotel: HotelType;
@@ -19,9 +19,12 @@ const SearchResultsCard = ({ hotel }: Props) => {
         <div>
           <div className="flex items-center">
             <span className="flex">
-              {Array.from({ length: hotel.starRating }).map(() => (
-                <AiFillStar className="fill-yellow-400" />
+              {Array.from({ length: hotel.starRating }).map((i, index) => (
+                <AiFillStar key={index} className="fill-yellow-400" />
               ))}
+              {Array.from({ length: 5 - hotel.starRating }).map(
+                  (i, index) => (<AiOutlineStar key={index} className="fill-yellow-400" />)
+                )}
             </span>
             <span className="ml-1 text-sm">{hotel.type}</span>
           </div>
@@ -49,13 +52,13 @@ const SearchResultsCard = ({ hotel }: Props) => {
                 `+${hotel.facilities.length - 3} more`}
             </span>
           </div>
-          <div className="flex flex-col items-end gap-1">
+          <div className="flex flex-col items-end gap-2">
             <span className="font-bold">£{hotel.pricePerNight} per night</span>
             <Link
               to={`/detail/${hotel._id}`}
-              className="bg-blue-600 text-white h-full p-2 font-bold max-w-fit hover:bg-blue-500"
+              className="h-full max-w-fit py-3 px-5 text-xs text-white font-bold rounded bg-primary hover:bg-neutral-800"
             >
-              View Detail
+              VIEW DETAIL
             </Link>
           </div>
         </div>

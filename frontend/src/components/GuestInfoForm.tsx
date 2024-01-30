@@ -52,7 +52,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
       data.adultCount,
       data.childCount
     );
-    navigate("/sign-in", { state: { from: location } });
+    navigate("/auth/sign-in", { state: { from: location } });
   };
 
   const onSubmit = (data: GuestInfoFormData) => {

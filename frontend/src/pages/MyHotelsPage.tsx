@@ -8,17 +8,16 @@ import { IoIosAddCircle } from "react-icons/io";
 const queryHotel = new QueryHotel();
 
 const MyHotelsPage = () => {
-
   const { data: hotelData } = queryHotel.fetchMyHotels();
   const { mutate } = queryHotel.deleteHotelById();
 
   return (
-    <section className="pt-[120px] h-full mx-5 md:mx-10 lg:mx-20 pb-10  ">
+    <section className="pt-[120px] h-screen mx-5 md:mx-10 lg:mx-20 pb-10 ">
       <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-0">
         <div className="self-end">
           <h1 className="text-2xl font-bold inline">Your Hotel Listings</h1>
           <span className="font-md font-bold ml-2 text-neutral-500 ">
-            {`(${hotelData?.length})`}{" "}
+            {`(${hotelData?.length})`}
           </span>
         </div>
         <Link
@@ -32,21 +31,21 @@ const MyHotelsPage = () => {
       <div className="border border-neutral-300 my-5"></div>
 
       {hotelData?.length ? (
-        <div className="grid grid-cols-1 gap-10  ">
+        <div className="grid grid-cols-1 gap-6  ">
           {hotelData?.map((hotel, index) => (
             <div
               key={index}
               data-testid="hotel-card"
               className="flex  flex-col justify-between bg-silver border-2 border-gray-400  shadow-lg rounded-lg p-8 gap-5"
             >
-              <div className=" grid grid-cols-1 lg:grid-cols-2  gap-6">
+              <div className=" grid grid-cols-1 lg:grid-cols-2  gap-8">
                 <img
                   src={hotel.imageUrls[0]}
                   className=" object-cover rounded"
                   alt=""
                 />
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">{hotel.name}</h2>
+                  <h2 className="text-2xl font-bold mb-4  ">{hotel.name}</h2>
                   <div className="whitespace-pre-line">
                     {hotel.description.substring(0, 400) + "..."}
                   </div>
@@ -75,25 +74,24 @@ const MyHotelsPage = () => {
                 </div>
               </div>
               <div className="flex justify-end gap-3">
-              <Link
+                <Link
                   to={`/edit-my-hotel/${hotel._id}`}
                   className="py-3  px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800"
                 >
                   EDIT DETAILS
                 </Link>
                 <button
-                onClick={ () => mutate(hotel._id) }
-                  className="py-3 px-5 text-xs bg-red-600 text-white font-bold rounded   hover:bg-red-700   "
+                  onClick={() => mutate(hotel._id)}
+                  className="py-3 px-5 text-xs text-black font-bold border border-neutral-400 rounded bg-white hover:bg-neutral-100   "
                 >
                   DELETE HOTEL
                 </button>
-               
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className=" w-full h-full flex justify-center  items-center">
+        <div className=" w-full h-full flex justify-center items-center">
           <p className="text-2xl font-bold text-neutral-500">No Hotels Found</p>{" "}
         </div>
       )}

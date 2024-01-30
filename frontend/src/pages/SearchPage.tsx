@@ -12,8 +12,7 @@ import useSearch from "../components/hooks/useSearch";
 const SearchPage = () => {
   const search = useSearchContext();
 
-  const option = [''];
-  
+
   const [page, setPage] = useState<number>(1);
   const [selectedStars, setSelectedStars] = useState<string[]>([]);
   const [selectedHotelTypes, setSelectedHotelTypes] = useState<string[]>([]);
@@ -35,16 +34,13 @@ const SearchPage = () => {
     sortOption,
   };
 
-  const {data: hotelData} = useSearch(searchParams);
-
+  const { data: hotelData } = useSearch(searchParams);
 
   const handleStarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const starRating = event.target.value;
 
     setSelectedStars((prevStars) =>
-      event.target.checked
-        ? [...prevStars, starRating]
-        : prevStars.filter((star) => star !== starRating)
+      event.target.checked ? [...prevStars, starRating] : prevStars.filter((star) => star !== starRating)
     );
   };
 
@@ -54,9 +50,7 @@ const SearchPage = () => {
     const hotelType = event.target.value;
 
     setSelectedHotelTypes((prevHotelTypes) =>
-      event.target.checked
-        ? [...prevHotelTypes, hotelType]
-        : prevHotelTypes.filter((hotel) => hotel !== hotelType)
+      event.target.checked ? [...prevHotelTypes, hotelType] : prevHotelTypes.filter((hotel) => hotel !== hotelType)
     );
   };
 
@@ -72,8 +66,8 @@ const SearchPage = () => {
 
   return (
     <>
-      <div className=" mt-[100px]  grid grid-cols-1 lg:grid-cols-[250px_1fr]">
-        <div className="rounded-lg border border-slate-300 bg-white shadow-lg p-5 pb-10 ml-3 mb-4">
+      <div className=" mt-[95px] grid grid-cols-1 lg:grid-cols-[250px_1fr]">
+        <div className=" h-fit p-5 pb-10 ml-3 mb-4  rounded-lg border border-slate-300 bg-white shadow-lg  ">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold border-b border-slate-300 ">
               Filter by:
@@ -110,19 +104,21 @@ const SearchPage = () => {
               onChange={(event) => setSortOption(event.target.value)}
               className="p-2 text-sm border-2 rounded-md outline-none  focus:border-blue-300 focus:border-2 "
             >
-              <option value="">Sort By</option>
+              <option  value="">Sort By</option>
               <option value="starRating">Star Rating</option>
-              <option value="pricePerNightAsc">
-                Price Per Night (low to high)
-              </option>
-              <option value="pricePerNightDesc">
-                Price Per Night (high to low)
-              </option>
+              <option value="pricePerNightAsc">Price Per Night (low to high)</option>
+              <option value="pricePerNightDesc"> Price Per Night (high to low)</option>
             </select>
           </div>
+
+          {/* =========================================== */}
+
           {hotelData?.data.map((hotel) => (
             <SearchResultsCard hotel={hotel} />
           ))}
+          
+          {/* ============================================ */}
+
           <div>
             {hotelData?.pagination.total === 0 ? null : (
               <Pagination

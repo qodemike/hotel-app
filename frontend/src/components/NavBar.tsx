@@ -34,7 +34,7 @@ const NavBar = () => {
           ) : (
             <Link
               to="/auth/sign-in"
-              className=" py-3 px-7 border-2 border-solid border-neutral-300 rounded text-sm  text-neutral-300  flex items-center  hover:text-black hover:bg-neutral-200"
+              className=" py-3 px-7 text-sm text-neutral-300 hover:text-black border-2  hover:bg-neutral-200 border-neutral-300 hover:border-neutral-200  rounded flex items-center  "
             >
               Sign In
             </Link>
