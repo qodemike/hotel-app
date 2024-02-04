@@ -4,8 +4,8 @@ import TypeSection from "./TypeSection";
 import FacilitiesSection from "./FacilitiesSection";
 import GuestsSection from "./GuestsSection";
 import ImagesSection from "./ImagesSection";
-import { HotelType } from "../../../../backend/src/entities";
-import {  useEffect } from "react";
+import { HotelType } from "../../../../backend/entities";
+import { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 
 export type HotelFormData = {
@@ -29,7 +29,6 @@ interface Props {
   isLoading: boolean;
 }
 
-
 const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
   const formMethods = useForm<HotelFormData>({
     defaultValues: {
@@ -40,12 +39,10 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
 
   const { handleSubmit, reset } = formMethods;
 
-
   useEffect(() => {
     reset(hotel);
   }, [hotel, reset]);
 
-  
   const onSubmit = (formDataJson: HotelFormData) => {
     const formData = new FormData();
 
@@ -63,7 +60,6 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
     formData.append("starRating", formDataJson.starRating.toString());
     formData.append("adultCount", formDataJson.adultCount.toString());
     formData.append("childCount", formDataJson.childCount.toString());
-
 
     formDataJson.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);
@@ -88,7 +84,7 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
   return (
     <FormProvider {...formMethods}>
       <form
-        className=" my-[110px]  px-5 md:p-0  md:max-w-4xl m-auto flex flex-col gap-5"
+        className=" my-[100px]  px-5 md:p-0  md:max-w-4xl m-auto flex flex-col gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-3xl font-bold ">Please fill the form below</h2>

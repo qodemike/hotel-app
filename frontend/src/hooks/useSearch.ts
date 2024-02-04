@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { HotelSearchResponse } from "../../../../backend/src/entities";
-import APICLIENT from "../../services/api-client";
+import { HotelSearchResponse } from "../../../backend/entities";
+import APICLIENT from "../services/api-client";
 
 const apiClient = new APICLIENT();
 
@@ -18,9 +18,7 @@ export type SearchParams = {
   sortOption?: string;
 };
 
-
-const useSearch = ( searchParams: SearchParams ) => {
-
+const useSearch = (searchParams: SearchParams) => {
   // Create a  query string parameter
   const queryParams = new URLSearchParams();
 
@@ -33,14 +31,17 @@ const useSearch = ( searchParams: SearchParams ) => {
   queryParams.append("maxPrice", searchParams.maxPrice || "");
   queryParams.append("sortOption", searchParams.sortOption || "");
 
-  searchParams.facilities?.forEach((facility) => queryParams.append("facilities", facility));
+  searchParams.facilities?.forEach((facility) =>
+    queryParams.append("facilities", facility)
+  );
   searchParams.types?.forEach((type) => queryParams.append("types", type));
   searchParams.stars?.forEach((star) => queryParams.append("stars", star));
 
   return useQuery({
-    queryKey: ['searchHotels', searchParams],
-    queryFn: () => apiClient.get<HotelSearchResponse>( `/api/hotels/search?${queryParams}`)
-  })
+    queryKey: ["searchHotels", searchParams],
+    queryFn: () =>
+      apiClient.get<HotelSearchResponse>(`/api/hotels/search?${queryParams}`),
+  });
 };
 
 export default useSearch;

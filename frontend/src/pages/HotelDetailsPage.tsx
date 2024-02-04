@@ -3,15 +3,13 @@ import { useParams } from "react-router-dom";
 import APICLIENT from "../services/api-client";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import GuestInfoForm from "../components/GuestInfoForm";
-import { HotelType } from "../../../backend/src/entities";
-import { useState } from "react";
+import { HotelType } from "../../../backend/entities";
 import { FaLocationDot } from "react-icons/fa6";
 
 const apiClient = new APICLIENT();
 
 const HotelDetailPage = () => {
   const { hotelId } = useParams();
-  const [imageIndex, setImageIndex] = useState(0);
 
   const { data: hotel } = useQuery({
     queryKey: ["fetchHotelById"],
@@ -31,7 +29,7 @@ const HotelDetailPage = () => {
             {Array.from({ length: hotel.starRating }).map((_, index) => (
               <AiFillStar key={index} className="fill-yellow-400" />
             ))}
-            {Array.from({ length: 5 - hotel.starRating }).map((i, index) => (
+            {Array.from({ length: 5 - hotel.starRating }).map((_, index) => (
               <AiOutlineStar key={index} className="fill-yellow-400" />
             ))}
           </span>
@@ -40,7 +38,7 @@ const HotelDetailPage = () => {
 
         <h1 className="text-4xl font-medium font-poppins">{hotel.name}</h1>
 
-        <div className="mt-2 font-medium text-neutral-500 flex">
+        <div className="mt-2  text-neutral-600 flex">
           <FaLocationDot size={15} className=" mt-1 mr-2" />
           <span>{hotel.city}</span>
           <span>{", " + hotel.country}</span>

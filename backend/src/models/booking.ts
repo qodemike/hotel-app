@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { BookingType } from "../entities/BookingType";
+import { BookingType } from "../../entities/BookingType";
 
 export const bookingSchema = new mongoose.Schema<BookingType>({
   firstName: { type: String, required: true },

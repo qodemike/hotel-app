@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SignInFormData } from "../SignIn/SignIn";
-import APICLIENT from "../../services/api-client";
-import { useAppContext } from "../../contexts/AppContext";
+import { SignInFormData } from "../components/SignIn/SignIn";
+import APICLIENT from "../services/api-client";
+import { useAppContext } from "../contexts/AppContext";
 
 const apiClient = new APICLIENT();
 

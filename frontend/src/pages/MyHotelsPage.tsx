@@ -12,8 +12,8 @@ const MyHotelsPage = () => {
   const { mutate } = queryHotel.deleteHotelById();
 
   return (
-    <section className="pt-[120px] h-screen mx-5 md:mx-10 lg:mx-20 pb-10 ">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-0">
+    <section className="h-screen my-[110px] mx-5 md:mx-10 lg:mx-20 ">
+      <div className="m flex flex-col md:flex-row justify-between items-start gap-5 md:gap-0">
         <div className="self-end">
           <h1 className="text-2xl font-bold inline">Your Hotel Listings</h1>
           <span className="font-md font-bold ml-2 text-neutral-500 ">
@@ -28,20 +28,20 @@ const MyHotelsPage = () => {
           CREATE A NEW HOTEL
         </Link>
       </div>
-      <div className="border border-neutral-300 my-5"></div>
+      <div className=" mt-3 mb-8 border border-neutral-300 "></div>
 
       {hotelData?.length ? (
-        <div className="grid grid-cols-1 gap-6  ">
+        <div className=" grid grid-cols-1 ">
           {hotelData?.map((hotel, index) => (
             <div
               key={index}
               data-testid="hotel-card"
-              className="flex  flex-col justify-between bg-silver border-2 border-gray-400  shadow-lg rounded-lg p-8 gap-5"
+              className="mb-8 p-7 bg-silver border-2 border-gray-400 rounded-lg shadow-lg   flex  flex-col justify-between gap-5"
             >
-              <div className=" grid grid-cols-1 lg:grid-cols-2  gap-8">
+              <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <img
                   src={hotel.imageUrls[0]}
-                  className=" object-cover rounded"
+                  className=" w-full h-[300px] object-cover rounded"
                   alt=""
                 />
                 <div>

@@ -1,8 +1,8 @@
-import { RegisterFormData } from "../Register/Register";
+import { RegisterFormData } from "../components/Register/Register";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import APICLIENT from "../../services/api-client";
-import { useAppContext } from "../../contexts/AppContext";
+import APICLIENT from "../services/api-client";
+import { useAppContext } from "../contexts/AppContext";
 
 const apiClient = new APICLIENT();
 

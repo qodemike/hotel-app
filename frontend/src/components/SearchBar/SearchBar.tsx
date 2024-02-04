@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "./SearchContext";
+import { TfiAngleDown } from "react-icons/tfi";
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -37,17 +38,17 @@ const SearchBar = () => {
         <div className="flex flex-col md:flex-row ">
           <div className="md:p-6 flex items-center md:block">
             <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
-            <div className=" md:my-3  flex flex-row items-center flex-1 bg-white ">
+            <div className=" md:my-3 p-2 bg-neutral-100 rounded flex flex-row items-center flex-1  ">
               <MdTravelExplore size={25} className="mr-2" />
               <input
-                placeholder="Enter a destination"
-                className=" w-full focus:outline-none  "
+                placeholder="Type destination"
+                className=" w-full bg-neutral-100 focus:outline-none "
                 value={destination}
                 onChange={(event) => setDestination(event.target.value)}
               />
             </div>
           </div>
-          <div className="border border-silver w-full  h-0 mt-4 md:mr-6 md:h-20 md:w-0 "></div>
+          <div className="w-full h-0 mt-4 md:mr-6 md:h-20 md:w-0 border border-silver  "></div>
         </div>
 
         {/* =============================================================== */}
@@ -95,49 +96,55 @@ const SearchBar = () => {
 
         <div className=" md:justify-self-end md:w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="border border-silver w-full md:w-0 h-0 md:h-20 "></div>
-          <div className="md:w-32 flex md:flex-col items-center md:items-start  ">
+          <div className=" flex md:flex-col items-center md:items-start  ">
             <span className="text-xs whitespace-nowrap mr-[47px] md:mr-0 ">
               CHECK-IN
             </span>
-            <DatePicker
-              title={"check In"}
-              selected={checkIn}
-              onChange={(date) => setCheckIn(date as Date)}
-              selectsStart
-              startDate={checkIn}
-              endDate={checkOut}
-              minDate={minDate}
-              maxDate={maxDate}
-              className=" focus:outline-none  md:mt-5 text-lg w-full font-medium"
-            />
+            <div className="flex items-end ">
+              <DatePicker
+                title={"check In"}
+                selected={checkIn}
+                onChange={(date) => setCheckIn(date as Date)}
+                selectsStart
+                startDate={checkIn}
+                endDate={checkOut}
+                minDate={minDate}
+                maxDate={maxDate}
+                className="w-full lg:max-w-[120px] md:mt-5 p-2 md:p-0 bg-neutral-100 md:bg-transparent rounded md:rounded-none text-lg font-medium focus:outline-none "
+              />
+              <TfiAngleDown size={15} className="h-8 hidden lg:inline" />
+            </div>
           </div>
           <div className="border border-silver w-full md:w-0 h-0 md:ml-5 md:h-20  "></div>
         </div>
+
         {/* =============================================================== */}
 
         <div className=" md:justify-self-center md:w-32 flex md:flex-col items-center md:items-start ">
           <span className="text-xs whitespace-nowrap mr-[34px] md:mr-0 ">
             CHECK-OUT
           </span>
-          <DatePicker
-            title={"check Out"}
-            selected={checkOut}
-            onChange={(date) => setCheckOut(date as Date)}
-            selectsStart
-            startDate={checkIn}
-            endDate={checkOut}
-            minDate={minDate}
-            maxDate={maxDate}
-            placeholderText="Check-out Date"
-            className=" focus:outline-none md:mt-5 text-lg  w-full font-medium inline "
-          />
+          <div className="flex items-end ">
+            <DatePicker
+              title={"check Out"}
+              selected={checkOut}
+              onChange={(date) => setCheckOut(date as Date)}
+              selectsStart
+              startDate={checkIn}
+              endDate={checkOut}
+              minDate={minDate}
+              maxDate={maxDate}
+              placeholderText="Check-out Date"
+              className="w-full lg:w-[120px] md:mt-5 p-2 md:p-0 bg-neutral-100 md:bg-transparent rounded  text-lg font-medium focus:outline-none "
+            />
+            <TfiAngleDown size={15} className="h-8 hidden lg:inline" />
+          </div>
         </div>
         {/* =============================================================== */}
 
-        <button className=" w-full h-full p-5 text-sm text-neutral-200 font-medium col-span-full lg:col-span-1 bg-primary hover:bg-neutral-800 ">
+        <button className=" w-full h-full p-5 text-sm text-neutral-200 font-medium bg-primary hover:bg-neutral-800 rounded lg:rounded-none col-span-full lg:col-span-1  ">
           SEARCH
         </button>
-
       </div>
     </form>
   );

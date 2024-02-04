@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useLogin from "../hooks/useSignIn";
+import useLogin from "../../hooks/useSignIn";
 import googleIcon from "../../assets/google.svg";
 
 export type SignInFormData = {
@@ -71,7 +71,7 @@ const SignIn = () => {
           </span>
         </form>
 
-        <button className="border-solid border-2 border-neutral-500 rounded-lg mt-10 font-bold w-full py-2.5">
+        <button className="border border-solid  border-neutral-500 rounded-lg mt-10 font-bold w-full py-2.5">
           <img src={googleIcon} alt="google icon" className="inline mr-3" />
           Sign In with Google
         </button>

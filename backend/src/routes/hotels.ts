@@ -1,11 +1,11 @@
 import { param, validationResult } from "express-validator";
 import Stripe from "stripe";
-import { BookingType } from "../entities";
+import { BookingType } from "../../entities";
 import verifyToken from "../middleware/auth";
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from "express";
 import { constructSearchQuery } from "../utils/constructSearchQuery";
-import { HotelSearchResponse } from "../entities/HotelSearchResponse";
-import Hotel from '../models/hotel';
+import { HotelSearchResponse } from "../../entities/HotelSearchResponse";
+import Hotel from "../models/hotel";
 
 const router = express.Router();
 
@@ -16,13 +16,10 @@ router.get("/", async (req: Request, res: Response) => {
     const hotels = await Hotel.find().sort("-lastUpdated");
 
     res.json(hotels);
-
   } catch (error) {
-
     console.log("error", error);
-    
+
     res.status(500).json({ message: "Error fetching hotels" });
-    
   }
 });
 
@@ -45,7 +42,9 @@ router.get("/search", async (req: Request, res: Response) => {
     }
 
     const pageSize = 5;
-    const pageNumber = parseInt( req.query.page ? req.query.page.toString() : "1");
+    const pageNumber = parseInt(
+      req.query.page ? req.query.page.toString() : "1"
+    );
     const skip = (pageNumber - 1) * pageSize;
 
     const hotels = await Hotel.find(query)
@@ -65,15 +64,14 @@ router.get("/search", async (req: Request, res: Response) => {
     };
 
     res.json(response);
-
   } catch (error) {
-
     console.log("error", error);
     res.status(500).json({ message: "Something went wrong" });
   }
 });
 
-router.get("/:id",
+router.get(
+  "/:id",
   [param("id").notEmpty().withMessage("Hotel ID is required")],
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
@@ -131,7 +129,6 @@ router.post(
   }
 );
 
-
 router.post(
   "/:hotelId/bookings",
   verifyToken,
@@ -139,7 +136,9 @@ router.post(
     try {
       const paymentIntentId = req.body.paymentIntentId;
 
-      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId as string);
+      const paymentIntent = await stripe.paymentIntents.retrieve(
+        paymentIntentId as string
+      );
 
       if (!paymentIntent) {
         return res.status(400).json({ message: "payment intent not found" });
@@ -177,13 +176,11 @@ router.post(
       await hotel.save();
 
       res.status(200).send();
-
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "something went wrong" });
     }
   }
- );
-
+);
 
 export default router;

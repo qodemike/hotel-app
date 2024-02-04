@@ -1,3 +1,1 @@
-const date = new Date();
-
-console.log(date.toISOString());
+setInterval(() => console.log("Hello") , 1000)

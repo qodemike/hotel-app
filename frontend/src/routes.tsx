@@ -10,6 +10,8 @@ import SearchPage from "./pages/SearchPage";
 import MyHotelsPage from "./pages/MyHotelsPage";
 import AddHotelPage from "./pages/AddHotelPage";
 import EditHotelPage from "./pages/EditMyHotelPage";
+import MyBookingsPage from "./pages/MyBookingsPage";
+import CreateBookingPage from "./pages/CreateBookingPage";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,10 @@ const router = createBrowserRouter([
         children: [
           { path: "/my-hotels", element: <MyHotelsPage /> },
           { path: "/add-hotel", element: <AddHotelPage /> },
+          { path: "/my-bookings", element: <MyBookingsPage /> },
           { path: "/edit-my-hotel/:hotelId", element: <EditHotelPage /> },
+          { path: "/hotel/:hotelId/booking", element: <CreateBookingPage /> },
+
 
         ],
       },

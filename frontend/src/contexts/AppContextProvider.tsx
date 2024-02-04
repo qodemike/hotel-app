@@ -4,11 +4,7 @@ import { useQuery } from "react-query";
 import APICLIENT from "../services/api-client";
 import AppContext from "./AppContext";
 import { ToastMessage } from "../components/Toast";
-import { loadStripe } from "@stripe/stripe-js";
 
-const STRIPE_PUB_KEY = import.meta.env.VITE_STRIPE_PUB_KEY || "";
-
-const stripePromise = loadStripe(STRIPE_PUB_KEY);
 
 interface Props {
   children: ReactNode;
@@ -28,7 +24,6 @@ export const AppContextProvider = ({ children }: Props) => {
   return (
     <AppContext.Provider
       value={{
-        stripePromise,
         showToast: (toastMessage) => { setToast(toastMessage);},
         isLoggedIn: !isError,
       }}

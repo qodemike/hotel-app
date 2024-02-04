@@ -6,25 +6,24 @@ const HotelDisplayGrid = () => {
 
   return (
     <section className="py-[80px]  " id="hotel_display_grid">
-      <div className="bg-primary py-8 px-7 md:px-10">
-        <article className="text-center">
-          <h2 className="text-3xl text-white font-bold ">
-            Latest Destinations
-          </h2>
-          <p className="text-white mt-2">
-            Explore newly added hotels all around the world with quality
-            facilities.
-          </p>
-        </article>
-      <div className=" max-w-[1000px] mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 ">
-        {hotels?.map((hotel, index) => (
-          <div key={index}>
-            <HotelCard hotel={hotel} />
-          </div>
-        ))}
+      <article className="py-10 px-7 md:px-10 lg:px-20 bg-primary ">
+        <h2 className="text-3xl text-white font-bold ">
+          Explore Our Best Listings
+        </h2>
+        <p className="mt-2 text-white">
+          Explore newly added hotels all around the world with quality
+          facilities.
+        </p>
+      </article>
+      <div className=" py-10 px-7 md:px-10">
+        <div className=" max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-4 ">
+          {hotels?.map((hotel, index) => (
+            <div key={index}>
+              <HotelCard hotel={hotel} />
+            </div>
+          ))}
+        </div>
       </div>
-      </div>
-
     </section>
   );
 };

@@ -161,7 +161,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
             {/* ===================================================================== */}
 
             {isLoggedIn ? (
-              <button className=" py-3 mt-2 rounded  text-white font-medium border-2 border-solid border-white transition  hover:text-black hover:bg-neutral-200">
+              <button className=" py-3 mt-2 rounded  text-white font-medium border-2 border-solid border-white transition  hover:text-black hover:bg-neutral-200 hover:border-neutral-200">
                 BOOK NOW
               </button>
             ) : (

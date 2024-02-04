@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { HotelType } from "../../../backend/src/entities/HotelType";
+import { HotelType } from "../../../backend/entities";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 interface Props {
@@ -8,40 +8,45 @@ interface Props {
 
 const SearchResultsCard = ({ hotel }: Props) => {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr] border border-slate-300 rounded-lg p-8 gap-8">
-      <div className="w-full h-[300px]">
-        <img
-          src={hotel.imageUrls[0]}
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
-      <div className="grid grid-rows-[1fr_2fr_1fr]">
-        <div>
-          <div className="flex items-center">
-            <span className="flex">
-              {Array.from({ length: hotel.starRating }).map((i, index) => (
-                <AiFillStar key={index} className="fill-yellow-400" />
-              ))}
-              {Array.from({ length: 5 - hotel.starRating }).map(
-                  (i, index) => (<AiOutlineStar key={index} className="fill-yellow-400" />)
+    <div>
+      <div className="border border-neutral-300 "></div>
+      <div className="mb-3 mt-8 grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-2 lg:gap-10">
+        <div className="w-full h-[300px]">
+          <img
+            src={hotel.imageUrls[0]}
+            className="w-full h-full object-cover rounded"
+          />
+        </div>
+        <div className="py-2 flex flex-col gap-6">
+          <div>
+            <div className="flex items-center">
+              <span className="flex">
+                {Array.from({ length: hotel.starRating }).map((_, index) => (
+                  <AiFillStar key={index} className="fill-yellow-400" />
+                ))}
+                {Array.from({ length: 5 - hotel.starRating }).map(
+                  (_, index) => (
+                    <AiOutlineStar key={index} className="fill-yellow-400" />
+                  )
                 )}
-            </span>
-            <span className="ml-1 text-sm">{hotel.type}</span>
+              </span>
+              <span className="ml-1 text-sm">{", " + hotel.type}</span>
+            </div>
+            <Link
+              to={`/detail/${hotel._id}`}
+              className="text-2xl font-bold cursor-pointer"
+            >
+              {hotel.name}
+            </Link>
           </div>
-          <Link
-            to={`/detail/${hotel._id}`}
-            className="text-2xl font-bold cursor-pointer"
-          >
-            {hotel.name}
-          </Link>
-        </div>
 
-        <div>
-          <div className="line-clamp-4">{hotel.description}</div>
-        </div>
+          <div>
+            <div className="mb-2 text-sm line-clamp-4 ">
+              {hotel.description}
+            </div>
+          </div>
 
-        <div className="grid grid-cols-2 items-end whitespace-nowrap">
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-2 items-center">
             {hotel.facilities.slice(0, 3).map((facility) => (
               <span className="bg-slate-300 p-2 rounded-lg font-bold text-xs whitespace-nowrap">
                 {facility}
@@ -52,14 +57,14 @@ const SearchResultsCard = ({ hotel }: Props) => {
                 `+${hotel.facilities.length - 3} more`}
             </span>
           </div>
-          <div className="flex flex-col items-end gap-2">
-            <span className="font-bold">£{hotel.pricePerNight} per night</span>
+          <div className="flex items-center gap-4">
             <Link
               to={`/detail/${hotel._id}`}
               className="h-full max-w-fit py-3 px-5 text-xs text-white font-bold rounded bg-primary hover:bg-neutral-800"
             >
               VIEW DETAIL
             </Link>
+            <span className="font-medium">${hotel.pricePerNight} / Night</span>
           </div>
         </div>
       </div>

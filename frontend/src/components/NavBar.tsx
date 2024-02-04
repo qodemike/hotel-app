@@ -2,19 +2,24 @@ import { Link } from "react-router-dom";
 import SignOutButton from "./SignOutButton/SignOutButton";
 import { useAppContext } from "../contexts/AppContext";
 import BrandLogo from "../assets/Logo-white.svg";
+import { IoMenuOutline } from "react-icons/io5";
 
 const NavBar = () => {
   const { isLoggedIn } = useAppContext();
 
   return (
-    <nav className="fixed bg-primary  py-4 px-5 md:px-10 lg:px-16 w-screen " style={{zIndex:'5'}}>
+    <nav
+      className="fixed bg-primary bg-opacity-70  py-4 px-5 md:px-10 lg:px-16 w-screen "
+      style={{ zIndex: "5" }}
+    >
       <header className=" flex justify-between items-center">
         <span className="text-xl md:text-4xl  font-bold tracking-tight text-white">
           <Link to="/">
             <img src={BrandLogo} alt="brand logo" />
           </Link>
         </span>
-        <span className="flex space-x-2 ">
+        <IoMenuOutline onClick={() => console.log('clicked')} size={50} className="  md:hidden text-white " />
+        <span className="space-x-2 hidden md:flex ">
           {isLoggedIn ? (
             <>
               <Link
@@ -34,7 +39,7 @@ const NavBar = () => {
           ) : (
             <Link
               to="/auth/sign-in"
-              className=" py-3 px-7 text-sm text-neutral-300 hover:text-black border-2  hover:bg-neutral-200 border-neutral-300 hover:border-neutral-200  rounded flex items-center  "
+              className=" py-3 px-7 text-sm text-neutral-300 hover:text-black hover:bg-neutral-200 border border-neutral-300 hover:border-neutral-200 rounded flex items-center  "
             >
               Sign In
             </Link>

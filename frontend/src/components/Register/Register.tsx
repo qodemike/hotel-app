@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import useRegister from "../hooks/useRegister";
+import useRegister from "../../hooks/useRegister";
 import { Link } from "react-router-dom";
 import googleIcon from "../../assets/google.svg";
 
@@ -138,7 +138,7 @@ const Register = () => {
               Click here to login
             </Link>
           </span>
-          <button className="border-solid border-2 border-neutral-500 rounded-lg font-bold w-full py-2.5">
+          <button className="border border-solid border-neutral-500 rounded-lg font-bold w-full py-2.5">
             <img src={googleIcon} alt="google icon" className="inline mr-3" />
             Sign In with Google
           </button>

@@ -8,7 +8,7 @@ const HomePage = () => {
     <>
       <div className="">
         <Hero />
-        <div className="max-w-[1100px] m-auto relative md:top-[-20px] lg:top-[-80px]">
+        <div className="max-w-[1100px] m-auto relative md:top-[-20px] lg:top-[-100px]">
           <SearchBar />
         </div>
         <Showcase />

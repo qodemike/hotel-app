@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import APICLIENT from "../services/api-client";
-import { HotelType } from "../../../backend/src/entities";
+import { HotelType } from "../../../backend/entities";
 
 const apiClient = new APICLIENT();
 

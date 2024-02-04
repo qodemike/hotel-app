@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import APICLIENT from "../services/api-client";
-import { HotelType } from "../../../backend/src/entities";
+import { HotelType } from "../../../backend/entities";
 import { useAppContext } from "../contexts/AppContext";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -8,7 +8,6 @@ const apiClient = new APICLIENT();
 const route = "/api/my-hotels/";
 
 class QueryHotel {
-
   fetchMyHotels = () => {
     return useQuery({
       queryKey: ["MyHotels"],
@@ -29,7 +28,7 @@ class QueryHotel {
 
     return useMutation({
       mutationFn: async (data: FormData) => {
-        const response =  await fetch(API_BASE_URL + route, {
+        const response = await fetch(API_BASE_URL + route, {
           method: "POST",
           credentials: "include",
           body: data,
@@ -48,11 +47,11 @@ class QueryHotel {
     });
   };
 
-  updateHotelById = <T>( hotelId: string) => {
+  updateHotelById = <T>(hotelId: string) => {
     const { showToast } = useAppContext();
 
     return useMutation({
-      mutationFn: (data: T) => apiClient.update<T>(data, route + hotelId ),
+      mutationFn: (data: T) => apiClient.update<T>(data, route + hotelId),
       onSuccess: () => {
         showToast({ message: "Hotel Saved!", type: "SUCCESS" });
       },
@@ -64,17 +63,19 @@ class QueryHotel {
 
   deleteHotelById = () => {
     const { showToast } = useAppContext();
+    const queryClient = useQueryClient();
 
     return useMutation({
-      mutationFn:(hotelId: string) => apiClient.delete(route + `${hotelId}`),
+      mutationFn: (hotelId: string) => apiClient.delete(route + `${hotelId}`),
       onSuccess: () => {
-        showToast({message: "Hotel Deleted!", type:"SUCCESS"});
+        queryClient.invalidateQueries({queryKey:['MyHotels']})
+        showToast({ message: "Hotel Deleted!", type: "SUCCESS" });
       },
       onError: () => {
-        showToast({message: "Failed to Delete Hotel!", type: "ERROR"})
-      }
-    })
-  }
+        showToast({ message: "Failed to Delete Hotel!", type: "ERROR" });
+      },
+    });
+  };
 }
 
 export default QueryHotel;

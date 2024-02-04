@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import multer from "multer";
 import Hotel from "../models/hotel";
 import verifyToken from "../middleware/auth";
-import { HotelType } from "../entities/HotelType";
+import { HotelType } from "../../entities/HotelType";
 import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import validateHotel from "../middleware/validateHotel";
 import { rmSync } from "fs";
@@ -69,7 +69,11 @@ router.post(
   }
 );
 
-router.put( "/:hotelId", verifyToken, validateHotel(), upload.array("imageFiles"),
+router.put(
+  "/:hotelId",
+  verifyToken,
+  validateHotel(),
+  upload.array("imageFiles"),
   async (req: Request, res: Response) => {
     try {
       const updatedHotel: HotelType = req.body;
