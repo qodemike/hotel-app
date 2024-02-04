@@ -127,7 +127,7 @@ const Register = () => {
           <span>
             <button
               type="submit"
-              className="bg-primary text-white py-3 hover:bg-neutral-800 rounded-lg font-bold text-xl w-full "
+              className="w-full py-3 mb-3 font-bold text-white text-xl  bg-primary  hover:bg-neutral-800 rounded-lg "
             >
               Create account
             </button>
@@ -138,7 +138,7 @@ const Register = () => {
               Click here to login
             </Link>
           </span>
-          <button className="border border-solid border-neutral-500 rounded-lg font-bold w-full py-2.5">
+          <button className="w-full py-2.5 mt-4 border border-solid border-neutral-500 rounded-lg font-bold ">
             <img src={googleIcon} alt="google icon" className="inline mr-3" />
             Sign In with Google
           </button>

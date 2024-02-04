@@ -13,16 +13,16 @@ const MyHotelsPage = () => {
 
   return (
     <section className="h-screen my-[110px] mx-5 md:mx-10 lg:mx-20 ">
-      <div className="m flex flex-col md:flex-row justify-between items-start gap-5 md:gap-0">
-        <div className="self-end">
+      <div className="m flex flex-col md:flex-row justify-between items-start gap-4 md:gap-0">
+        <div className="">
           <h1 className="text-2xl font-bold inline">Your Hotel Listings</h1>
-          <span className="font-md font-bold ml-2 text-neutral-500 ">
+          <span className="font-md font-bold ml-2 ">
             {`(${hotelData?.length})`}
           </span>
         </div>
         <Link
           to="/add-hotel"
-          className=" bg-primary rounded py-3 px-4 text-sm text-white font-bold p-2 hover:bg-neutral-800 self-end flex items-center  "
+          className=" bg-primary rounded py-3 px-4 text-sm text-white font-bold p-2 hover:bg-neutral-800 flex items-center  "
         >
           <IoIosAddCircle className="mr-2" size={16} />
           CREATE A NEW HOTEL
@@ -36,7 +36,7 @@ const MyHotelsPage = () => {
             <div
               key={index}
               data-testid="hotel-card"
-              className="mb-8 p-7 bg-silver border-2 border-gray-400 rounded-lg shadow-lg   flex  flex-col justify-between gap-5"
+              className="mb-8 p-4 md:p-8 bg-white border-2 border-gray-400 rounded-lg shadow-lg   flex  flex-col justify-between gap-5"
             >
               <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <img
@@ -44,7 +44,7 @@ const MyHotelsPage = () => {
                   className=" w-full h-[300px] object-cover rounded"
                   alt=""
                 />
-                <div>
+                <div className="self-center">
                   <h2 className="text-2xl font-bold mb-4  ">{hotel.name}</h2>
                   <div className="whitespace-pre-line">
                     {hotel.description.substring(0, 400) + "..."}
@@ -52,7 +52,7 @@ const MyHotelsPage = () => {
                 </div>
               </div>
 
-              <div className="grid  grid-cols-2 lg:grid-cols-5 gap-2">
+              <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
                 <div className="border-2 border-gray-400 rounded-sm p-3 font-medium flex items-center ">
                   <FaLocationDot className="mr-1" />
                   {hotel.city}, {hotel.country}
@@ -73,10 +73,10 @@ const MyHotelsPage = () => {
                   {hotel.starRating} Star Rating
                 </div>
               </div>
-              <div className="flex justify-end gap-3">
+              <div className="flex flex-col md:flex-row justify-end gap-3">
                 <Link
                   to={`/edit-my-hotel/${hotel._id}`}
-                  className="py-3  px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800"
+                  className="py-3 px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800 flex justify-center"
                 >
                   EDIT DETAILS
                 </Link>

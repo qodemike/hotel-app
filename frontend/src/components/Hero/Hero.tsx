@@ -13,18 +13,18 @@ const Hero = () => {
           <img src={banner1} alt="" className="w-screen  object-cover" />
         </picture>
 
-        <div className="absolute top-[32%]  lg:top-[25%] mx-5 max-w-7xl md:mx-20 lg:mx-36   ">
+        <div className="absolute top-[32%]  lg:top-[18%] mx-5  md:mx-24 lg:mx-40   ">
           <div className=" grid lg:grid-cols-[2fr_1fr] lg:justify-items-end ">
             <div className="mb-8 self-center">
-              <h1 className="text-5xl md:text-6xl text-white font-bold  ">
-                Seek your next Stay,
+              <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold">
+                Find comfortable Stays & Feel at Home
               </h1>
-              <p className="mt-8 text-white ">
+              <p className="mt-8 text-sm md:text-base text-white ">
                 Welcome to our hotel booking platform, where your travel
                 experience becomes easier and more enjoyable.
               </p>
             </div>
-            <div className="flex  lg:flex-col gap-5 md:gap-12">
+            <div className="mt-8 lg:mt-0 flex lg:flex-col gap-5 md:gap-20">
               <div>
                 <p className="text-3xl md:text-4xl font-medium text-white">
                   12k+

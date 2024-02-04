@@ -71,7 +71,7 @@ const SignIn = () => {
           </span>
         </form>
 
-        <button className="border border-solid  border-neutral-500 rounded-lg mt-10 font-bold w-full py-2.5">
+        <button className="w-full mt-8 py-2.5  font-bold border  border-neutral-500 rounded-lg   ">
           <img src={googleIcon} alt="google icon" className="inline mr-3" />
           Sign In with Google
         </button>

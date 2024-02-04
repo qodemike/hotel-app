@@ -113,7 +113,6 @@ const SearchPage = () => {
                 Price Per Night (low to high)
               </option>
               <option value="pricePerNightDesc">
-                {" "}
                 Price Per Night (high to low)
               </option>
             </select>

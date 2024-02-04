@@ -36,9 +36,9 @@ const SearchBar = () => {
     <form onSubmit={handleSubmit} className=" bg-white shadow-lg">
       <div className="p-5 lg:p-0 grid grid-cols-1 md:grid-cols-[1.3fr_1.2fr_1fr_1fr] lg:grid-cols-[1.2fr_1.1fr_1fr_1fr_1fr] items-center gap-4 md:gap-0 ">
         <div className="flex flex-col md:flex-row ">
-          <div className="md:p-6 flex items-center md:block">
+          <div className="py-5 px-0 md:px-7 flex md:block items-center">
             <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
-            <div className=" md:my-3 p-2 bg-neutral-100 rounded flex flex-row items-center flex-1  ">
+            <div className=" md:mt-2 p-2 bg-neutral-100 rounded flex flex-row items-center flex-1  ">
               <MdTravelExplore size={25} className="mr-2" />
               <input
                 placeholder="Type destination"
@@ -48,7 +48,7 @@ const SearchBar = () => {
               />
             </div>
           </div>
-          <div className="w-full h-0 mt-4 md:mr-6 md:h-20 md:w-0 border border-silver  "></div>
+          <div className="w-full h-0 mt-4 md:mr-4 md:h-20 md:w-0 border border-silver self-center relative -top-2 "></div>
         </div>
 
         {/* =============================================================== */}
@@ -56,13 +56,13 @@ const SearchBar = () => {
         <div className=" flex items-center md:block ">
           <p className="text-xs md:mb-1 mr-[58px] md:mr-0">GUESTS</p>
           <div className="flex">
-            <div className=" flex gap-2">
+            <div className=" flex ">
               <div className="flex ">
                 <label className="items-end flex text-sm mr-2 mb-1 ">
                   Adults
                 </label>
                 <input
-                  className="focus:outline-none text-4xl w-12 h-10"
+                  className="w-10  h-10  text-2xl md:text-4xl focus:outline-none  "
                   type="number"
                   min={1}
                   max={9}
@@ -78,7 +78,7 @@ const SearchBar = () => {
                   Children
                 </label>
                 <input
-                  className=" focus:outline-none text-4xl  w-12 "
+                  className=" w-10 text-2xl md:text-4xl focus:outline-none  "
                   type="number"
                   min={0}
                   max={9}
