@@ -5,6 +5,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import GuestInfoForm from "../components/GuestInfoForm";
 import { HotelType } from "../../../backend/entities";
 import { FaLocationDot } from "react-icons/fa6";
+import HotelFacility from "../components/HotelFacility";
 
 const apiClient = new APICLIENT();
 
@@ -45,27 +46,43 @@ const HotelDetailPage = () => {
         </div>
       </div>
 
-      <div className=" mt-2 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-7">
-        <div className="flex flex-col gap-4 ">
-          <picture className="  ">
-            <img
-              src={hotel.imageUrls[0]}
-              alt=""
-              className="h-[447px] w-full object-cover rounded  "
-            />
-          </picture>
-
-          <div className="grid grid-cols-5 gap-3">
-            {hotel.imageUrls.map((url, index) => (
+      <div className=" mt-2 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-x-7 ">
+        <div className="flex flex-col gap-8 ">
+          <div className=" flex flex-col gap-4">
+            <picture className="  ">
               <img
-                key={index}
-                src={url}
-                className=" w-full h-[100px] rounded object-cover  "
+                src={hotel.imageUrls[0]}
+                alt=""
+                className="h-[447px] w-full object-cover rounded  "
               />
-            ))}
-          </div>
+            </picture>
 
-          <p className="my-5">{hotel.description}</p>
+            <div className="grid grid-cols-5 gap-3">
+              {hotel.imageUrls.map((url, index) => (
+                <img
+                  key={index}
+                  src={url}
+                  className=" w-full h-[60px] md:h-[100px] rounded object-cover  "
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-6 text-3xl font-medium font-poppins">
+              Hotel Facilities
+            </h2>
+            <div className="  flex justify-between flex-wrap  gap-y-7">
+              {hotel.facilities.map((facility) => (
+                <HotelFacility facilityName={facility} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className=" mb-6 text-3xl font-medium font-poppins">
+              Description
+            </h2>
+            <p className="">{hotel.description}</p>
+          </div>
         </div>
 
         <div className="">

@@ -32,7 +32,7 @@ const NavBar = () => {
         <IoMenuOutline
           onClick={handleOpenMenu}
           size={50}
-          className=" md:hidden text-white "
+          className=" md:hidden text-white cursor-pointer"
         />
         <div
           ref={menu}
@@ -41,7 +41,7 @@ const NavBar = () => {
           <IoCloseOutline
             onClick={handleCloseMenu}
             size={50}
-            className="absolute top-0 right-0 m-5 text-white"
+            className="absolute top-0 right-0 m-5 text-white cursor-pointer"
           />
           {isLoggedIn ? (
             <>

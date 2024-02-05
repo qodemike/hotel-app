@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { HotelType } from "../../../backend/entities";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import HotelFacility from "./HotelFacility";
+import HotelFacilitiesSlider from "./HotelFacilitiesSilder";
 
 interface Props {
   hotel: HotelType;
@@ -12,12 +14,14 @@ const SearchResultsCard = ({ hotel }: Props) => {
       <div className="border border-neutral-300 "></div>
       <div className="mb-3 mt-8 grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-2 lg:gap-10">
         <div className="w-full h-[300px]">
-          <img
-            src={hotel.imageUrls[0]}
-            className="w-full h-full object-cover rounded"
-          />
+          <Link to={`/detail/${hotel._id}`}>
+            <img
+              src={hotel.imageUrls[0]}
+              className="w-full h-full object-cover rounded"
+            />
+          </Link>
         </div>
-        <div className="py-2 flex flex-col gap-6">
+        <div className="pt-2 flex flex-col gap-7">
           <div>
             <div className="flex items-center">
               <span className="flex">
@@ -44,6 +48,9 @@ const SearchResultsCard = ({ hotel }: Props) => {
             <div className="mb-2 text-sm line-clamp-4 ">
               {hotel.description}
             </div>
+          </div>
+          <div className="cursor-pointer max-w-md ">
+            <HotelFacilitiesSlider hotel={hotel} />
           </div>
 
           <div className="flex items-center gap-4">

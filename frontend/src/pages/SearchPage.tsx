@@ -8,6 +8,7 @@ import PriceFilter from "../components/Filters/PriceFilter";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { useSearchContext } from "../components/SearchBar/SearchContext";
 import useSearch from "../hooks/useSearch";
+import { IoFilterOutline } from "react-icons/io5";
 
 const SearchPage = () => {
   const search = useSearchContext();

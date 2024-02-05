@@ -44,7 +44,7 @@ router.post(
   "/",
   verifyToken,
   validateHotel(),
-  upload.array("imageFiles", 6),
+  upload.array("imageFiles", 5),
   async (req: Request, res: Response) => {
     try {
       const imageFiles = req.files as Express.Multer.File[];
