@@ -4,7 +4,7 @@ import { useAppContext } from "../contexts/AppContext";
 import BrandLogo from "../assets/Logo-white.svg";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const NavBar = () => {
   const { isLoggedIn } = useAppContext();

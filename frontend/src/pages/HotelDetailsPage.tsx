@@ -6,6 +6,7 @@ import GuestInfoForm from "../components/GuestInfoForm";
 import { HotelType } from "../../../backend/entities";
 import { FaLocationDot } from "react-icons/fa6";
 import HotelFacility from "../components/HotelFacility";
+import ImageSlider from "../components/ImageSlider";
 
 const apiClient = new APICLIENT();
 
@@ -46,26 +47,10 @@ const HotelDetailPage = () => {
         </div>
       </div>
 
-      <div className=" mt-2 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-x-7 ">
-        <div className="flex flex-col gap-8 ">
-          <div className=" flex flex-col gap-4">
-            <picture className="  ">
-              <img
-                src={hotel.imageUrls[0]}
-                alt=""
-                className="h-[447px] w-full object-cover rounded  "
-              />
-            </picture>
-
-            <div className="grid grid-cols-5 gap-3">
-              {hotel.imageUrls.map((url, index) => (
-                <img
-                  key={index}
-                  src={url}
-                  className=" w-full h-[60px] md:h-[100px] rounded object-cover  "
-                />
-              ))}
-            </div>
+      <div className=" mt-3 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-x-5 ">
+        <div className=" flex flex-col gap-8 ">
+          <div className="max-w-[780px] ">
+            <ImageSlider hotel={hotel} />
           </div>
           <div>
             <h2 className="mb-6 text-3xl font-medium font-poppins">

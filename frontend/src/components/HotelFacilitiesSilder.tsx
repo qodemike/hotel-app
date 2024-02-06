@@ -9,7 +9,7 @@ interface Props {
 
 const HotelFacilitiesSlider = ({ hotel }: Props) => {
   return (
-    <Swiper slidesPerGroup={3} freeMode>
+    <Swiper slidesPerView={3} freeMode>
       {hotel.facilities.map((facility, index) => (
         <SwiperSlide key={index}>
           <HotelFacility facilityName={facility} />

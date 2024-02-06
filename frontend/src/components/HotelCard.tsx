@@ -32,7 +32,7 @@ const HotelCard = ({ hotel }: Props) => {
           >
             <span className=" font-poppins text-lg">{hotel.name}</span>
             <div className="flex">
-              <FaLocationDot size={12} className="mr-2 mt-[3px]" />
+              <FaLocationDot size={13} className="mr-2 relative top-1" />
               <span className="text-sm">{hotel.city + ","}</span>
               <span className="text-sm ml-2">{hotel.country}</span>
             </div>
