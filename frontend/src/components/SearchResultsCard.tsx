@@ -22,7 +22,7 @@ const SearchResultsCard = ({ hotel }: Props) => {
 
         {/* =============================================== */}
 
-        <div className=" m-4  mt-2  lg:ml-10  flex flex-col gap-7">
+        <div className=" m-4  mt-2  lg:ml-10  flex flex-col gap-7 ">
           <div>
             <div className="flex items-center">
               <span className="flex">
