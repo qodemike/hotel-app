@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
-import AuthPage from './pages/AuthPage';
+import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import HotelDetailPage from "./pages/HotelDetailsPage";
@@ -29,20 +29,17 @@ const router = createBrowserRouter([
           { path: "/my-bookings", element: <MyBookingsPage /> },
           { path: "/edit-my-hotel/:hotelId", element: <EditHotelPage /> },
           { path: "/hotel/:hotelId/booking", element: <CreateBookingPage /> },
-
-
         ],
       },
     ],
   },
-  
+
   {
     path: "auth",
-    element: <AuthPage/>,
+    element: <AuthPage />,
     children: [
-      { path: "sign-in", element: <SignIn/> },
-      { path: "register", element: <Register/> },
-
+      { path: "sign-in", element: <SignIn /> },
+      { path: "register", element: <Register /> },
     ],
   },
 ]);

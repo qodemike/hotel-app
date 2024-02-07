@@ -20,8 +20,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className="fixed bg-primary bg-opacity-70  py-4 px-5 md:px-10 lg:px-16 w-screen"
-      style={{ zIndex: "5" }}
+      className=" w-screen py-4 px-5 md:px-10 lg:px-16 bg-primary bg-opacity-70 z-20 fixed "
     >
       <header className=" flex justify-between items-center">
         <div className="text-xl md:text-4xl  font-bold tracking-tight text-white">
@@ -36,11 +35,11 @@ const NavBar = () => {
         />
         <div
           ref={menu}
-          className={`w-[60vw] h-screen p-8 bg-primary absolute top-0 right-0 flex md:hidden flex-col gap-10 justify-center transition translate-x-full `}
+          className={`w-[60vw] h-screen p-8 bg-primary z-20 absolute top-0 right-0 flex md:hidden flex-col gap-10 justify-center transition translate-x-full `}
         >
           <IoCloseOutline
             onClick={handleCloseMenu}
-            size={50}
+            size={40}
             className="absolute top-0 right-0 m-5 text-white cursor-pointer"
           />
           {isLoggedIn ? (
@@ -62,7 +61,7 @@ const NavBar = () => {
           ) : (
             <Link
               to="/auth/sign-in"
-              className="py-3 px-5  text-sm text-neutral-300 hover:text-black hover:bg-neutral-200 border border-neutral-300 hover:border-neutral-200 rounded transition flex justify-center"
+              className="py-3 px-5  text-sm text-neutral-300 hover:text-black hover:bg-neutral-100 border border-neutral-300 hover:border-neutral-100 rounded transition flex justify-center"
             >
               Sign In
             </Link>
@@ -88,7 +87,7 @@ const NavBar = () => {
           ) : (
             <Link
               to="/auth/sign-in"
-              className="py-3 px-5  text-sm text-neutral-300 hover:text-black hover:bg-neutral-200 border border-neutral-300 hover:border-neutral-200 rounded transition flex justify-center"
+              className="py-3 px-5  text-sm text-neutral-300 hover:text-black hover:bg-neutral-100 border border-neutral-300 hover:border-neutral-100 rounded transition flex justify-center"
             >
               Sign In
             </Link>

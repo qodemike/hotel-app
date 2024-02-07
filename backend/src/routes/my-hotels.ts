@@ -5,7 +5,6 @@ import verifyToken from "../middleware/auth";
 import { HotelType } from "../../entities/HotelType";
 import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import validateHotel from "../middleware/validateHotel";
-import { rmSync } from "fs";
 
 const router = express.Router();
 

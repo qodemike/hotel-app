@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useSignIn";
 import googleIcon from "../../assets/google.svg";
+import { Oval } from "react-loader-spinner";
+
 
 export type SignInFormData = {
   email: string;
@@ -59,7 +61,7 @@ const SignIn = () => {
           </div>
           <button
             type="submit"
-            className="bg-primary text-white py-3 hover:bg-neutral-800  rounded-lg font-bold  text-xl "
+            className="bg-primary text-white py-3 hover:bg-neutral-800  rounded-lg font-medium  text-xl "
           >
             Sign In
           </button>

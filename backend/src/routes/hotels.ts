@@ -1,14 +1,13 @@
 import { param, validationResult } from "express-validator";
-import Stripe from "stripe";
 import { BookingType } from "../../entities";
 import verifyToken from "../middleware/auth";
 import express, { Request, Response } from "express";
 import { constructSearchQuery } from "../utils/constructSearchQuery";
 import { HotelSearchResponse } from "../../entities/HotelSearchResponse";
 import Hotel from "../models/hotel";
+import Stripe from "stripe";
 
 const router = express.Router();
-
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string);
 
 router.get("/", async (req: Request, res: Response) => {
@@ -92,7 +91,7 @@ router.get(
 );
 
 router.post(
-  "/:hotelId/bookings/payment-intent",
+  "/:hotelId/create-payment-intent",
   verifyToken,
   async (req: Request, res: Response) => {
     const { numberOfNights } = req.body;
@@ -134,11 +133,11 @@ router.post(
   verifyToken,
   async (req: Request, res: Response) => {
     try {
-      const paymentIntentId = req.body.paymentIntentId;
 
-      const paymentIntent = await stripe.paymentIntents.retrieve(
-        paymentIntentId as string
-      );
+      console.log(req.body)
+      const paymentIntentId: string = req.body.paymentIntentId;
+      
+      const paymentIntent = await stripe.paymentIntents.retrieve( paymentIntentId );
 
       if (!paymentIntent) {
         return res.status(400).json({ message: "payment intent not found" });
@@ -153,7 +152,7 @@ router.post(
 
       if (paymentIntent.status !== "succeeded") {
         return res.status(400).json({
-          message: `payment intent not succeeded. Status: ${paymentIntent.status}`,
+          message: `payment intent failed. Status: ${paymentIntent.status}`,
         });
       }
 
@@ -176,6 +175,7 @@ router.post(
       await hotel.save();
 
       res.status(200).send();
+
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "something went wrong" });

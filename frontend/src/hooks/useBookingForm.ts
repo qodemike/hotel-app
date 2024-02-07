@@ -1,20 +1,8 @@
 import { useMutation } from "react-query";
 import { useAppContext } from "../contexts/AppContext";
+import { BookingFormData } from "../../../backend/entities/BookingFormData";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
-
-export type BookingFormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  adultCount: number;
-  childCount: number;
-  checkIn: string;
-  checkOut: string;
-  hotelId: string;
-  paymentIntentId: string;
-  totalCost: number;
-};
 
 const useBookingForm = () => {
   const { showToast } = useAppContext();

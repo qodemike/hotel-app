@@ -1,21 +1,21 @@
 import { useForm } from "react-hook-form";
-import {
-  PaymentIntentResponse,
-  UserType,
-} from "../../../../backend/entities";
+import { PaymentIntentResponse, UserType } from "../../../../backend/entities";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { StripeCardElement } from "@stripe/stripe-js";
 import { useParams } from "react-router-dom";
 import { useSearchContext } from "../SearchBar/SearchContext";
-import useBookingForm, { BookingFormData } from "../../hooks/useBookingForm";
+import useBookingForm from "../../hooks/useBookingForm";
+import { BookingFormData } from "../../../../backend/entities/BookingFormData";
 
 interface Props {
   currentUser: UserType;
   paymentIntent: PaymentIntentResponse;
 }
+
 const BookingForm = ({ currentUser, paymentIntent }: Props) => {
   const search = useSearchContext();
   const { hotelId } = useParams();
+
   const { handleSubmit, register } = useForm<BookingFormData>({
     defaultValues: {
       firstName: currentUser.firstName,
@@ -48,7 +48,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
     });
 
     if (result.paymentIntent?.status === "succeeded") {
-      mutate({ ...formData, paymentIntentId: result.paymentIntent.id });
+      mutate({ ...formData , paymentIntentId: result.paymentIntent.id });
     }
   };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchResultsCard from "../components/SearchResultsCard";
 import Pagination from "../components/Pagination";
 import StarRatingFilter from "../components/Filters/StarRatingFilter";
@@ -19,6 +19,29 @@ const SearchPage = () => {
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<number | undefined>();
   const [sortOption, setSortOption] = useState<string>("");
+  const [isShowingFilter, setIsShowingFilter] = useState(false);
+  const filterDivRef = useRef<HTMLDivElement>(null);
+
+  const handleCloseFilterPanel = (e: MouseEvent) => {
+    if (
+      filterDivRef.current &&
+      !filterDivRef.current.contains(e.target as Node)
+    ) {
+      setIsShowingFilter(false);
+    }
+  };
+
+  const handleOpenFilterPanel = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    setIsShowingFilter(true);
+    e.stopPropagation();
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleCloseFilterPanel);
+    return () => document.removeEventListener("click", handleCloseFilterPanel);
+  }, []);
 
   const searchParams = {
     destination: search.destination,
@@ -71,8 +94,15 @@ const SearchPage = () => {
   return (
     <>
       <div className=" mt-[95px] grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6">
-        <div className=" h-fit p-5 pb-10 ml-3 mb-4  rounded-lg border border-slate-300 bg-white shadow-lg">
-          <div className="space-y-4">
+        {/* =============================================================================== */}
+
+        <div
+          ref={filterDivRef}
+          className={`w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:ml-3  lg:rounded-lg border border-slate-300 bg-white shadow-lg z-30 md:z-0 fixed  top-0 overflow-y-scroll lg:overflow-auto  lg:relative transition  ${
+            isShowingFilter ? "translate-x-0 " : "-translate-x-full lg:translate-x-0"
+          }`}
+        >
+          <div className=" space-y-4">
             <h3 className="text-lg font-semibold border-b border-slate-300 ">
               Filter by:
             </h3>
@@ -94,30 +124,44 @@ const SearchPage = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-5 px-5">
-          <div className="flex">
+
+        {/* =============================================================================== */}
+
+        <div className="px-5 flex flex-col gap-5">
+          <div className="">
             <SearchBar />
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-lg font-medium">
+          <div className=" flex flex-col md:flex-row md:justify-between md:items-center">
+            <span className="mb-5 md:mb-0 text-2xl font-bold whitespace-nowrap self-center lg:self-end">
               {hotelData?.pagination.total} Hotels found
               {search.destination ? ` in ${search.destination}` : ""}
             </span>
-            <select
-              value={sortOption}
-              onChange={(event) => setSortOption(event.target.value)}
-              className="p-2 text-sm border-2 rounded-md outline-none  focus:border-blue-300 focus:border-2 "
-            >
-              <option value="">Sort By</option>
-              <option value="starRating">Star Rating</option>
-              <option value="pricePerNightAsc">
-                Price Per Night (low to high)
-              </option>
-              <option value="pricePerNightDesc">
-                Price Per Night (high to low)
-              </option>
-            </select>
+            <div className=" flex gap-5 justify-between">
+              <div
+                onClick={handleOpenFilterPanel}
+                className="flex font-bold  items-center gap-2 cursor-pointer"
+              >
+                <IoFilterOutline size={17} className="" />
+                <span>Filters</span>
+              </div>
+
+              <select
+                value={sortOption}
+                onChange={(event) => setSortOption(event.target.value)}
+                className=" max-w-[190px] p-2 text-sm border-2 rounded-md outline-none  focus:border-blue-300 focus:border-2 "
+              >
+                <option value="">Sort By</option>
+                <option value="starRating">Star Rating</option>
+                <option value="pricePerNightAsc">
+                  Price Per Night (low to high)
+                </option>
+                <option value="pricePerNightDesc">
+                  Price Per Night (high to low)
+                </option>
+              </select>
+            </div>
           </div>
+          <div className="border-b border-neutral-300 "></div>
 
           {/* =========================================== */}
 

@@ -10,9 +10,8 @@ interface Props {
 const SearchResultsCard = ({ hotel }: Props) => {
   return (
     <div>
-      <div className="border border-neutral-300 "></div>
-      <div className="mb-3 mt-8 grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-2 lg:gap-10">
-        <div className="w-full h-[300px]">
+      <div className=" lg:p-5 bg-white shadow-lg grid grid-cols-1 xl:grid-cols-[1fr_1fr]  ">
+        <div className=" w-full h-[300px] self-center">
           <Link to={`/detail/${hotel._id}`}>
             <img
               src={hotel.imageUrls[0]}
@@ -20,7 +19,10 @@ const SearchResultsCard = ({ hotel }: Props) => {
             />
           </Link>
         </div>
-        <div className="pt-2 flex flex-col gap-7">
+
+        {/* =============================================== */}
+
+        <div className=" m-4  mt-2  lg:ml-10  flex flex-col gap-7">
           <div>
             <div className="flex items-center">
               <span className="flex">
