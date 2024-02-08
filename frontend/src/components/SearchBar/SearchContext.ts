@@ -21,6 +21,7 @@ const SearchContext = React.createContext<SearchContextType>({} as SearchContext
 export const useSearchContext = () => {
   const context = useContext(SearchContext);
   return context as SearchContextType;
+
 };
 
 export default SearchContext;

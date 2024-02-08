@@ -4,11 +4,24 @@ import { HotelType } from "../../../backend/entities";
 
 const apiClient = new APICLIENT();
 
-const  useHotels = () => {
-    return useQuery({
-        queryKey: ['Hotels'],
-        queryFn: () => apiClient.get<HotelType[]>("/api/hotels"),
-    })
+interface FetchHotelsResponse {
+  data: HotelType[];
+  pagination: {
+    page: number;
+    pages: number;
+  };
 }
+
+const useHotels = (pageNumber: number) => {
+  const queryParams = new URLSearchParams();
+
+  queryParams.append("page", pageNumber.toString());
+
+  return useQuery({
+    queryKey: ["Hotels", pageNumber],
+    queryFn: () =>
+      apiClient.get<FetchHotelsResponse>(`/api/hotels?${queryParams}`),
+  });
+};
 
 export default useHotels;

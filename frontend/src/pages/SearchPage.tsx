@@ -12,7 +12,6 @@ import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
 import { Oval } from "react-loader-spinner";
 
-
 const SearchPage = () => {
   const search = useSearchContext();
 
@@ -60,7 +59,8 @@ const SearchPage = () => {
     sortOption,
   };
 
-  const { data: hotelData , isLoading: isFetchingHotels } = useSearch(searchParams);
+  const { data: hotelData, isLoading: isFetchingHotels } =
+    useSearch(searchParams);
 
   const handleStarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const starRating = event.target.value;
@@ -102,7 +102,9 @@ const SearchPage = () => {
         <div
           ref={filterDivRef}
           className={`w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  lg:rounded-lg border border-slate-300 bg-white shadow-lg z-30 md:z-0 fixed  top-0 overflow-y-scroll lg:overflow-auto  lg:relative transition  ${
-            isShowingFilter ? "translate-x-0 " : "-translate-x-full lg:translate-x-0"
+            isShowingFilter
+              ? "translate-x-0 "
+              : "-translate-x-full lg:translate-x-0"
           }`}
         >
           <div className=" space-y-4">
@@ -168,30 +170,36 @@ const SearchPage = () => {
 
           {/* =========================================== */}
 
-          {isFetchingHotels ? <div className=" pt-20 md:pt-36 flex justify-center  " style={{height: 'calc(100vh - 530px)'}}>
-            <Oval
-              secondaryColor="gray"
-              color="black"
-              height={"50px"}
-            ></Oval>{" "}
-          </div> : hotelData?.data.map((hotel) => (
-            <SearchResultsCard hotel={hotel} />
-          ))}
+          {isFetchingHotels ? (
+            <div
+              className=" pt-20 md:pt-36 flex justify-center  "
+              style={{ height: "calc(100vh - 530px)" }}
+            >
+              <Oval
+                secondaryColor="gray"
+                color="black"
+                height={"50px"}
+                width={"50px"}
+              ></Oval>{" "}
+            </div>
+          ) : (
+            hotelData?.data.map((hotel) => <SearchResultsCard hotel={hotel} />)
+          )}
 
           {/* ============================================ */}
 
           <div className="">
-            {hotelData?.pagination.total === 0 ? null : (
+            {hotelData ? (
               <Pagination
                 page={hotelData?.pagination.page || 1}
                 pages={hotelData?.pagination.pages || 1}
                 onPageChange={(page) => setPage(page)}
               />
-            )}
+            ) : null}
           </div>
         </div>
       </div>
-      <MiniFooter/>
+      <MiniFooter />
     </>
   );
 };

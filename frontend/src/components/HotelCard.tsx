@@ -30,7 +30,7 @@ const HotelCard = ({ hotel }: Props) => {
               hover ? "translate-y-full" : ""
             } flex flex-col font-poppins gap-1 `}
           >
-            <span className=" font-poppins text-lg">{hotel.name}</span>
+            <span className="text-lg font-poppins font-medium ">{hotel.name}</span>
             <div className="flex">
               <FaLocationDot size={13} className="mr-2 relative top-1" />
               <span className="text-sm">{hotel.city + ","}</span>
@@ -48,10 +48,10 @@ const HotelCard = ({ hotel }: Props) => {
                 )}
               </div>
               <div>
-                <span className="font-bold font-inter text-sm">
+                <span className="font-medium text-sm">
                   ${hotel.pricePerNight}
                 </span>
-                <span className=" font-inter text-sm"> / Night</span>
+                <span className=" text-sm"> / Night</span>
               </div>
             </div>
           </div>

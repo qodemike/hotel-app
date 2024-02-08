@@ -2,21 +2,27 @@ interface Props {
   page: number;
   pages: number;
   onPageChange: (page: number) => void;
-};
+}
 
 const Pagination = ({ page, pages, onPageChange }: Props) => {
   const pageNumbers = [];
   
-  for (let i = 1; i <= pages; i++){
-    pageNumbers.push(i);
-  }
+  for (let i = 1; i <= pages; i++) pageNumbers.push(i);
 
   return (
     <div className="flex justify-center">
-      <ul className="flex border border-slate-300">
+      <ul className="flex gap-2">
         {pageNumbers.map((number, index) => (
-          <li key={index} className={`px-2 py-1 ${page === number ? "bg-gray-200" : ""}`}>
-            <button onClick={() => onPageChange(number)}>{number}</button>
+          <li
+            onClick={() => onPageChange(number)}
+            key={index}
+            className={`px-2 py-1  rounded-full  border border-neutral-300  cursor-pointer ${
+              page === number
+                ? "text-white bg-primary "
+                : "bg-white  hover:bg-slate-100"
+            }`}
+          >
+            {number}
           </li>
         ))}
       </ul>

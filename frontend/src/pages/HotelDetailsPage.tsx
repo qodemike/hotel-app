@@ -7,6 +7,7 @@ import { HotelType } from "../../../backend/entities";
 import { FaLocationDot } from "react-icons/fa6";
 import HotelFacility from "../components/HotelFacility";
 import ImageSlider from "../components/ImageSlider";
+import MiniFooter from "../components/MiniFooter";
 
 const apiClient = new APICLIENT();
 
@@ -24,7 +25,8 @@ const HotelDetailPage = () => {
   }
 
   return (
-    <div className="mt-[95px] max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
+    <>
+    <section className="my-[95px] max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
       <div>
         <div className="flex mb-2">
           <span className="flex mt-1">
@@ -77,7 +79,9 @@ const HotelDetailPage = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
+    <MiniFooter/>
+    </>
   );
 };
 
