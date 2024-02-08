@@ -10,13 +10,13 @@ export type SignInFormData = {
 const AuthPage = () => {
   return (
     <>
-      <div className="fixed py-5 px-5 bg-secondary w-screen">
+      <div className="fixed py-5 px-5 md:px-10 bg-secondary w-screen">
         <Link to={"/"}>
           <img src={Logo} alt="brand logo" />
         </Link>
       </div>
-      <div className="grid grid-cols-1 bg-secondary lg:grid-cols-2 h-screen ">
-        <div className="w-full self-center px-5  ">
+      <div className="bg-secondary grid grid-cols-1  lg:grid-cols-2 h-screen ">
+        <div className="w-full self-center px-5 md:px-10  ">
           <Outlet />
         </div>
         <div className="hidden lg:flex relative justify-end   ">

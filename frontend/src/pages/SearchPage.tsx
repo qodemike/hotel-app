@@ -9,6 +9,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import { useSearchContext } from "../components/SearchBar/SearchContext";
 import useSearch from "../hooks/useSearch";
 import { IoFilterOutline } from "react-icons/io5";
+import MiniFooter from "../components/MiniFooter";
 
 const SearchPage = () => {
   const search = useSearchContext();
@@ -98,7 +99,7 @@ const SearchPage = () => {
 
         <div
           ref={filterDivRef}
-          className={`w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:ml-3  lg:rounded-lg border border-slate-300 bg-white shadow-lg z-30 md:z-0 fixed  top-0 overflow-y-scroll lg:overflow-auto  lg:relative transition  ${
+          className={`w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  lg:rounded-lg border border-slate-300 bg-white shadow-lg z-30 md:z-0 fixed  top-0 overflow-y-scroll lg:overflow-auto  lg:relative transition  ${
             isShowingFilter ? "translate-x-0 " : "-translate-x-full lg:translate-x-0"
           }`}
         >
@@ -182,6 +183,7 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
+      <MiniFooter/>
     </>
   );
 };

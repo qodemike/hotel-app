@@ -8,6 +8,7 @@ import { HotelType } from "../../../../backend/entities";
 import { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 
+
 export type HotelFormData = {
   name: string;
   city: string;

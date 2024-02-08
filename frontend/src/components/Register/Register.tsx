@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useRegister from "../../hooks/useRegister";
 import { Link } from "react-router-dom";
 import googleIcon from "../../assets/google.svg";
+import { Oval } from "react-loader-spinner";
 
 export type RegisterFormData = {
   firstName: string;
@@ -19,10 +20,10 @@ const Register = () => {
     formState: { errors },
   } = useForm<RegisterFormData>();
 
-  const createUser = useRegister();
+  const { mutate, isLoading } = useRegister();
 
   const onSubmit = handleSubmit((data) => {
-    createUser.mutate(data);
+    mutate(data);
   });
 
   return (
@@ -45,7 +46,7 @@ const Register = () => {
                 })}
               ></input>
               {errors.firstName && (
-                <span className="text-red-500">{errors.firstName.message}</span>
+                <span className="text-sm text-red-500">{errors.firstName.message}</span>
               )}
             </div>
             <div>
@@ -61,7 +62,7 @@ const Register = () => {
                 })}
               ></input>
               {errors.lastName && (
-                <span className="text-red-500">{errors.lastName.message}</span>
+                <span className="text-sm text-red-500">{errors.lastName.message}</span>
               )}
             </div>
           </div>
@@ -75,7 +76,7 @@ const Register = () => {
               {...register("email", { required: "Email is required" })}
             ></input>
             {errors.email && (
-              <span className="text-red-500">{errors.email.message}</span>
+              <span className="text-sm text-red-500">{errors.email.message}</span>
             )}
           </div>
           <div>
@@ -96,7 +97,7 @@ const Register = () => {
               })}
             ></input>
             {errors.password && (
-              <span className="text-red-500">{errors.password.message}</span>
+              <span className="text-sm text-red-500">{errors.password.message}</span>
             )}
           </div>
           <div>
@@ -119,19 +120,31 @@ const Register = () => {
               })}
             ></input>
             {errors.confirmPassword && (
-              <span className="text-red-500">
+              <span className="text-sm text-red-500">
                 {errors.confirmPassword.message}
               </span>
             )}
           </div>
           <span>
             <button
+              disabled={isLoading}
               type="submit"
-              className="w-full py-3 mb-3 font-bold text-white text-xl  bg-primary  hover:bg-neutral-800 rounded-lg "
+              className="w-full h-12 mb-3 font-bold text-white text-xl  bg-primary  hover:bg-neutral-800 rounded-lg flex justify-center items-center"
             >
-              Create account
+              {isLoading ? (
+                <Oval
+                  secondaryColor="#ECECEC"
+                  color="white"
+                  height={"30px"}
+                  width={"30px"}
+                />
+              ) : (
+                "Create account"
+              )}
             </button>
           </span>
+
+
           <span className="text-sm font-medium">
             Already have an accout?{" "}
             <Link className="underline font-bold" to="/auth/sign-in">

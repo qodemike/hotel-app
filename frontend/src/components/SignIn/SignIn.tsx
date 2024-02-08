@@ -17,10 +17,10 @@ const SignIn = () => {
     handleSubmit,
   } = useForm<SignInFormData>();
 
-  const userAuth = useLogin();
+  const {mutate, isLoading} = useLogin();
 
   const onSubmit = handleSubmit((data) => {
-    userAuth.mutate(data);
+    mutate(data);
   });
 
   return (
@@ -60,11 +60,22 @@ const SignIn = () => {
             )}
           </div>
           <button
-            type="submit"
-            className="bg-primary text-white py-3 hover:bg-neutral-800  rounded-lg font-medium  text-xl "
-          >
-            Sign In
-          </button>
+              disabled={isLoading}
+              type="submit"
+              className="w-full h-12 mb-3 font-bold text-white text-xl  bg-primary  hover:bg-neutral-800 rounded-lg flex justify-center items-center"
+            >
+              {isLoading ? (
+                <Oval
+                  secondaryColor="#ECECEC"
+                  color="white"
+                  height={"30px"}
+                  width={"30px"}
+                />
+              ) : (
+                "Create account"
+              )}
+            </button>
+
           <span className="text-sm font-medium mt-3">
             Not Registered?{" "}
             <Link className="underline font-bold" to="/auth/register">
