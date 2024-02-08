@@ -5,12 +5,14 @@ import { FaLocationDot } from "react-icons/fa6";
 import QueryHotel from "../hooks/useMyHotels";
 import { IoIosAddCircle } from "react-icons/io";
 import MiniFooter from "../components/MiniFooter";
+import { Oval } from "react-loader-spinner";
 
 const queryHotel = new QueryHotel();
 
 const MyHotelsPage = () => {
-  const { data: hotelData } = queryHotel.fetchMyHotels();
-  const { mutate } = queryHotel.deleteHotelById();
+  const { data: hotelData, isLoading: isFetchingHotels } =
+    queryHotel.fetchMyHotels();
+  const { mutate, isLoading: isDeletingHotel } = queryHotel.deleteHotelById();
 
   return (
     <>
@@ -32,7 +34,16 @@ const MyHotelsPage = () => {
         </div>
         <div className=" mt-3 mb-8 border border-neutral-300 "></div>
 
-        {hotelData?.length ? (
+        {isFetchingHotels ? (
+          <div className=" pt-40 flex justify-center  " style={{height:'calc(100vh - 200px)'}}>
+            <Oval
+              secondaryColor="gray"
+              color="black"
+              height={"60px"}
+              width={""}
+            ></Oval>{" "}
+          </div>
+        ) : hotelData?.length ? (
           <div className=" grid grid-cols-1 ">
             {hotelData?.map((hotel, index) => (
               <div
@@ -93,7 +104,7 @@ const MyHotelsPage = () => {
             ))}
           </div>
         ) : (
-          <div className=" w-full h-full flex justify-center items-center">
+          <div className=" w-full h-full pt-40 flex justify-center  " style={{height:'calc(100vh - 200px)'}} >
             <p className="text-2xl font-bold text-neutral-500">
               No Hotels Found
             </p>{" "}

@@ -8,7 +8,7 @@ const HotelDisplayGrid = () => {
     <section className="py-[80px]  " id="hotel_display_grid">
       <article className="py-8 px-5 md:px-10 lg:px-20 bg-primary ">
         <h2 className="text-2xl md:text-3xl text-white font-bold ">
-          Explore Our Best Listings
+          Explore the Best of Listings
         </h2>
         <p className=" mt-2 text-sm md:text-base text-white">
           Explore newly added hotels from all around the world with quality

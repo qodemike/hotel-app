@@ -17,7 +17,7 @@ const Hero = () => {
           <div className=" grid lg:grid-cols-[2fr_1fr] lg:justify-items-end ">
             <div className="mb-8 self-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold">
-                Find comfortable Stays & Feel at Home
+                Find Stays & Feel at Home 
               </h1>
               <p className="mt-8 text-sm md:text-base text-white ">
                 Welcome to our hotel booking platform, where your travel

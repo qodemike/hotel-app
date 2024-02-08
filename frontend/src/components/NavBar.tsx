@@ -20,7 +20,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className=" w-screen py-4 px-5 md:px-10 lg:px-16 bg-primary bg-opacity-70 z-20 fixed "
+      className=" w-screen py-4 px-5 md:px-10 lg:px-16 bg-neutral-100  z-20 fixed "
     >
       <header className=" flex justify-between items-center">
         <div className="text-xl md:text-4xl  font-bold tracking-tight text-white">

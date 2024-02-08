@@ -6,6 +6,7 @@ export default {
       fontFamily:{
         'sans': ['Inter', 'san-serif'],
         'inter': ['Inter'],
+        'mont': ['Montserrat'],
         'poppins':['Poppins'],
         'jost': ['jost'],
       },

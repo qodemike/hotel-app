@@ -10,6 +10,8 @@ import { useSearchContext } from "../components/SearchBar/SearchContext";
 import useSearch from "../hooks/useSearch";
 import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
+import { Oval } from "react-loader-spinner";
+
 
 const SearchPage = () => {
   const search = useSearchContext();
@@ -58,7 +60,7 @@ const SearchPage = () => {
     sortOption,
   };
 
-  const { data: hotelData } = useSearch(searchParams);
+  const { data: hotelData , isLoading: isFetchingHotels } = useSearch(searchParams);
 
   const handleStarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const starRating = event.target.value;
@@ -128,7 +130,7 @@ const SearchPage = () => {
 
         {/* =============================================================================== */}
 
-        <div className="px-5 flex flex-col gap-5">
+        <div className="mb-16 px-5 flex flex-col gap-5">
           <div className="">
             <SearchBar />
           </div>
@@ -140,7 +142,7 @@ const SearchPage = () => {
             <div className=" flex gap-5 justify-between">
               <div
                 onClick={handleOpenFilterPanel}
-                className="flex font-bold  items-center gap-2 cursor-pointer"
+                className="md:hidden flex font-bold  items-center gap-2 cursor-pointer"
               >
                 <IoFilterOutline size={17} className="" />
                 <span>Filters</span>
@@ -166,13 +168,19 @@ const SearchPage = () => {
 
           {/* =========================================== */}
 
-          {hotelData?.data.map((hotel) => (
+          {isFetchingHotels ? <div className=" pt-20 md:pt-36 flex justify-center  " style={{height: 'calc(100vh - 530px)'}}>
+            <Oval
+              secondaryColor="gray"
+              color="black"
+              height={"50px"}
+            ></Oval>{" "}
+          </div> : hotelData?.data.map((hotel) => (
             <SearchResultsCard hotel={hotel} />
           ))}
 
           {/* ============================================ */}
 
-          <div>
+          <div className="">
             {hotelData?.pagination.total === 0 ? null : (
               <Pagination
                 page={hotelData?.pagination.page || 1}

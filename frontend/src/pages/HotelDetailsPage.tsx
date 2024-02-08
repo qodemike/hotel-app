@@ -54,7 +54,7 @@ const HotelDetailPage = () => {
           </div>
           <div>
             <h2 className="mb-6 text-3xl font-medium font-poppins">
-              Hotel Facilities
+              Featured Amenities  
             </h2>
             <div className="  flex justify-between flex-wrap  gap-y-7">
               {hotel.facilities.map((facility) => (
