@@ -11,8 +11,10 @@ import useSearch from "../hooks/useSearch";
 import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
 import { Oval } from "react-loader-spinner";
+import { useAppContext } from "../contexts/AppContext";
 
 const SearchPage = () => {
+  const {showModal} = useAppContext();
   const search = useSearchContext();
 
   const [page, setPage] = useState<number>(1);
@@ -29,6 +31,7 @@ const SearchPage = () => {
       filterDivRef.current &&
       !filterDivRef.current.contains(e.target as Node)
     ) {
+      showModal(false)
       setIsShowingFilter(false);
     }
   };
@@ -36,6 +39,7 @@ const SearchPage = () => {
   const handleOpenFilterPanel = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    showModal(true)
     setIsShowingFilter(true);
     e.stopPropagation();
   };

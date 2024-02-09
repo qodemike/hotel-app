@@ -8,12 +8,12 @@ const SignOutButton = () => {
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className=" py-3 px-5 text-sm text-neutral-300 hover:text-black border hover:bg-neutral-100 border-solid border-neutral-100 rounded transition"
-    >
-      Sign Out
-    </button>
+    <>
+      <div className="  h-7  border-l border-neutral-100 "></div>
+      <button onClick={handleClick} className="relative top-[3px] hover:text-white font-bold">
+        Log Out
+      </button>
+    </>
   );
 };
 

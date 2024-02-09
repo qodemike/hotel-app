@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { HotelType } from "../../../backend/entities";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import HotelFacilitiesSlider from "./HotelFacilitiesSilder";
 
 interface Props {
   hotel: HotelType;
@@ -49,9 +48,6 @@ const SearchResultsCard = ({ hotel }: Props) => {
             <div className="mb-2 text-sm line-clamp-4 ">
               {hotel.description}
             </div>
-          </div>
-          <div className="cursor-pointer max-w-md text-sm">
-            <HotelFacilitiesSlider hotel={hotel} />
           </div>
 
           <div className="flex items-center gap-4">

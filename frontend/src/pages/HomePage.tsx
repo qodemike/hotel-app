@@ -8,13 +8,15 @@ const HomePage = () => {
   return (
     <>
       <div className="">
-        <Hero />
-        <div className="max-w-[1100px] m-auto relative md:top-[-20px] lg:top-[-100px]">
+        <div className="md:px-10 lg:px-16">
+          <Hero />
+        </div>
+        <div className="z-10 max-w-[1100px] m-auto relative mt-7 lg:mt-0 lg:-top-[130px]">
           <SearchBar />
         </div>
         <Showcase />
         <HotelDisplayGrid />
-        <Footer/>
+        <Footer />
       </div>
     </>
   );
