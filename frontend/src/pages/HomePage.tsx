@@ -15,6 +15,7 @@ const HomePage = () => {
           <SearchBar />
         </div>
         <Showcase />
+
         <HotelDisplayGrid />
         <Footer />
       </div>

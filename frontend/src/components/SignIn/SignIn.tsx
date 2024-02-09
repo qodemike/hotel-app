@@ -72,7 +72,7 @@ const SignIn = () => {
                   width={"30px"}
                 />
               ) : (
-                "Create account"
+                "Log In"
               )}
             </button>
 

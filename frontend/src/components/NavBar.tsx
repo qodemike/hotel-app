@@ -4,10 +4,13 @@ import { useAppContext } from "../contexts/AppContext";
 import BrandLogo from "../assets/Logo-white.svg";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ScrollbarEvents } from "swiper/types";
 
 const NavBar = () => {
   const { isLoggedIn } = useAppContext();
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const menu = useRef<HTMLDivElement>({} as HTMLDivElement);
 
@@ -18,9 +21,35 @@ const NavBar = () => {
     menu.current.style.transform = "translateX(100%)";
   };
 
+  let initialScrollPosition = window.scrollY;
+
+  const handleHideOnScroll = () => {
+    const currentScrollPosition = window.scrollY;
+
+    if (currentScrollPosition > initialScrollPosition && window.scrollY > 10){
+      if (navbarRef.current)
+        navbarRef.current.style.transform = 'translateY(-100%)'
+    } else {
+      if (navbarRef.current)
+        navbarRef.current.style.transform = 'translateY(0)'
+    }
+
+    initialScrollPosition = currentScrollPosition;
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleHideOnScroll);
+    return () => {
+      window.removeEventListener("scroll", handleCloseMenu);
+    };
+  }, []);
+
   return (
-    <nav className=" fixed w-full py-5 px-5 md:px-10 lg:px-16 bg-primary  z-20  flex justify-between items-end">
-      <div className="flex ">
+    <nav
+      ref={navbarRef}
+      className={`fixed w-full py-5 px-5 md:px-10 lg:px-16 bg-primary  z-20 flex justify-between items-end transition duration-500  `}
+    >
+      <div className="flex">
         <Link to="/" className="">
           <img src={BrandLogo} alt="brand logo" />
         </Link>
@@ -32,8 +61,8 @@ const NavBar = () => {
           <Link to="/search" className="text-sm hover:text-white ">
             Search
           </Link>
-          <Link to="/search" className="text-sm hover:text-white ">
-            Contact Us
+          <Link to="footer" className="text-sm hover:text-white ">
+            Contact
           </Link>
         </div>
       </div>
@@ -44,21 +73,32 @@ const NavBar = () => {
         className="relative top-2 md:hidden text-neutral-100 cursor-pointer "
       />
 
-      <div className={`hidden text-neutral-300 md:flex justify-between items-end `}>
+      <div
+        className={`hidden text-neutral-300 md:flex justify-between items-end `}
+      >
         {isLoggedIn ? (
           <div className="flex items-end gap-4 lg:gap-8">
-            <Link className="  text-xs hover:text-white flex items-center" to="/my-bookings">
+            <Link
+              className="  text-xs hover:text-white flex items-center"
+              to="/my-bookings"
+            >
               MY BOOKINGS
             </Link>
-            <Link className=" text-xs hover:text-white flex items-center" to="/my-hotels">
+            <Link
+              className=" text-xs hover:text-white flex items-center"
+              to="/my-hotels"
+            >
               MY HOTELS
             </Link>
             <SignOutButton />
           </div>
         ) : (
           <>
-            <div className=" h-7 mr-7 border-l border-neutral-100 "></div>
-            <Link to="/auth/sign-in" className=" relative top-[3px] hover:text-white font-bold  ">
+            <div className=" relative top-1 h-7 mr-5 border-l  border-neutral-100 "></div>
+            <Link
+              to="/auth/sign-in"
+              className=" relative top-[3px] hover:text-white font-bold  "
+            >
               Log In
             </Link>
           </>

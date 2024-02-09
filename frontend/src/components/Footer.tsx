@@ -7,7 +7,7 @@ import { IoLogoPinterest } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <div className="py-10 px-5 md:px-10 lg:px-20 bg-primary ">
+    <div id="footer"  className="py-10 px-5 md:px-10 lg:px-20 bg-primary ">
       <div className="mb-7 flex flex-col md:flex-row justify-between gap-10 md:gap-20">
        <img src={BrandLogo} alt="" className="h-10"/>
 

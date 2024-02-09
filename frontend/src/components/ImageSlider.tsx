@@ -3,6 +3,8 @@ import { HotelType } from "../../../backend/entities";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useRef } from "react";
 import SwiperCore from "swiper";
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 interface Props {
   hotel: HotelType;

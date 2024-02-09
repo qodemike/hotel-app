@@ -139,7 +139,7 @@ const Register = () => {
                   width={"30px"}
                 />
               ) : (
-                "Create account"
+                "Create Account"
               )}
             </button>
           </span>

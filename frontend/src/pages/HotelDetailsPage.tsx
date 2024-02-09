@@ -14,11 +14,13 @@ const apiClient = new APICLIENT();
 const HotelDetailPage = () => {
   const { hotelId } = useParams();
 
+
   const { data: hotel } = useQuery({
     queryKey: ["fetchHotelById"],
     queryFn: () => apiClient.get<HotelType>("/api/hotels/" + hotelId || ""),
     enabled: !!hotelId,
   });
+
 
   if (!hotel) {
     return <></>;

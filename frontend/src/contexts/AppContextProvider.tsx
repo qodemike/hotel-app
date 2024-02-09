@@ -22,7 +22,6 @@ export const AppContextProvider = ({ children }: Props) => {
     retry: false,
   });
 
-  useEffect(() => console.log(isVisible), [isVisible])
 
   return (
     <AppContext.Provider
