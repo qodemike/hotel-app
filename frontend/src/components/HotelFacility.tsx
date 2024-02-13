@@ -48,8 +48,8 @@ const HotelFacility = ({ facilityName, size = 20 }: Props) => {
       {hotelFacilities
         .filter((i) => i.name === facilityName)
         .map((i, index) => (
-          <div key={index} className=" flex items-center gap-2">
-            <span className="w">
+          <div key={index} className=" flex items-center gap-2 ">
+            <span className="">
               <Icon size={size}>{i.icon}</Icon>{" "}
             </span>
             <span className="whitespace-nowrap">{i.name}</span>

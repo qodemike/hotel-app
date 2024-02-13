@@ -3,16 +3,18 @@ import { BsBuilding } from "react-icons/bs";
 import { BiHotel, BiMoney, BiStar } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import QueryHotel from "../hooks/useMyHotels";
-import { IoIosAddCircle } from "react-icons/io";
 import MiniFooter from "../components/MiniFooter";
+import { TfiTrash } from "react-icons/tfi";
 import { Oval } from "react-loader-spinner";
+import { BiEdit } from "react-icons/bi";
+import { MdOutlinePlaylistAdd } from "react-icons/md";
+
 
 const queryHotel = new QueryHotel();
 
 const MyHotelsPage = () => {
-  const { data: hotelData, isLoading: isFetchingHotels } =
-    queryHotel.fetchMyHotels();
-  const { mutate, isLoading: isDeletingHotel } = queryHotel.deleteHotelById();
+  const { data: hotelData, isLoading: isFetchingHotels } = queryHotel.fetchMyHotels();
+  const { mutate } = queryHotel.deleteHotelById();
 
   return (
     <>
@@ -26,13 +28,13 @@ const MyHotelsPage = () => {
           </div>
           <Link
             to="/add-hotel"
-            className=" bg-primary rounded py-3 px-4 text-sm text-white font-bold p-2 hover:bg-neutral-800 flex items-center  "
+            className=" bg-primary rounded py-2 px-5 text-sm text-white font-bold p-2 hover:bg-neutral-800 flex items-center  "
           >
-            <IoIosAddCircle className="mr-2" size={16} />
+            <MdOutlinePlaylistAdd className="mr-1" size={26} />
             CREATE A NEW HOTEL
           </Link>
         </div>
-        <div className=" mt-3 mb-8 border border-neutral-300 "></div>
+        <div className=" mt-3 mb-4 border border-neutral-300 "></div>
 
         {isFetchingHotels ? (
           <div className=" pt-40 flex justify-center  " style={{height:'calc(100vh - 200px)'}}>
@@ -59,7 +61,7 @@ const MyHotelsPage = () => {
                   />
                   <div className="self-center">
                     <h2 className="text-2xl font-bold mb-4  ">{hotel.name}</h2>
-                    <div className="whitespace-pre-line">
+                    <div className="whitespace-pre-line  ">
                       {hotel.description.substring(0, 400) + "..."}
                     </div>
                   </div>
@@ -89,15 +91,15 @@ const MyHotelsPage = () => {
                 <div className="flex flex-col md:flex-row justify-end gap-3">
                   <Link
                     to={`/edit-my-hotel/${hotel._id}`}
-                    className="py-3 px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800 flex justify-center"
+                    className="py-3 px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800 flex justify-center items-center gap-2"
                   >
-                    EDIT DETAILS
+                    <BiEdit size={20}/> EDIT DETAILS
                   </Link>
                   <button
                     onClick={() => mutate(hotel._id)}
-                    className="py-3 px-5 text-xs text-white font-bold bg-red-600 hover:bg-red-700  rounded    "
+                    className="py-3 px-5 text-xs  font-bold hover:text-white hover:bg-red-600 border border-neutral-500 hover:border-red-600   rounded  flex justify-center items-center gap-2  "
                   >
-                    DELETE HOTEL
+                    <TfiTrash size={20}/>DELETE HOTEL
                   </button>
                 </div>
               </div>

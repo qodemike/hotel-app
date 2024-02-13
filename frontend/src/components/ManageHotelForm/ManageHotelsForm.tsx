@@ -101,7 +101,7 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
             className="py-3 w-[138px] h-12 text-white font-medium font- rounded bg-primary  hover:bg-neutral-800 disabled:bg-neutral-800"
           >
             {isLoading ? (
-              <div className="flex justify-center">
+              <div className="h-full flex justify-center  items-center ">
                 <Oval
                   secondaryColor="#ECECEC"
                   color="white"

@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAppContext } from "../contexts/AppContext";
-import { useSearchContext } from "./SearchBar/SearchContext";
+import { useAppContext } from "../../contexts/AppContext";
+import { useSearchContext } from "../SearchBar/SearchContext";
+import 'react-datepicker/dist/react-datepicker.css';
+import './CustomDatePicker.css'
 
 interface Props {
   hotelId: string;
@@ -102,6 +104,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
             <div>
               <span className="text-grayedText ">Check-out</span>
               <DatePicker
+              {...register('checkOut',  )}
                 required
                 selected={checkOut}
                 onChange={(date) => setValue("checkOut", date as Date)}

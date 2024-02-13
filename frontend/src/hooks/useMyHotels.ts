@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import APICLIENT from "../services/api-client";
 import { HotelType } from "../../../backend/entities";
 import { useAppContext } from "../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 const apiClient = new APICLIENT();
@@ -25,6 +26,7 @@ class QueryHotel {
 
   createHotel = () => {
     const { showToast } = useAppContext();
+    const navigate = useNavigate();
 
     return useMutation({
       mutationFn: async (data: FormData) => {
@@ -40,6 +42,7 @@ class QueryHotel {
       },
       onSuccess: () => {
         showToast({ message: "Hotel Saved!", type: "SUCCESS" });
+        navigate('/')
       },
       onError: () => {
         showToast({ message: "Error Saving Hotel!", type: "ERROR" });
@@ -47,11 +50,21 @@ class QueryHotel {
     });
   };
 
-  updateHotelById = <T>(hotelId: string) => {
+  updateHotelById = (hotelId: string) => {
     const { showToast } = useAppContext();
 
     return useMutation({
-      mutationFn: (data: T) => apiClient.update<T>(data, route + hotelId),
+      mutationFn: async (data: FormData) => {
+        const response = await fetch(API_BASE_URL + route + hotelId, {
+          method: "PUT",
+          credentials: "include",
+          body: data,
+        });
+
+        const body = await response.json();
+
+        if (!response.ok) throw new Error(body.message);
+      } ,
       onSuccess: () => {
         showToast({ message: "Hotel Saved!", type: "SUCCESS" });
       },

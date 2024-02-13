@@ -4,8 +4,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { PaymentIntentResponse, UserType } from "../../../backend/entities";
-import { useEffect, useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
+import { useState } from "react";
 import { useSearchContext } from "./SearchBar/SearchContext";
 import { useParams } from "react-router-dom";
 import QueryBooking from "../hooks/useCreateBooking";
@@ -22,7 +21,6 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
-  const { showToast } = useAppContext();
   const search = useSearchContext();
   const { hotelId } = useParams();
 
@@ -43,7 +41,7 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
 
   const handleSubmit = async () => {
     if (!stripe || !elements) return;
-
+    isLoading;
     setIsLoading(true);
 
     try {
@@ -55,7 +53,6 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
       }
 
       const {
-        error: confirmPaymentError,
         paymentIntent: PaymentIntentResponse,
       } = await stripe.confirmPayment({
         elements,

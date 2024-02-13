@@ -1,3 +1,6 @@
 
-const date = new Date()
-console.log(date.toDateString().split(' ')[1])
+const currentDate = new Date();
+
+const nextDate = new Date(`${currentDate.getFullYear}-${currentDate.getMonth()}-${currentDate.getDate()+1}`)
+
+console.log(nextDate.toDateString())

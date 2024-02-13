@@ -14,7 +14,7 @@ import { Oval } from "react-loader-spinner";
 import { useAppContext } from "../contexts/AppContext";
 
 const SearchPage = () => {
-  const {showModal} = useAppContext();
+  const { showModal } = useAppContext();
   const search = useSearchContext();
 
   const [page, setPage] = useState<number>(1);
@@ -31,7 +31,7 @@ const SearchPage = () => {
       filterDivRef.current &&
       !filterDivRef.current.contains(e.target as Node)
     ) {
-      showModal(false)
+      showModal(false);
       setIsShowingFilter(false);
     }
   };
@@ -39,7 +39,7 @@ const SearchPage = () => {
   const handleOpenFilterPanel = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    showModal(true)
+    showModal(true);
     setIsShowingFilter(true);
     e.stopPropagation();
   };
@@ -100,55 +100,22 @@ const SearchPage = () => {
 
   return (
     <>
-      <div className=" mt-[95px] grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6">
-        {/* =============================================================================== */}
+      <div className=" mt-[95px] px-5 lg:px-16 ">
 
-        <div
-          ref={filterDivRef}
-          className={`w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  lg:rounded-lg border border-slate-300 bg-white shadow-lg z-30 md:z-0 fixed  top-0 overflow-y-scroll lg:overflow-auto  lg:relative transition  ${
-            isShowingFilter
-              ? "translate-x-0 "
-              : "-translate-x-full lg:translate-x-0"
-          }`}
-        >
-          <div className=" space-y-4">
-            <h3 className="text-lg font-semibold border-b border-slate-300 ">
-              Filter by:
-            </h3>
-            <StarRatingFilter
-              selectedStars={selectedStars}
-              onChange={handleStarsChange}
-            />
-            <HotelTypesFilter
-              selectedHotelTypes={selectedHotelTypes}
-              onChange={handleHotelTypeChange}
-            />
-            <FacilitiesFilter
-              selectedFacilities={selectedFacilities}
-              onChange={handleFacilityChange}
-            />
-            <PriceFilter
-              selectedPrice={selectedPrice}
-              onChange={(value?: number) => setSelectedPrice(value)}
-            />
-          </div>
-        </div>
-
-        {/* =============================================================================== */}
-
-        <div className="mb-16 px-5 flex flex-col gap-5">
+        <div className="mb-16  flex flex-col  ">
           <div className="">
             <SearchBar />
           </div>
-          <div className=" flex flex-col md:flex-row md:justify-between md:items-center">
-            <span className="mb-5 md:mb-0 text-2xl font-bold whitespace-nowrap self-center lg:self-end">
+          <div className="my-6 flex flex-col lg:flex-row justify-between gap-4 ">
+            <span className=" text-2xl  md:text-3xl font-bold  self-center  ">
               {hotelData?.pagination.total} Hotels found
               {search.destination ? ` in ${search.destination}` : ""}
             </span>
-            <div className=" flex gap-5 justify-between">
+
+            <div className=" flex gap-5 justify-between  ">
               <div
                 onClick={handleOpenFilterPanel}
-                className="md:hidden flex font-bold  items-center gap-2 cursor-pointer"
+                className="lg:hidden flex font-bold  items-center gap-2 cursor-pointer"
               >
                 <IoFilterOutline size={17} className="" />
                 <span>Filters</span>
@@ -170,36 +137,75 @@ const SearchPage = () => {
               </select>
             </div>
           </div>
-          <div className="border-b border-neutral-300 "></div>
+          <div className="mb-5 border-b border-neutral-300 "></div>
 
           {/* =========================================== */}
 
-          {isFetchingHotels ? (
+          <div className=" grid lg:grid-cols-[250px_1fr] gap-8 ">
             <div
-              className=" pt-20 md:pt-36 flex justify-center  "
-              style={{ height: "calc(100vh - 530px)" }}
+              ref={filterDivRef}
+              className={` fixed z-30 lg:z-0 top-0 lg:relative w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  bg-white  border border-slate-300 lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
+                isShowingFilter
+                  ? "translate-x-[-9%] "
+                  : "-translate-x-[120%] lg:translate-x-0"
+              }`}
             >
-              <Oval
-                secondaryColor="gray"
-                color="black"
-                height={"50px"}
-                width={"50px"}
-              ></Oval>{" "}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold border-b border-slate-300 ">
+                  Filter by:
+                </h3>
+                <StarRatingFilter
+                  selectedStars={selectedStars}
+                  onChange={handleStarsChange}
+                />
+                <HotelTypesFilter
+                  selectedHotelTypes={selectedHotelTypes}
+                  onChange={handleHotelTypeChange}
+                />
+                <FacilitiesFilter
+                  selectedFacilities={selectedFacilities}
+                  onChange={handleFacilityChange}
+                />
+                <PriceFilter
+                  selectedPrice={selectedPrice}
+                  onChange={(value?: number) => setSelectedPrice(value)}
+                />
+              </div>
             </div>
-          ) : (
-            hotelData?.data.map((hotel) => <SearchResultsCard hotel={hotel} />)
-          )}
 
-          {/* ============================================ */}
+            <div className="flex flex-col gap-6">
+              {isFetchingHotels ? (
+                <div
+                  className=" pt-20 md:pt-36 flex justify-center  "
+                  style={{ height: "calc(100vh - 530px)" }}
+                >
+                  <Oval
+                    secondaryColor="gray"
+                    color="black"
+                    height={"50px"}
+                    width={"50px"}
+                  ></Oval>{" "}
+                </div>
+              ) : (
+                hotelData?.data.map((hotel, index) => (
+                  <div key={index}>
+                    <SearchResultsCard hotel={hotel} />
+                  </div>
+                ))
+              )}
 
-          <div className="">
-            {hotelData ? (
-              <Pagination
-                page={hotelData?.pagination.page || 1}
-                pages={hotelData?.pagination.pages || 1}
-                onPageChange={(page) => setPage(page)}
-              />
-            ) : null}
+              {/* ============================================ */}
+
+              <div className="">
+                {hotelData ? (
+                  <Pagination
+                    page={hotelData?.pagination.page || 1}
+                    pages={hotelData?.pagination.pages || 1}
+                    onPageChange={(page) => setPage(page)}
+                  />
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
       </div>

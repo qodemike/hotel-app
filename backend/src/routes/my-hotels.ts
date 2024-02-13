@@ -77,6 +77,8 @@ router.put(
     try {
       const updatedHotel: HotelType = req.body;
 
+      console.log(updatedHotel)
+
       updatedHotel.lastUpdated = new Date();
 
       const hotel = await Hotel.findOneAndUpdate(
@@ -92,6 +94,7 @@ router.put(
         return res.status(404).json({ message: "Hotel not found!" });
       }
 
+
       const files = req.files as Express.Multer.File[];
       const updatedImageUrls = await uploadToCloudinary(files);
 
@@ -102,7 +105,9 @@ router.put(
 
       await hotel.save();
       res.status(201).json(hotel);
+
     } catch (error) {
+
       res.status(500).json({ message: "Something went wrong" });
     }
   }

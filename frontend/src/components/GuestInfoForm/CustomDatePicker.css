@@ -1,0 +1,46 @@
+.react-datepicker {
+  font-family: inherit; /* Use the same font family as the parent */
+}
+
+.react-datepicker__month-container {
+  width: 300px; /* Adjust the width as needed */
+  height: 300px; /* Adjust the height as needed */
+  border-radius: 8px; /* Optional: Add border radius for rounded corners */
+}
+
+.react-datepicker__header {
+  background-color: rgb(243, 243, 243); /* Dark background color */
+  border: 0px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+.react-datepicker__navigation-icon{
+    top: 15px;
+}
+
+.react-datepicker__day-names{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.react-datepicker__week{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 14px;
+}
+
+/* Date Picker calendar */
+.react-datepicker__portal {
+  z-index: 9999; /* Ensure the calendar appears on top of other elements */
+}
+
+.react-datepicker__day--selected {
+  background-color: #191818; /* Black background color */
+  color: white; /* White text color */
+}
+
+/* Date Picker hovered day */
+.react-datepicker__day--hovered {
+  color: white; /* White text color */
+}

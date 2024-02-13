@@ -1,7 +1,9 @@
 import HotelCard from "./HotelCard";
 import useHotels from "../hooks/useHotels";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Pagination from "./Pagination";
+
+
 
 const HotelDisplayGrid = () => {
   const [page, setPage] = useState<number>(1);

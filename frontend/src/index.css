@@ -2,4 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* ScrollBar */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fcfcf9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: slategray;
+  }
+  
+  

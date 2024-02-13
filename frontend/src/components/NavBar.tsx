@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
-import SignOutButton from "./SignOutButton/SignOutButton";
 import { useAppContext } from "../contexts/AppContext";
 import BrandLogo from "../assets/Logo-white.svg";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
-import { useEffect, useRef, useState } from "react";
-import { ScrollbarEvents } from "swiper/types";
+import { useEffect, useRef} from "react";
+import useSignOut from "../hooks/useSignOut";
 
 const NavBar = () => {
   const { isLoggedIn } = useAppContext();
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   const navbarRef = useRef<HTMLDivElement>(null);
+  const { mutate } = useSignOut();
+
+  const handleSignOut = () => {
+    mutate();
+  };
 
   const menu = useRef<HTMLDivElement>({} as HTMLDivElement);
 
@@ -26,12 +29,12 @@ const NavBar = () => {
   const handleHideOnScroll = () => {
     const currentScrollPosition = window.scrollY;
 
-    if (currentScrollPosition > initialScrollPosition && window.scrollY > 10){
+    if (currentScrollPosition > initialScrollPosition && window.scrollY > 10) {
       if (navbarRef.current)
-        navbarRef.current.style.transform = 'translateY(-100%)'
+        navbarRef.current.style.transform = "translateY(-100%)";
     } else {
       if (navbarRef.current)
-        navbarRef.current.style.transform = 'translateY(0)'
+        navbarRef.current.style.transform = "translateY(0)";
     }
 
     initialScrollPosition = currentScrollPosition;
@@ -90,7 +93,15 @@ const NavBar = () => {
             >
               MY HOTELS
             </Link>
-            <SignOutButton />
+            <div className="flex">
+              <div className=" relative top-1 h-7 mr-5 border-l  border-neutral-100 "></div>
+              <button
+                onClick={handleSignOut}
+                className="relative top-[3px] hover:text-white font-bold"
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         ) : (
           <>
@@ -107,13 +118,24 @@ const NavBar = () => {
 
       <div
         ref={menu}
-        className={` md:hidden z-20  fixed top-0 right-0  w-[60vw] h-screen p-8 bg-primary shadow-lg flex flex-col gap-10 justify-center transition translate-x-full `}
+        className={` md:hidden fixed z-20 top-0 right-0   w-[60vw] h-screen p-10 py-20 bg-primary shadow-lg flex flex-col gap-10 justify-center transition translate-x-full `}
       >
         <IoCloseOutline
           onClick={handleCloseMenu}
           size={40}
           className="absolute top-0 right-0 m-5 text-white cursor-pointer"
         />
+        <div className="h-full     text-neutral-300 flex flex-col gap-8 ">
+          <Link to="/" className=" text-sm hover:text-white ">
+            Home
+          </Link>
+          <Link to="/search" className="text-sm hover:text-white ">
+            Search
+          </Link>
+          <Link to="footer" className="text-sm hover:text-white ">
+            Contact
+          </Link>
+        </div>
         {isLoggedIn ? (
           <>
             <Link
@@ -128,15 +150,26 @@ const NavBar = () => {
             >
               MY HOTELS
             </Link>
-            <SignOutButton />
+            <div className="flex">
+              <div className=" relative top-1 h-7 mr-5 border-l  border-neutral-100 "></div>
+              <button
+                onClick={handleSignOut}
+                className="relative top-[3px] text-neutral-300 hover:text-white font-bold"
+              >
+                Log Out
+              </button>
+            </div>
           </>
         ) : (
-          <Link
-            to="/auth/sign-in"
-            className="py-3 px-5  text-sm text-neutral-300 hover:text-black hover:bg-neutral-100 border border-neutral-300 hover:border-neutral-100 rounded transition flex justify-center"
-          >
-            Sign In
-          </Link>
+          <div className="flex">
+            <div className=" relative -top-1 h-7 mr-5 border-l  border-neutral-100 "></div>
+            <Link
+              to="/auth/sign-in"
+              className="  text-sm text-neutral-300 hover:text-white font-bold"
+            >
+              Log In
+            </Link>
+          </div>
         )}
       </div>
     </nav>

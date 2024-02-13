@@ -9,9 +9,7 @@ const EditHotelPage = () => {
   const { hotelId } = useParams();
   const { data: hotel } = queryHotel.fetchHotelById(hotelId as string);
 
-  const { mutate, isLoading } = queryHotel.updateHotelById<FormData>(
-    hotelId as string
-  );
+  const { mutate, isLoading } = queryHotel.updateHotelById( hotelId as string);
 
   return (
     <>

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import BookingDetailsSummary from "../components/BookingDetailsSummary";
 import { useSearchContext } from "../components/SearchBar/SearchContext";
 import QueryBooking from "../hooks/useCreateBooking";
-import BookingForm from "../components/BookingForm/BookingForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "../components/CheckoutForm";

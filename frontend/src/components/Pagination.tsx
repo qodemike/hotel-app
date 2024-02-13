@@ -1,11 +1,13 @@
+
 interface Props {
   page: number;
   pages: number;
   onPageChange: (page: number) => void;
 }
 
-const Pagination = ({ page, pages, onPageChange }: Props) => {
+const Pagination = ({ page, pages, onPageChange}: Props) => {
   const pageNumbers = [];
+
   
   for (let i = 1; i <= pages; i++) pageNumbers.push(i);
 

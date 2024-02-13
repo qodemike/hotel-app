@@ -2,11 +2,11 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import APICLIENT from "../services/api-client";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import GuestInfoForm from "../components/GuestInfoForm";
+import GuestInfoForm from "../components/GuestInfoForm/GuestInfoForm";
 import { HotelType } from "../../../backend/entities";
 import { FaLocationDot } from "react-icons/fa6";
 import HotelFacility from "../components/HotelFacility";
-import ImageSlider from "../components/ImageSlider";
+import HotelDetailsImageSlider from "../components/HotelDetailsImageSlider";
 import MiniFooter from "../components/MiniFooter";
 
 const apiClient = new APICLIENT();
@@ -28,7 +28,7 @@ const HotelDetailPage = () => {
 
   return (
     <>
-    <section className="my-[95px] max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
+    <section className="my-[100px] max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
       <div>
         <div className="flex mb-2">
           <span className="flex mt-1">
@@ -52,29 +52,29 @@ const HotelDetailPage = () => {
       </div>
 
       <div className=" mt-3 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-x-5 ">
-        <div className=" flex flex-col gap-8 ">
+        <div className=" flex flex-col gap-16 ">
           <div className="max-w-[780px] ">
-            <ImageSlider hotel={hotel} />
+            <HotelDetailsImageSlider hotel={hotel} />
           </div>
           <div>
             <h2 className="mb-6 text-3xl font-medium font-poppins">
               Featured Amenities  
             </h2>
-            <div className="  flex justify-between flex-wrap  gap-y-7">
-              {hotel.facilities.map((facility) => (
-                <HotelFacility facilityName={facility} />
+            <div className=" flex flex-wrap gap-x-12 gap-y-7">
+              {hotel.facilities.map((facility, index) => (
+                <HotelFacility key={index} facilityName={facility} />
               ))}
             </div>
           </div>
           <div>
             <h2 className=" mb-6 text-3xl font-medium font-poppins">
-              Description
+              About {hotel.name}
             </h2>
-            <p className="">{hotel.description}</p>
+            <p className="text-sm">{hotel.description}</p>
           </div>
         </div>
 
-        <div className="">
+        <div className="mt-10 lg:mt-0">
           <GuestInfoForm
             pricePerNight={hotel.pricePerNight}
             hotelId={hotel._id}
