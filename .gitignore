@@ -6,3 +6,4 @@ dist
 e2e-tests
 coverage
 playground.js
+vercel.json

@@ -7,7 +7,6 @@ import authRoutes from "./routes/auth";
 import myHotelRoutes from "./routes/my-hotels";
 import hotelRoutes from "./routes/hotels";
 import cookieParser from "cookie-parser";
-import path from "path";
 import { v2 as cloudinary } from "cloudinary";
 import morgan from "morgan";
 
@@ -42,17 +41,10 @@ app.use(
   })
 );
 
-
-app.use(express.static(path.join(__dirname, "../../frontend/dist")));
-
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/hotels", hotelRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
-
-app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-});
 
 const port = process.env.PORT || 7000;
 
