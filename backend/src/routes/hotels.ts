@@ -149,10 +149,10 @@ router.post(
   async (req: Request, res: Response) => {
     try {
 
-      console.log(req.body)
       const paymentIntentId: string = req.body.paymentIntentId;
       
       const paymentIntent = await stripe.paymentIntents.retrieve( paymentIntentId );
+
 
       if (!paymentIntent) {
         return res.status(400).json({ message: "payment intent not found" });
@@ -171,10 +171,7 @@ router.post(
         });
       }
 
-      const newBooking: BookingType = {
-        ...req.body,
-        userId: req.userId,
-      };
+      const newBooking: BookingType = { ...req.body, userId: req.userId };
 
       const hotel = await Hotel.findOneAndUpdate(
         { _id: req.params.hotelId },
@@ -189,7 +186,7 @@ router.post(
 
       await hotel.save();
 
-      res.status(200).send();
+      res.status(201).send(hotel);
 
     } catch (error) {
       console.log(error);

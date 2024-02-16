@@ -4,14 +4,14 @@ import banner1mobile from "../../assets/banner_1_mobile.webp";
 
 const Hero = () => {
   return (
-    <section className="mt-[95px] relative   md:rounded-3xl overflow-hidden   ">
+    <section className=" relative md:mt-[90px]  md:rounded-3xl overflow-hidden   ">
       
-      <div className=" absolute   h-full  md:w-[45%] z-10 p-7 lg:p-10  bg-opacity-60 md:bg-opacity-90  bg-neutral-300  flex flex-col justify-center ">
+      <div className=" absolute h-full  md:w-[45%] z-10 p-7 lg:p-10 text-white md:text-black  bg-opacity-50 md:bg-opacity-70 bg-black   md:bg-neutral-300  flex flex-col justify-center ">
         <article className="relative lg:-top-10">
           <h1 className="  text-5xl   lg:text-6xl  font-bold ">
             Find Stays & Feel at Home
           </h1>
-          <p className="mt-8 text-sm font-medium md:font-normal  ">
+          <p className="hidden md:block mt-8 text-sm ">
             Welcome to our hotel booking platform, where your travel experience
             becomes easier and more enjoyable.
           </p>

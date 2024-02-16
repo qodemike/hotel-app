@@ -6,9 +6,10 @@ import {
 import { PaymentIntentResponse, UserType } from "../../../backend/entities";
 import { useState } from "react";
 import { useSearchContext } from "./SearchBar/SearchContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import QueryBooking from "../hooks/useCreateBooking";
 import { BookingFormData } from "../../../backend/entities/BookingFormData";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 interface Props {
   currentUser: UserType;
@@ -22,6 +23,7 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
   const search = useSearchContext();
+  const navigate = useNavigate();
   const { hotelId } = useParams();
 
   const { mutate } = queryBooking.createBooking();
@@ -52,17 +54,17 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
         return;
       }
 
-      const {
-        paymentIntent: PaymentIntentResponse,
-      } = await stripe.confirmPayment({
-        elements,
-        clientSecret: paymentIntent.clientSecret,
-        confirmParams: { return_url: "" },
-        redirect: "if_required",
-      });
+      const { paymentIntent: PaymentIntentResponse } =
+        await stripe.confirmPayment({
+          elements,
+          clientSecret: paymentIntent.clientSecret,
+          confirmParams: { return_url: "" },
+          redirect: "if_required",
+        });
 
       if (PaymentIntentResponse?.status === "succeeded") {
         mutate(formdata);
+        navigate('/')
       }
 
       setIsLoading(false);
@@ -72,15 +74,16 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
   };
 
   return (
-    <div className="max-w-xl p-4 bg-primary font-inter ">
-      <PaymentElement className="" options={{ layout: "tabs" }} />
+    <>
+      <PaymentElement className="min-h-[220px] " options={{ layout: "tabs" }} />
       <button
         onClick={handleSubmit}
-        className=" w-full py-3 mt-3 font-medium  text-white hover:text-black hover:bg-neutral-100 border-2 border-neutral-100 rounded-lg  transition "
+        className=" w-full mt-3 p-5 text-white text-sm font-bold bg-primary hover:bg-neutral-800 rounded-lg flex justify-between transition "
       >
-        PAY ${paymentIntent.totalCost}
+        <span>${paymentIntent.totalCost}</span>
+        <span className="flex  gap-2 items-center">COMPLETE YOUR BOOKING <div><FaArrowRightLong size={18} /></div> </span>
       </button>
-    </div>
+    </>
   );
 };
 

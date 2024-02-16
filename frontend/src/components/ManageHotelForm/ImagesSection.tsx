@@ -23,10 +23,10 @@ const ImagesSection = () => {
   };
 
   return (
-    <div className="bg-silver border-2 border-neutral-300 rounded p-7">
+    <div className="bg-white border-2 border-neutral-300  p-7">
       <div className=" mb-3">
-        <h2 className="text-xl font-medium  inline">Images</h2>
-        <span className="text-sm text-neutral-800 font-medium mr-2 ">
+        <h2 className="text-lg font-bold  inline">3. IMAGES</h2>
+        <span className="text-sm font-medium mr-2 ">
           {" "}
           ( 5 images, max size: 2MB ){" "}
         </span>

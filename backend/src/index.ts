@@ -31,20 +31,16 @@ app.use(morgan('tiny'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? process.env.FRONTEND_PROD_URL
-        : process.env.FRONTEND_DEV_URL,
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/hotels", hotelRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
+
 
 const port = process.env.PORT || 7000;
 

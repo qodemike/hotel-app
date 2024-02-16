@@ -13,6 +13,7 @@ import MiniFooter from "../components/MiniFooter";
 import { Oval } from "react-loader-spinner";
 import { useAppContext } from "../contexts/AppContext";
 
+
 const SearchPage = () => {
   const { showModal } = useAppContext();
   const search = useSearchContext();
@@ -26,7 +27,7 @@ const SearchPage = () => {
   const [isShowingFilter, setIsShowingFilter] = useState(false);
   const filterDivRef = useRef<HTMLDivElement>(null);
 
-  const handleCloseFilterPanel = (e: MouseEvent) => {
+  const handleCloseFilterPanel = (e: any) => {
     if (
       filterDivRef.current &&
       !filterDivRef.current.contains(e.target as Node)
@@ -46,7 +47,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     document.addEventListener("click", handleCloseFilterPanel);
-    return () => document.removeEventListener("click", handleCloseFilterPanel);
+    document.addEventListener("scroll", handleCloseFilterPanel);
   }, []);
 
   const searchParams = {
@@ -144,7 +145,7 @@ const SearchPage = () => {
           <div className=" grid lg:grid-cols-[250px_1fr] gap-8 ">
             <div
               ref={filterDivRef}
-              className={` fixed z-30 lg:z-0 top-0 lg:relative w-[60vw] md:w-[40vw] lg:w-full h-screen lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  bg-white  border border-slate-300 lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
+              className={`  fixed z-30 lg:z-0 top-0 lg:relative w-[60vw] md:w-[40vw] h-screen lg:w-full  lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  bg-white  border border-slate-300 lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
                 isShowingFilter
                   ? "translate-x-[-9%] "
                   : "-translate-x-[120%] lg:translate-x-0"

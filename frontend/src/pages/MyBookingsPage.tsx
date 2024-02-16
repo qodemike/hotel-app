@@ -10,12 +10,11 @@ const MyBookingsPage = () => {
     queryFn: () => apiClient.get<HotelType[]>("/api/bookings"),
   });
 
-  if (!hotels || hotels.length === 0) {
-    return <span>No bookings found</span>;
-  }
+  if (!hotels || hotels.length === 0) 
+    return <span> No bookings found </span>;
 
   return (
-    <div className="space-y-5">
+    <div className=" pt-[90px] ">
       <h1 className="text-3xl font-bold">My Bookings</h1>
       {hotels.map((hotel) => (
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_3fr] border border-slate-300 rounded-lg p-8 gap-5">

@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import backgroundImage from "../assets/Auth background Image.webp";
-import Logo from "../assets/Logo-black.svg";
+import Logo from "../assets/Logo-black.png";
 
 export type SignInFormData = {
   email: string;

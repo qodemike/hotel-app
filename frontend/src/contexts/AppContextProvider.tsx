@@ -31,7 +31,7 @@ export const AppContextProvider = ({ children }: Props) => {
         isLoggedIn: !isError,
       }}
     >
-      { isVisible && <div className="  w-full h-full bg-black bg-opacity-50 z-20 fixed top-0"></div>}
+      { isVisible && <div className="  fixed z-30 w-screen h-screen bg-black bg-opacity-50  "></div>}
       {toast && (
         <Toast
           message={toast.message}
