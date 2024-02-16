@@ -64,7 +64,7 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
 
       if (PaymentIntentResponse?.status === "succeeded") {
         mutate(formdata);
-        navigate('/')
+        navigate("/");
       }
 
       setIsLoading(false);
@@ -75,13 +75,20 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
 
   return (
     <>
-      <PaymentElement className="min-h-[220px] " options={{ layout: "tabs" }} />
+      <div>
+        <PaymentElement
+          className="min-h-[220px] "
+          options={{ layout: "tabs" }}
+        />
+        <p className="mt-5 pt-2 text-lg font-bold border-t border-slate-300 ">
+          Total: <span className="ml-2">${paymentIntent.totalCost}</span>
+        </p>
+      </div>
       <button
         onClick={handleSubmit}
-        className=" w-full mt-3 p-5 text-white text-sm font-bold bg-primary hover:bg-neutral-800 rounded-lg flex justify-between transition "
+        className=" w-full mt-3 p-4 text-white  font-bold bg-primary hover:bg-neutral-800 rounded-lg "
       >
-        <span>${paymentIntent.totalCost}</span>
-        <span className="flex  gap-2 items-center">COMPLETE YOUR BOOKING <div><FaArrowRightLong size={18} /></div> </span>
+        <span className="text-sm">COMPLETE YOUR BOOKING</span>
       </button>
     </>
   );
