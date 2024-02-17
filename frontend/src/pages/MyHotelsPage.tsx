@@ -18,7 +18,7 @@ const MyHotelsPage = () => {
 
   return (
     <>
-      <section className="my-[100px] mx-5 md:mx-10 lg:mx-20 ">
+      <section className="my-[100px] mx-5 md:mx-10 lg:mx-16 ">
         <div className=" flex flex-col md:flex-row justify-between items-center lg:items-end gap-4 md:gap-0">
           <div className="">
             <h1 className="text-3xl font-bold inline">My Hotel Listings</h1>
@@ -123,7 +123,7 @@ const MyHotelsPage = () => {
           >
             <p className="text-2xl font-bold text-neutral-500">
               No Hotels Found
-            </p>{" "}
+            </p>
           </div>
         )}
       </section>
