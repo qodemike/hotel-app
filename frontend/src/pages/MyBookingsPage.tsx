@@ -36,13 +36,13 @@ const MyBookingsPage = () => {
           <div className=" flex flex-col gap-8">
             {hotels!.map((hotel) => (
               <div>
-                <div className=" mb-5 bg-white rounded-lg overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-[1fr_2.5fr]  gap-10">
+                <div className=" mb-5 bg-white rounded-lg overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] ">
                   <img
                     src={hotel.imageUrls[0]}
                     className="w-full h-[230px]   object-cover object-center"
                   />
 
-                  <div className="py-5 flex flex-col gap-4 overflow-y-auto max-h-[300px]">
+                  <div className="py-4 ml-8 flex flex-col gap-4 overflow-y-auto max-h-[300px]">
                     <div className="text-2xl font-bold">
                       {hotel.name}
                       <div className="text-sm  font-medium text-neutral-600 flex">

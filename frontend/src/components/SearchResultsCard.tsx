@@ -9,12 +9,12 @@ interface Props {
 const SearchResultsCard = ({ hotel }: Props) => {
   return (
     <div>
-      <div className=" lg:p-5 bg-white shadow-lg grid grid-cols-1 xl:grid-cols-[1fr_1fr]  ">
-        <div className=" w-full h-[300px] self-center">
+      <div className=" lg:p-3 bg-card drop-shadow-lg grid grid-cols-1 xl:grid-cols-[1fr_1fr]  ">
+        <div className="lg:ml-1 w-full h-[250px] self-center">
           <Link to={`/detail/${hotel._id}`}>
             <img
               src={hotel.imageUrls[0]}
-              className="w-full h-full object-cover rounded"
+              className="w-full h-full object-cover object-center rounded"
             />
           </Link>
         </div>

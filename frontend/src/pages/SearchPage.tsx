@@ -107,8 +107,8 @@ const SearchPage = () => {
           <div className="">
             <SearchBar />
           </div>
-          <div className="my-6 flex flex-col lg:flex-row justify-between gap-4 ">
-            <span className=" text-2xl  md:text-3xl font-bold  self-center  ">
+          <div className="mt-5 mb-3 flex flex-col lg:flex-row justify-between gap-4 ">
+            <span className=" lg:ml-[280px] text-2xl  font-bold  self-center  ">
               {hotelData?.pagination.total} Hotels found
               {search.destination ? ` in ${search.destination}` : ""}
             </span>
@@ -138,21 +138,21 @@ const SearchPage = () => {
               </select>
             </div>
           </div>
-          <div className="mb-5 border-b border-neutral-300 "></div>
+          <div className="lg:ml-[280px] mb-5 border-b border-neutral-300 "></div>
 
           {/* =========================================== */}
 
           <div className=" grid lg:grid-cols-[250px_1fr] gap-8 ">
             <div
               ref={filterDivRef}
-              className={`  fixed z-30 lg:z-0 top-0 lg:relative w-[60vw] md:w-[40vw] h-screen lg:w-full  lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  bg-white  border border-slate-300 lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
+              className={`  fixed z-30 lg:z-0 top-0 lg:relative lg:-top-[4.5rem] w-[60vw] md:w-[40vw] h-screen lg:w-full  lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  bg-accent  border lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
                 isShowingFilter
                   ? "translate-x-[-9%] "
                   : "-translate-x-[120%] lg:translate-x-0"
               }`}
             >
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold border-b border-slate-300 ">
+              <div className="  space-y-4">
+                <h3 className="text-lg font-semibold border-b border-border ">
                   Filter by:
                 </h3>
                 <StarRatingFilter

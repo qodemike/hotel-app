@@ -11,12 +11,14 @@ export default {
         'jost': ['jost'],
       },
       colors:{
-        primary: '#191818',
-        secondary: '#fcfcf9',
-        accent: '#222222',
-        silver: '#ECECEC',
-        grayedText: '#9ca3af'
-
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        foregroundMuted: 'var(--foreground-muted)',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+        card: 'var(--card)',
+        border: 'var(--border)',
       },
     },
   },

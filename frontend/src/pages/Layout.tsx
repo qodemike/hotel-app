@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className="font-inter flex flex-col bg-neutral-100">
+    <div className="font-inter flex flex-col ">
       <NavBar/>
-      <div className=" ">
+      <div className="bg-background ">
         <Outlet />
       </div>
     </div>

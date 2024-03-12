@@ -34,15 +34,15 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-5 bg-neutral-50 shadow-lg flex flex-col md:grid md:grid-cols-[1fr_1.5fr_1.6fr]  lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
+      className="p-5 bg-card drop-shadow-lg flex flex-col md:grid md:grid-cols-[1fr_1.5fr_1.6fr]  lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
     >
-      <div className="px-4 py-2 lg:pt-1  border border-slate-300 rounded-md ">
+      <div className="px-4 py-2 lg:pt-1  border border-border rounded-md ">
         <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
         <div className="mt-1 flex">
           <MdTravelExplore size={25} className="mr-4" />
           <input
             placeholder="Where are you going? "
-            className=" text-lg w-full bg-neutral-50 focus:outline-none "
+            className=" text-lg w-full bg-transparent focus:outline-none "
             value={destination}
             onChange={(event) => setDestination(event.target.value)}
           />
@@ -51,14 +51,14 @@ const SearchBar = () => {
 
       {/* =============================================================== */}
 
-      <div className=" py-2  pt-3  border border-slate-300 rounded-md overflow-hidden ">
+      <div className=" py-2  pt-3  border border-border rounded-md overflow-hidden ">
         <div className=" relative left-4 ">
         <p className="text-xs">GUESTS</p>
         <div className="mt-1 flex gap-8 md:gap-0 lg:gap-8 ">
           <div className=" text-lg ">
             <label className="  ">adults</label>
             <input
-              className=" w-12  pl-2 font-bold bg-neutral-50 focus:outline-none  "
+              className=" w-12  pl-2 font-bold bg-transparent focus:outline-none  "
               type="number"
               min={1}
               max={9}
@@ -70,7 +70,7 @@ const SearchBar = () => {
           <div className="text-lg flex  ">
             <label className=" ">children</label>
             <input
-              className=" w-12 pl-2 font-bold bg-neutral-50 focus:outline-none  "
+              className=" w-12 pl-2 font-bold bg-transparent focus:outline-none  "
               type="number"
               min={0}
               max={9}
@@ -84,7 +84,7 @@ const SearchBar = () => {
 
       {/* =============================================================== */}
 
-      <div className=" w-full px-4 py-2 border border-slate-300 rounded-md flex  justify-between  ">
+      <div className=" w-full px-4 py-2 border border-border rounded-md flex  justify-between  ">
         <div className="  ">
           <span className=" text-xs">CHECK-IN</span>
           <DatePicker
@@ -96,7 +96,7 @@ const SearchBar = () => {
             endDate={checkOut}
             minDate={minDate}
             maxDate={maxDate}
-            className="w-28 mt-1 text-lg font-medium bg-neutral-50 focus:outline-none "
+            className="w-28 mt-1 text-lg font-medium bg-transparent focus:outline-none "
           />
         </div>
 
@@ -114,7 +114,7 @@ const SearchBar = () => {
             minDate={minDate}
             maxDate={maxDate}
             placeholderText="Check-out Date"
-            className=" w-[110px] mt-1 text-lg font-medium bg-neutral-50 focus:outline-none "
+            className=" w-[110px] mt-1 text-lg font-medium bg-transparent focus:outline-none "
           />
         </div>
       </div>

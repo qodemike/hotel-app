@@ -11,4 +11,13 @@
     background-color: slategray;
   }
   
-  
+  body{
+    --background: #EDEFEF;
+    --foreground:#000000;
+    --forground-muted: #9CA3AF;
+    --primary:#191919;
+    --secondary:#212121;
+    --accent:#F9F9F9;
+    --card: #F9F9F9;
+    --border: #BBBBBB;
+  }

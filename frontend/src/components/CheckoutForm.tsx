@@ -9,7 +9,6 @@ import { useSearchContext } from "./SearchBar/SearchContext";
 import { useNavigate, useParams } from "react-router-dom";
 import QueryBooking from "../hooks/useCreateBooking";
 import { BookingFormData } from "../../../backend/entities/BookingFormData";
-import { FaArrowRightLong } from "react-icons/fa6";
 
 interface Props {
   currentUser: UserType;

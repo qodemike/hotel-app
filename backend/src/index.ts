@@ -10,6 +10,7 @@ import myBookingsRoutes from "./routes/my-bookings";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 import morgan from "morgan";
+import path, { dirname } from "path";
 
 const app = express();
 
@@ -27,6 +28,8 @@ const databaseConnectionString =
 mongoose
   .connect(databaseConnectionString as string)
   .then(() => console.log("Connected to MongoDB..."));
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 
 app.use(morgan('tiny'));
 app.use(cookieParser());
