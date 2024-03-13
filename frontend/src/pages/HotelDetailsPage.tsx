@@ -28,7 +28,7 @@ const HotelDetailPage = () => {
 
   return (
     <>
-    <section className="my-[100px] max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
+    <section className="pb-20 max-w-[1200px] mx-5 md:mx-10 lg:mx-auto">
       <div>
         <div className="flex mb-2">
           <span className="flex mt-1">
@@ -60,9 +60,11 @@ const HotelDetailPage = () => {
             <h2 className="mb-6 text-3xl font-medium font-poppins">
               Featured Amenities  
             </h2>
-            <div className=" flex flex-wrap flex-basis-[30px] gap-x-12 gap-y-7">
+            <div className=" flex flex-wrap gap-x-12 gap-y-7">
               {hotel.facilities.map((facility, index) => (
-                <HotelFacility key={index} facilityName={facility} />
+                <div className=" flex-1 basis-[50px] ">
+                  <HotelFacility key={index} facilityName={facility} />
+                </div>
               ))}
             </div>
           </div>

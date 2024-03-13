@@ -18,7 +18,7 @@ const MyHotelsPage = () => {
 
   return (
     <>
-      <section className="my-[100px] mx-5 md:mx-10 lg:mx-16 ">
+      <section className=" mx-5 md:mx-10 lg:mx-16 ">
         <div className=" flex flex-col md:flex-row justify-between items-center lg:items-end gap-4 md:gap-0">
           <div className="">
             <h1 className="text-3xl font-bold inline">My Hotel Listings</h1>

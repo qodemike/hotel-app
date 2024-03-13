@@ -34,7 +34,7 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-5 bg-card drop-shadow-lg flex flex-col md:grid md:grid-cols-[1fr_1.5fr_1.6fr]  lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
+      className="p-5  bg-card shadow-lg flex flex-col lg:grid   lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
     >
       <div className="px-4 py-2 lg:pt-1  border border-border rounded-md ">
         <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
@@ -86,7 +86,7 @@ const SearchBar = () => {
 
       <div className=" w-full px-4 py-2 border border-border rounded-md flex  justify-between  ">
         <div className="  ">
-          <span className=" text-xs">CHECK-IN</span>
+          <span className=" mr-3 text-xs">CHECK-IN</span>
           <DatePicker
             title={"check In"}
             selected={checkIn}
@@ -96,14 +96,14 @@ const SearchBar = () => {
             endDate={checkOut}
             minDate={minDate}
             maxDate={maxDate}
-            className="w-28 mt-1 text-lg font-medium bg-transparent focus:outline-none "
+            className="w-28 mt-1 md:text-lg font-medium bg-transparent focus:outline-none "
           />
         </div>
 
         {/* ========================================= */}
 
-        <div className=" relative md:left-4 lg:left-5">
-          <span className=" text-xs    ">CHECK-OUT</span>
+        <div className=" relative lg:left-5">
+          <span className=" mr-3 text-xs    ">CHECK-OUT</span>
           <DatePicker
             title={"check Out"}
             selected={checkOut}
@@ -114,7 +114,7 @@ const SearchBar = () => {
             minDate={minDate}
             maxDate={maxDate}
             placeholderText="Check-out Date"
-            className=" w-[110px] mt-1 text-lg font-medium bg-transparent focus:outline-none "
+            className=" w-[110px] mt-1 md:text-lg font-medium bg-transparent focus:outline-none "
           />
         </div>
       </div>

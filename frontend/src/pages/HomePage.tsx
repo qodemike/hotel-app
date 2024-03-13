@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hero/Hero";
 import HotelDisplayGrid from "../components/HotelsDisplayGrid";
 import SearchBar from "../components/SearchBar/SearchBar";
@@ -8,10 +8,8 @@ const HomePage = () => {
   return (
     <>
       <div className="">
-        <div className="">
           <Hero />
-        </div>
-        <div className="">
+        <div className=" md:mt-10 md:mx-10 lg:mx-16 ">
           <SearchBar />
         </div>
         <Showcase />

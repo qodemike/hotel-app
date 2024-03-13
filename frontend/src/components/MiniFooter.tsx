@@ -2,7 +2,6 @@ import BrandLogo from "../assets/Logo-white.png";
 
 const MiniFooter = () => {
   return (
-    
     <footer className="py-8 px-5 md:px-10 lg:px-20  bg-primary flex flex-col md:flex-row md:items-end gap-5 ">
         <img src={BrandLogo} alt="" className="w-[120px] object-cover " />
 

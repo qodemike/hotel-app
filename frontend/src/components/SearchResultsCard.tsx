@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { HotelType } from "../../../backend/entities";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Button from "./Button";
 
 interface Props {
   hotel: HotelType;
@@ -53,9 +54,11 @@ const SearchResultsCard = ({ hotel }: Props) => {
           <div className="flex items-center gap-4">
             <Link
               to={`/detail/${hotel._id}`}
-              className="h-full max-w-fit py-3 px-5 text-xs text-white font-bold rounded bg-primary hover:bg-neutral-800"
             >
-              VIEW DETAIL
+              <Button className="rounded">
+                View Details
+              </Button>
+                
             </Link>
             <span className="font-medium">${hotel.pricePerNight} / Night</span>
           </div>

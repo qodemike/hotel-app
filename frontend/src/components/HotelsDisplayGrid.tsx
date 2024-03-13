@@ -20,7 +20,8 @@ const HotelDisplayGrid = () => {
           Explore newly added hotels from all around the world.
         </p>
       </article>
-      <div className=" py-10 px-5 md:px-10 ">
+      
+      <div className=" py-10 mx-5 md:mx-10 ">
         <div className=" max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-5 ">
           {data?.data.map((hotel, index) => (
             <div key={index}>

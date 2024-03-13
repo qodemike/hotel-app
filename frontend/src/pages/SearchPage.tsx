@@ -101,9 +101,8 @@ const SearchPage = () => {
 
   return (
     <>
-      <div className=" mt-[95px] px-5 lg:px-16 ">
-
-        <div className="mb-16  flex flex-col  ">
+      <div className=" mb-20 mx-6  lg:mx-16 ">
+        <div className=" flex flex-col  ">
           <div className="">
             <SearchBar />
           </div>
@@ -145,7 +144,7 @@ const SearchPage = () => {
           <div className=" grid lg:grid-cols-[250px_1fr] gap-8 ">
             <div
               ref={filterDivRef}
-              className={`  fixed z-30 lg:z-0 top-0 lg:relative lg:-top-[4.5rem] w-[60vw] md:w-[40vw] h-screen lg:w-full  lg:h-fit  p-7 pb-10 lg:mb-5 lg:ml-3  bg-accent  border lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
+              className={`  fixed z-30 lg:z-0 top-0 lg:relative lg:-top-[4.5rem] w-[60vw] md:w-[40vw] h-screen lg:w-full  lg:h-fit  p-7 pb-10 lg:mb-5  bg-card  border lg:rounded-lg shadow-lg overflow-y-scroll lg:overflow-auto  transition duration-300 ${
                 isShowingFilter
                   ? "translate-x-[-9%] "
                   : "-translate-x-[120%] lg:translate-x-0"

@@ -13,7 +13,7 @@ export default {
       colors:{
         background: "var(--background)",
         foreground: "var(--foreground)",
-        foregroundMuted: 'var(--foreground-muted)',
+        muted: 'var(--muted)',
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',

@@ -1,4 +1,4 @@
-import BrandLogo from "../assets/Logo-white.png";
+import BrandLogo from "../../assets/Logo-white.png";
 import { Link } from "react-router-dom";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
