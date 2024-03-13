@@ -1,5 +1,5 @@
 import Button from "../Button";
-import BannerImg from "../../assets/joel-filipe-unsplash.jpg"
+import BannerImg from "../../assets/Hero_Image.png"
 
 const Hero = () => {
   return (
@@ -19,7 +19,7 @@ const Hero = () => {
       </div>
 
         <picture className="">
-          <img src={BannerImg} className=" lg:h-[500px] object-cover  object-top " alt="an image of a hotel" />
+          <img src={BannerImg} className=" w-full lg:h-[500px] object-cover  object-top " alt="an image of a hotel" />
         </picture>
     </section>
   );
