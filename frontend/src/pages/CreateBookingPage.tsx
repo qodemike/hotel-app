@@ -44,8 +44,8 @@ const CreateBookingPage = () => {
 
   return (
     <>
-    <div className=" min-h-screen  ">
-    <div className="mx-5  md:mx-10 lg:mx-16 my-[100px]">
+    <div className=" min-h-screen mb-24 ">
+    <div className="mx-5  md:mx-10 lg:mx-16 ">
       <h2 className="mb-8 pb-2 text-2xl lg:text-3xl font-bold border-b border-slate-300">Complete Your Booking</h2>
       <div className=" grid md:grid-cols-[1.2fr_1fr] gap-5  ">
         <BookingDetailsSummary

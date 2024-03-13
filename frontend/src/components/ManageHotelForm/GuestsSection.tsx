@@ -8,7 +8,7 @@ const GuestsSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-white border-2  border-neutral-300  p-7 " >
+    <div className=" bg-card border-2  border-neutral-300  p-7 " >
       <h2 className="text-lg font-bold mb-3">4. MAX NUMBER OF GUESTS PER BOOKING</h2>
       <div className="grid grid-cols-2 gap-5">
         <label className="text-gray-700 text-sm font-semibold">

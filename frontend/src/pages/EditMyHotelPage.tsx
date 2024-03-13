@@ -13,11 +13,14 @@ const EditHotelPage = () => {
 
   return (
     <>
+    <div className="mb-24">
+
     <ManageHotelsForm
       hotel={hotel}
       onSave={(hotelFormData: FormData) => mutate(hotelFormData)}
       isLoading={isLoading}
-    />
+      />
+      </div>
     <MiniFooter/>
     </>
   );

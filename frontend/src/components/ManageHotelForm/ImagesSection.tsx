@@ -23,7 +23,7 @@ const ImagesSection = () => {
   };
 
   return (
-    <div className="bg-white border-2 border-neutral-300  p-7">
+    <div className="bg-card border-2 border-neutral-300  p-7">
       <div className=" mb-3">
         <h2 className="text-lg font-bold  inline">3. IMAGES</h2>
         <span className="text-sm font-medium mr-2 ">

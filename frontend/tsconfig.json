@@ -20,5 +20,12 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "../backend/entities/BookingFormData.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+
+  "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
 }

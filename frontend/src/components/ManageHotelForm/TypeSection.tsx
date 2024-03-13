@@ -12,7 +12,7 @@ const TypeSection = () => {
   const typeWatch = watch("type");
 
   return (
-    <div className="bg-white border-2 border-neutral-300 p-7  flex flex-col gap-4">
+    <div className="bg-card border-2 border-neutral-300 p-7  flex flex-col gap-4">
       <div>
       <h3 className="text-lg font-bold mb-5 inline">2. HOTEL TYPE</h3>
       </div>

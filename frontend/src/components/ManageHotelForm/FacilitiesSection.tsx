@@ -9,7 +9,7 @@ const FacilitiesSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-white border-2 border-neutral-300 p-7  " >
+    <div className="bg-card border-2 border-neutral-300 p-7  " >
       <div className="mb-5">
       <h3 className="text-lg font-bold inline ">3. FACILITIES</h3>
       <span className="text-sm  ml-1"> (select facilities available in your hotel)</span>

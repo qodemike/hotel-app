@@ -8,6 +8,7 @@ import { TfiTrash } from "react-icons/tfi";
 import { Oval } from "react-loader-spinner";
 import { BiEdit } from "react-icons/bi";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
+import Button from "../components/Button";
 
 const queryHotel = new QueryHotel();
 
@@ -54,7 +55,7 @@ const MyHotelsPage = () => {
               <div>
                 <div
                   key={index}
-                  className="  bg-white rounded-lg overflow-hidden shadow-lg flex flex-col justify-between gap-6"
+                  className="  bg-card rounded-lg overflow-hidden shadow-lg flex flex-col justify-between gap-6"
                 >
                   <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <img
@@ -98,9 +99,10 @@ const MyHotelsPage = () => {
                     <div className="flex flex-col md:flex-row justify-end gap-3">
                       <Link
                         to={`/edit-my-hotel/${hotel._id}`}
-                        className="py-3 px-5 bg-primary text-xs text-white font-bold rounded  hover:bg-neutral-800 flex justify-center items-center gap-2"
                       >
-                        <BiEdit size={20} /> EDIT DETAILS
+                        <Button className="w-full lg:w-fit rounded">
+                          <BiEdit size={20} /> Edit Details
+                        </Button>
                       </Link>
                       <button
                         onClick={() => mutate(hotel._id)}

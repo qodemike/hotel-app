@@ -15,7 +15,7 @@ const MyBookingsPage = () => {
 
   return (
     <>
-      <div className=" my-[100px] mx-5 md:mx-10 lg:mx-16 min-h-screen ">
+      <div className=" mb-24 mx-5 md:mx-10 lg:mx-16 min-h-screen ">
         <h1 className="mb-8 pb-3 text-3xl font-bold border-b border-slate-300">
           My Bookings
         </h1>

@@ -85,7 +85,7 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
   return (
     <FormProvider {...formMethods}>
       <form
-        className=" my-[100px]  px-5 md:p-0  md:max-w-4xl m-auto flex flex-col gap-5"
+        className=" px-5 md:p-0  md:max-w-4xl m-auto flex flex-col gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-3xl font-bold ">Please fill the form below</h2>

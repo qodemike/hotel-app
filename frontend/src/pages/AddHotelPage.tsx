@@ -9,7 +9,7 @@ const AddHotelPage = () => {
 
   return (
     <>
-      <div className="">
+      <div className="mb-24">
         <ManageHotelsForm
           onSave={(hotelFormData: FormData) => {
             mutate(hotelFormData);
