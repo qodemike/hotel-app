@@ -58,7 +58,7 @@ const NavBar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed z-20 w-full py-5 px-5  lg:px-16 bg-background  ${ !isAtTop && "shadow-lg"}    flex justify-between items-center  transition duration-500  `}
+        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background  ${ !isAtTop && "shadow-lg"}  flex justify-between items-center transition duration-500  `}
       >
         <div className="flex">
           <Link to="/" className="">

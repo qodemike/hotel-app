@@ -121,7 +121,7 @@ const SearchBar = () => {
 
       {/* =============================================================== */}
 
-      <button className=" py-5 w-full h-full text-sm text-neutral-100 font-medium bg-primary hover:bg-neutral-800 rounded  col-span-full lg:col-span-1  ">
+      <button className=" py-5 w-full h-full text-sm text-neutral-100 font-medium bg-black hover:bg-secondary rounded col-span-full lg:col-span-1  ">
         SEARCH
       </button>
     </form>

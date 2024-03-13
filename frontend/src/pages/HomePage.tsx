@@ -8,10 +8,10 @@ const HomePage = () => {
   return (
     <>
       <div className="">
-        <div className="md:px-10 lg:px-16">
+        <div className="">
           <Hero />
         </div>
-        <div className="z-10 max-w-[1100px] m-auto relative mt-7 lg:mt-0 lg:-top-[130px]">
+        <div className="">
           <SearchBar />
         </div>
         <Showcase />

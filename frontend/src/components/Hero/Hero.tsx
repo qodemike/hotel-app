@@ -1,31 +1,25 @@
-import banner1 from "../../assets/banner_1.webp";
-import banner1tablet from "../../assets/banner_1_tablet.webp";
-import banner1mobile from "../../assets/banner_1_mobile.webp";
+import Button from "../Button";
+import BannerImg from "../../assets/joel-filipe-unsplash.jpg"
 
 const Hero = () => {
   return (
-    <section className=" relative md:mt-[90px]  md:rounded-3xl overflow-hidden   ">
-      
-      <div className=" absolute h-full  md:w-[45%] z-10 p-7 lg:p- md:text-black  bg-opacity-50 md:bg-opacity-90 bg-black md:bg-amber flex flex-col justify-center ">
-        <article className="relative lg:-top-10">
-          <h1 className="  text-5xl   lg:text-6xl  font-bold ">
-            Find Stays & Feel at Home
+    <section className=" h-[calc(100vh-90px)] px-6 md:px-10 lg:px-16 grid md:grid-cols-[1fr_1fr] items-center gap-5">
+      <div className=" my-10 space-y-8 ">
+          <h1 className="  text-3xl   md:text-5xl   font-semibold ">
+            Realize affordable stays, explore your dream destinations
           </h1>
           <p className="mt-8 text-sm font-medium">
             Welcome to our hotel booking platform, where your travel experience
-            becomes easier and more enjoyable.
+            becomes easier and enjoyable.
           </p>
-        </article>
+          <Button >
+            Explore Hotels
+          </Button>
+          <button className="bg-primary p"></button>
       </div>
 
         <picture className="">
-          <source media="(max-width: 500px)" srcSet={banner1mobile} />
-          <source media="(max-width: 1024px)" srcSet={banner1tablet} />
-          <img
-            src={banner1}
-            alt="banner image"
-            className=" w-full h-[508px] object-bottom object-cover"
-          />
+          <img src={BannerImg} alt="an image of a hotel" />
         </picture>
     </section>
   );

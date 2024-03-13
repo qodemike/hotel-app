@@ -4,7 +4,7 @@ import showCaseImage2 from "../assets/hotel_showcase_2.webp";
 const Showcase = () => {
   return (
     <>
-      <section className=" pt-[50px] pb-7 lg:pb-[50px] max-w-[1200px] mx-auto  flex flex-col lg:flex-row  ">
+      <section className=" pt-12 pb-7  p-6 md:px-10 lg:px-16   flex flex-col lg:flex-row  ">
         <div className="flex gap-4 justify-center ">
           <img
             src={showCaseImage1}
