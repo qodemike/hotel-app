@@ -10,11 +10,11 @@ import { useSearchContext } from "../components/SearchBar/SearchContext";
 import useSearch from "../hooks/useSearch";
 import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
-import { Oval } from "react-loader-spinner";
 import { useAppContext } from "../contexts/AppContext";
-
+import SearchResultsSkeletons from "../components/SearchResultsSkeletons";
 
 const SearchPage = () => {
+
   const { showModal } = useAppContext();
   const search = useSearchContext();
 
@@ -64,8 +64,7 @@ const SearchPage = () => {
     sortOption,
   };
 
-  const { data: hotelData, isLoading: isFetchingHotels } =
-    useSearch(searchParams);
+  const { data: hotelData, isLoading } = useSearch(searchParams);
 
   const handleStarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const starRating = event.target.value;
@@ -174,27 +173,17 @@ const SearchPage = () => {
             </div>
 
             <div className="flex flex-col gap-6">
-              {isFetchingHotels ? (
-                <div
-                  className=" pt-20 md:pt-36 flex justify-center  "
-                  style={{ height: "calc(100vh - 530px)" }}
-                >
-                  <Oval
-                    secondaryColor="gray"
-                    color="black"
-                    height={"50px"}
-                    width={"50px"}
-                  ></Oval>{" "}
-                </div>
-              ) : (
-                hotelData?.data.map((hotel, index) => (
-                  <div key={index}>
-                    <SearchResultsCard hotel={hotel} />
-                  </div>
-                ))
-              )}
-
-              {/* ============================================ */}
+              <div className="flex flex-col gap-6">
+                {!hotelData ? (<SearchResultsSkeletons/>) : (
+                  <>
+                    {hotelData?.data.map((hotel) => (
+                      <div key={hotel._id}>
+                        <SearchResultsCard hotel={hotel} />
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
 
               <div className="">
                 {hotelData ? (
@@ -203,7 +192,9 @@ const SearchPage = () => {
                     pages={hotelData?.pagination.pages || 1}
                     onPageChange={(page) => setPage(page)}
                   />
-                ) : null}
+                ) : (
+                  <div className="h-[34px]"></div>
+                )}
               </div>
             </div>
           </div>

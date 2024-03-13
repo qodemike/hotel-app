@@ -6,6 +6,8 @@ import { AppContextProvider } from "./contexts/AppContextProvider.tsx";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes.tsx";
 import { SearchContextProvider } from "./components/SearchBar/SearchContextProvider.tsx";
+import "react-loading-skeleton/dist/skeleton.css";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {

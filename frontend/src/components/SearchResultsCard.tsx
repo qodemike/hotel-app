@@ -9,7 +9,6 @@ interface Props {
 
 const SearchResultsCard = ({ hotel }: Props) => {
   return (
-    <div>
       <div className=" lg:p-3 bg-card drop-shadow-lg grid grid-cols-1 xl:grid-cols-[1fr_1fr]  ">
         <div className="lg:ml-1 w-full h-[250px] self-center">
           <Link to={`/detail/${hotel._id}`}>
@@ -64,7 +63,6 @@ const SearchResultsCard = ({ hotel }: Props) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
