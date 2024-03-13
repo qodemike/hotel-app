@@ -20,4 +20,5 @@
     --card: #F9F9F9;
     --border: #BBBBBB;
     --muted: #bcc4d1;
+    background-color: var(--background);
   }

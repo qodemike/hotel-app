@@ -29,13 +29,13 @@ const Register = () => {
   return (
     <>
       <div className="">
-        <form className="my-28 flex flex-col gap-5 " onSubmit={onSubmit}>
-          <h2 className="text-3xl mb-[10px] text-black font-bold">
+        <form className=" flex flex-col gap-5 " onSubmit={onSubmit}>
+          <h2 className=" self-center text-3xl  font-bold">
             Create an Account
           </h2>
           <div className="flex flex-col md:flex-row gap-5">
             <div>
-              <label className="text-black text-sm font-bold flex-1">
+              <label className=" text-sm font-bold flex-1">
                 First Name
               </label>
               <input
@@ -50,7 +50,7 @@ const Register = () => {
               )}
             </div>
             <div>
-              <label className="text-black text-sm font-bold flex-1">
+              <label className=" text-sm font-bold flex-1">
                 Last Name
               </label>
 
@@ -67,7 +67,7 @@ const Register = () => {
             </div>
           </div>
           <div>
-            <label className="text-black text-sm font-bold flex-1">Email</label>
+            <label className=" text-sm font-bold flex-1">Email</label>
 
             <input
               type="email"
@@ -80,7 +80,7 @@ const Register = () => {
             )}
           </div>
           <div>
-            <label className="text-black text-sm font-bold flex-1">
+            <label className=" text-sm font-bold flex-1">
               Password
             </label>
 
@@ -101,7 +101,7 @@ const Register = () => {
             )}
           </div>
           <div>
-            <label className="text-black text-sm font-bold flex-1 ">
+            <label className=" text-sm font-bold flex-1 ">
               Confirm Password
             </label>
 

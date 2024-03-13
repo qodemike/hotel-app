@@ -25,14 +25,14 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="">
-        <form className="flex flex-col gap-4" onSubmit={onSubmit}>
-          <h2 className="text-3xl text-black font-bold self-center">Login</h2>
+      <div className="w-full max-w-xl">
+        <form className=" flex flex-col gap-4" onSubmit={onSubmit}>
+          <h2 className="text-3xl font-bold self-center">Login</h2>
           <div>
-            <label className="text-black text-md font-bold">Email</label>
+            <label className=" text-md font-bold">Email</label>
             <input
               type="email"
-              className="w-full h-[43px] px-5 my-2 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none"
+              className="w-full h-[43px] px-5 my-2  rounded-lg focus:outline-none"
               placeholder="Enter your email"
               {...register("email", { required: "Enter your email" })}
             ></input>
@@ -45,7 +45,7 @@ const SignIn = () => {
 
             <input
               type="password"
-              className="w-full h-[43px] px-5 my-2 bg-silver hover:bg-neutral-200 rounded-lg focus:outline-none "
+              className="w-full h-[43px] px-5 my-2 bg-silver  rounded-lg focus:outline-none "
               placeholder="Enter your password"
               {...register("password", {
                 required: "Enter your password",
@@ -72,7 +72,7 @@ const SignIn = () => {
                   width={"30px"}
                 />
               ) : (
-                "Log In"
+                "Login"
               )}
             </button>
 
@@ -84,7 +84,7 @@ const SignIn = () => {
           </span>
         </form>
 
-        <button className="w-full mt-8 py-2.5  font-bold border  border-neutral-500 rounded-lg   ">
+        <button className="w-full mt-8 py-2.5  font-bold border  border-neutral-500 rounded-lg ">
           <img src={googleIcon} alt="google icon" className="inline mr-3" />
           Sign In with Google
         </button>

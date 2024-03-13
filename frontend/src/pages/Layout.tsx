@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <div className="font-inter flex flex-col ">
       <NavBar/>
-      <div className="bg-background pt-24 ">
+      <div className="pt-24 ">
         <Outlet />
       </div>
     </div>

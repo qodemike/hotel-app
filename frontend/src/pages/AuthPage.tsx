@@ -1,5 +1,4 @@
 import { Link, Outlet } from "react-router-dom";
-import backgroundImage from "../assets/Auth background Image.webp";
 import Logo from "../assets/Logo-black.png";
 
 export type SignInFormData = {
@@ -9,24 +8,16 @@ export type SignInFormData = {
 
 const AuthPage = () => {
   return (
-    <>
-      <div className="fixed py-5 px-5 md:px-10 bg-secondary w-screen">
+    <div className="">
+      <div className="fixed py-5 px-5 md:px-10 bg-background w-screen">
         <Link to={"/"}>
           <img src={Logo} alt="brand logo" />
         </Link>
       </div>
-      <div className="bg-secondary grid grid-cols-1  lg:grid-cols-2 h-screen ">
-        <div className="w-full self-center px-5 md:px-10  ">
+      <div className="  min-h-screen px-4 py-20 flex justify-center items-center   ">
           <Outlet />
-        </div>
-        <div className="hidden lg:flex relative justify-end   ">
-          <img
-            className="fixed object-cover h-full w-[50vw] "
-            src={backgroundImage}
-          />
-        </div>
       </div>
-    </>
+    </div>
   );
 };
 
