@@ -5,7 +5,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { PaymentIntentResponse, UserType } from "../../../backend/entities";
 import { useState } from "react";
-import { useSearchContext } from "./SearchBar/SearchContext";
+import { useSearchContext } from "../contexts/search/SearchContext";
 import { useNavigate, useParams } from "react-router-dom";
 import QueryBooking from "../hooks/useCreateBooking";
 import { BookingFormData } from "../../../backend/entities/BookingFormData";

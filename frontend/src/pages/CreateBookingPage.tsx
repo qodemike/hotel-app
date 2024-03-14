@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BookingDetailsSummary from "../components/BookingDetailsSummary";
-import { useSearchContext } from "../components/SearchBar/SearchContext";
+import { useSearchContext } from "../contexts/search/SearchContext";
 import QueryBooking from "../hooks/useCreateBooking";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";

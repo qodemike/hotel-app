@@ -6,7 +6,7 @@ import HotelTypesFilter from "../components/Filters/HotelTypesFilter";
 import FacilitiesFilter from "../components/Filters/FacilitiesFilter";
 import PriceFilter from "../components/Filters/PriceFilter";
 import SearchBar from "../components/SearchBar/SearchBar";
-import { useSearchContext } from "../components/SearchBar/SearchContext";
+import { useSearchContext } from "../contexts/search/SearchContext";
 import useSearch from "../hooks/useSearch";
 import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
@@ -47,7 +47,6 @@ const SearchPage = () => {
 
   useEffect(() => {
     document.addEventListener("click", handleCloseFilterPanel);
-    document.addEventListener("scroll", handleCloseFilterPanel);
   }, []);
 
   const searchParams = {
@@ -64,7 +63,7 @@ const SearchPage = () => {
     sortOption,
   };
 
-  const { data: hotelData, isLoading } = useSearch(searchParams);
+  const { data: hotelData, } = useSearch(searchParams);
 
   const handleStarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const starRating = event.target.value;
@@ -138,7 +137,7 @@ const SearchPage = () => {
           </div>
           <div className="lg:ml-[280px] mb-5 border-b border-neutral-300 "></div>
 
-          {/* =========================================== */}
+          {/* ==================== Filter Panel ======================== */}
 
           <div className=" grid lg:grid-cols-[250px_1fr] gap-8 ">
             <div

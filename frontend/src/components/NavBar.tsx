@@ -3,18 +3,27 @@ import { useAppContext } from "../contexts/AppContext";
 import BrandLogo from "../assets/Logo-black.png";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
-import { useEffect, useRef, useState} from "react";
+import { useRef } from "react";
 import useSignOut from "../hooks/useSignOut";
+import { useAuthContext } from "../contexts/Auth/AuthContext";
 
 const NavBar = () => {
-  const { isLoggedIn, showModal } = useAppContext();
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const { mutate } = useSignOut();
-  const [isAtTop, setIsAtTop ] = useState(true);
+  const links = [
+    { name: "HOME", href: "/" },
+    { name: "SEARCH", href: "/search" },
+    { name: "ABOUT", href: "#" },
+  ];
 
-  const handleSignOut = () => {
-    mutate();
-  };
+  const protectedlinks = [
+    { name: "MY BOOKINGS", href: "/my-bookings" },
+    { name: "MY HOTELS", href: "/my-hotels" },
+  ];
+
+  const {  showModal } = useAppContext();
+  const { isAuthenticated } = useAuthContext()
+  const { mutate } = useSignOut();
+
+  const handleSignOut = () => mutate();
 
   const menu = useRef<HTMLDivElement>({} as HTMLDivElement);
 
@@ -27,36 +36,11 @@ const NavBar = () => {
     menu.current.style.transform = "translateX(100%)";
   };
 
-  let initialScrollPosition = window.scrollY;
-
-  const handleHideOnScroll = () => {
-    const currentScrollPosition = window.scrollY;
-    if (window.scrollY > 0) setIsAtTop(false)
-    else setIsAtTop(true)
-
-    if (currentScrollPosition > initialScrollPosition && window.scrollY > 10) {
-      if (navbarRef.current)
-        navbarRef.current.style.transform = "translateY(-100%)";
-    } else {
-      if (navbarRef.current)
-        navbarRef.current.style.transform = "translateY(0)";
-    }
-
-    initialScrollPosition = currentScrollPosition;
-  };
-
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleHideOnScroll);
-    return () => {
-      window.removeEventListener("scroll", handleHideOnScroll);
-    };
-  }, []);
 
   return (
     <>
       <nav
-        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background  ${ !isAtTop && "shadow-lg"}  flex justify-between items-center transition duration-500  `}
+        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background   flex justify-between items-center transition duration-500  `}
       >
         <div className="flex">
           <Link to="/" className="">
@@ -70,50 +54,37 @@ const NavBar = () => {
           className=" md:hidden text-primary cursor-pointer "
         />
 
-        <div
-          className={`hidden  md:flex  items-end gap-8`}
-        >
-          <Link to="/" className=" text-xs">
-              HOME
+        <div className={`hidden  md:flex  items-end gap-8`}>
+          {links.map((link) => (
+            <Link
+              to={link.href}
+              className={`text-xs transition-all duration-100 `}
+            >
+              {link.name}
             </Link>
-            <Link to="/search" className="text-xs  ">
-              SEARCH
-            </Link>
-            <Link to="#" className="text-xs  ">
-              CONTACT
-            </Link>
-          {isLoggedIn ? (
+          ))}
+
+          { isAuthenticated ? (
             <div className="  flex items-end gap-4 lg:gap-8">
-              <Link
-                className="  text-xs flex md:flex-col items-center  "
-                to="/my-bookings"
-              >
-                MY BOOKINGS
-              </Link>
-              <Link
-                className=" text-xs  flex items-center"
-                to="/my-hotels"
-              >
-                MY HOTELS
-              </Link>
-              <div className="flex items-end">
-                <div className=" relative top-1 h-7 mr-5 border-l  border-black "></div>
-                <button
-                  onClick={handleSignOut}
-                  className=" font-bold "
+              {protectedlinks.map((link) => (
+                <Link
+                  className={` text-xs  flex md:flex-col items-center `}
+                  to={link.href}
                 >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="flex items-end">
+                <div className=" h-7 mr-5 border-l border-black "></div>
+                <button onClick={handleSignOut} className=" font-bold ">
                   Log Out
                 </button>
               </div>
             </div>
-            
           ) : (
             <div className="flex items-end">
               <div className="  h-7 mr-5 border-l  border-black "></div>
-              <Link
-                to="/auth/sign-in"
-                className=" font-bold  "
-              >
+              <Link to="/auth/sign-in" className=" font-bold  ">
                 Log In
               </Link>
             </div>
@@ -141,7 +112,7 @@ const NavBar = () => {
             Contact
           </Link>
         </div>
-        {isLoggedIn ? (
+        { isAuthenticated ? (
           <>
             <Link
               className=" text-xs  font-light  text-neutral-300 flex items-center hover:text-white   "

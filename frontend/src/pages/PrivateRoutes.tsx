@@ -1,10 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAppContext } from "../contexts/AppContext";
+import { useAuthContext } from "../contexts/Auth/AuthContext";
 
 const PrivateRoutes = () => {
-  const { isLoggedIn } = useAppContext();
+  const { isAuthenticated } = useAuthContext();
 
-  if (!isLoggedIn)
+  if (!isAuthenticated)
     return (
       <>
         <Navigate to={"/"} />

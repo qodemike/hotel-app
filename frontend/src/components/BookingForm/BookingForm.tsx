@@ -3,7 +3,7 @@ import { PaymentIntentResponse, UserType } from "../../../../backend/entities";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { StripeCardElement } from "@stripe/stripe-js";
 import { useParams } from "react-router-dom";
-import { useSearchContext } from "../SearchBar/SearchContext";
+import { useSearchContext } from "../../contexts/search/SearchContext";
 import useBookingForm from "../../hooks/useBookingForm";
 import { BookingFormData } from "../../../../backend/entities/BookingFormData";
 

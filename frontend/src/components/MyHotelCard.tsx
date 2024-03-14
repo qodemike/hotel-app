@@ -5,7 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { TfiTrash } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import QueryHotel from "../hooks/useMyHotels";
-import {Button} from "../../@/components/ui/button";
+import Button from "./Button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,7 +16,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../../@/components/ui/alert-dialog";
+} from "@/components/ui/alert-dialog";
+
 
 
 const queryHotel = new QueryHotel();
@@ -27,6 +28,7 @@ interface Props {
 
 const MyHotelCard = ({ hotel }: Props) => {
   const { mutate, isLoading: isDeleting } = queryHotel.deleteHotelById();
+
   return (
     <div>
       <div
@@ -79,11 +81,9 @@ const MyHotelCard = ({ hotel }: Props) => {
             <AlertDialog>
               <AlertDialogTrigger>
                 <Button
-                  disabled={isDeleting}
-                  variant={"destructive"}
                   className="flex justify-center items-center gap-1"
                 >
-                <TfiTrash size={20} />
+                  <TfiTrash size={20} />
                   Delete Issue
                 </Button>
               </AlertDialogTrigger>
@@ -91,13 +91,13 @@ const MyHotelCard = ({ hotel }: Props) => {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Are you sure you want to delete this issue? This action is
+                    Are you sure you want to delete this listing? This action is
                     irreversible.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => mutate(hotel._id)}>
+                  <AlertDialogAction onClick={() => console.log(hotel._id)}>
                     Confirm
                   </AlertDialogAction>
                 </AlertDialogFooter>

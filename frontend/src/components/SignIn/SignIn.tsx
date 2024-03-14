@@ -29,10 +29,10 @@ const SignIn = () => {
         <form className=" flex flex-col gap-4" onSubmit={onSubmit}>
           <h2 className="text-3xl font-bold self-center">Login</h2>
           <div>
-            <label className=" text-md font-bold">Email</label>
+            <label className=" text-md font-bold ">Email</label>
             <input
               type="email"
-              className="w-full h-[43px] px-5 my-2  rounded-lg focus:outline-none"
+              className=" auth-input "
               placeholder="Enter your email"
               {...register("email", { required: "Enter your email" })}
             ></input>
@@ -45,7 +45,7 @@ const SignIn = () => {
 
             <input
               type="password"
-              className="w-full h-[43px] px-5 my-2 bg-silver  rounded-lg focus:outline-none "
+              className=" auth-input "
               placeholder="Enter your password"
               {...register("password", {
                 required: "Enter your password",
@@ -62,7 +62,7 @@ const SignIn = () => {
           <button
               disabled={isLoading}
               type="submit"
-              className="w-full h-12 mb-3 font-bold text-white text-xl  bg-primary  hover:bg-neutral-800 rounded-lg flex justify-center items-center"
+              className="w-full h-12 mb-3 font-bold text-white text-xl bg-primary  hover:bg-neutral-800 rounded-lg flex justify-center items-center"
             >
               {isLoading ? (
                 <Oval

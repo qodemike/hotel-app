@@ -8,7 +8,7 @@ interface Props{
 
 const Button = ({ children, onClick, className }: Props) => {
   return (
-    <button onClick={onClick} className={`bg-black py-3 px-7 w-fit text-white text-sm hover:bg-secondary flex justify-center items-center gap-2 cursor-pointer ${className}`}>
+    <button onClick={onClick} className={`bg-primary py-3 px-7 w-fit text-white text-sm hover:bg-secondary flex justify-center items-center gap-2 cursor-pointer ${className}`}>
       {children}
     </button>
   );

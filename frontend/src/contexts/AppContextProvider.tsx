@@ -1,7 +1,5 @@
 import { ReactNode, useState } from "react";
 import Toast from "../components/Toast";
-import { useQuery } from "react-query";
-import APICLIENT from "../services/api-client";
 import AppContext from "./AppContext";
 import { ToastMessage } from "../components/Toast";
 
@@ -10,28 +8,20 @@ interface Props {
   children: ReactNode;
 }
 
-const apiClient = new APICLIENT();
 
 export const AppContextProvider = ({ children }: Props) => {
   const [toast, setToast] = useState<ToastMessage | null>(null);
+
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const { isError } = useQuery({
-    queryKey: ["validateToken"],
-    queryFn: () => apiClient.get("/api/auth/validate-token"),
-    retry: false,
-  });
-
 
   return (
     <AppContext.Provider
       value={{
         showModal: (value: boolean) =>{  setIsVisible(value) },
         showToast: (toastMessage) => { setToast(toastMessage)},
-        isLoggedIn: !isError,
       }}
     >
-      { isVisible && <div className="  fixed z-30 w-screen h-screen bg-black bg-opacity-50  "></div>}
+      { isVisible && <div className="  fixed z-30 w-screen h-screen backdrop-grayscale bg-black bg-opacity-50  "></div>}
       {toast && (
         <Toast
           message={toast.message}

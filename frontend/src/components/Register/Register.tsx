@@ -39,7 +39,7 @@ const Register = () => {
                 First Name
               </label>
               <input
-                className="w-full h-[43px] px-5 my-1  rounded-lg focus:outline-none"
+                className=" auth-input "
                 placeholder="Enter your first name"
                 {...register("firstName", {
                   required: "first name field is required",
@@ -55,7 +55,7 @@ const Register = () => {
               </label>
 
               <input
-                className="w-full h-[43px] px-5 my-1  rounded-lg focus:outline-none"
+                className=" auth-input "
                 placeholder="Enter your last name"
                 {...register("lastName", {
                   required: "last name field is required",
@@ -71,7 +71,7 @@ const Register = () => {
 
             <input
               type="email"
-              className="w-full h-[43px] px-5 my-1  rounded-lg focus:outline-none"
+              className="auth-input "
               placeholder="Enter your email"
               {...register("email", { required: "Email is required" })}
             ></input>
@@ -86,7 +86,7 @@ const Register = () => {
 
             <input
               type="password"
-              className="w-full h-[43px] px-5 my-1  rounded-lg focus:outline-none"
+              className="auth-input "
               placeholder="Enter your password"
               {...register("password", {
                 required: "Enter a password",
@@ -107,7 +107,7 @@ const Register = () => {
 
             <input
               type="password"
-              className="w-full h-[43px] px-5 my-1  rounded-lg focus:outline-none"
+              className="auth-input "
               placeholder="Confirm your password"
               {...register("confirmPassword", {
                 validate: (val) => {

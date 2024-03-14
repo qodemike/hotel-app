@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAppContext } from "../../contexts/AppContext";
-import { useSearchContext } from "../SearchBar/SearchContext";
+import { useSearchContext } from "../../contexts/search/SearchContext";
 import 'react-datepicker/dist/react-datepicker.css';
 import './CustomDatePicker.css'
+import { useAuthContext } from "../../contexts/Auth/AuthContext";
 
 interface Props {
   hotelId: string;
@@ -20,7 +20,7 @@ interface GuestInfoFormData {
 
 const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   const search = useSearchContext();
-  const { isLoggedIn } = useAppContext();
+  const { isAuthenticated } = useAuthContext()
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -81,7 +81,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
         <form
           onSubmit={
-            isLoggedIn ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)
+            isAuthenticated ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)
           }
         >
           <div className="grid grid-cols-1 gap-4 items-center ">
@@ -163,7 +163,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
             {/* ===================================================================== */}
 
-            {isLoggedIn ? (
+            {isAuthenticated ? (
               <button className=" py-3 mt-2 rounded-lg  text-white font-medium border-2 border-solid border-white transition  hover:text-black hover:bg-white ">
                 BOOK NOW
               </button>

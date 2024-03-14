@@ -17,13 +17,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src", "../backend/entities/BookingFormData.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+    "noFallthroughCasesInSwitch": true,
 
-  "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    // Shadcn configuration
+      "paths": {
+        "@/*": ["./@/*"]
+      }
+  },
+  "include": ["src", "../backend/entities/*.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  
 }

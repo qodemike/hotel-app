@@ -14,11 +14,12 @@ const useSignin = () => {
   const { showToast } = useAppContext();
 
   return useMutation({
-    mutationFn: (data: SignInFormData) =>
-      apiClient.create<SignInFormData>(data, "/api/auth/login"),
+    mutationFn: (data: SignInFormData) => apiClient.create<SignInFormData>(data, "/api/auth/login"),
 
-    onSuccess: async () => {
+    onSuccess: async (data) => {
+      console.log(data)
       showToast({ message: "Sign in Successful!", type: "SUCCESS" });
+
       await queryClient.invalidateQueries("validateToken");
       navigate(location.state?.from?.pathname || "/");
     },
