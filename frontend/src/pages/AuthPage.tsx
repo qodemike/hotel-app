@@ -9,7 +9,7 @@ export type SignInFormData = {
 const AuthPage = () => {
   return (
     <div className="">
-      <div className="fixed py-5 px-5 md:px-10 bg-background w-screen">
+      <div className="fixed py-5 px-5 md:px-10 lg:px-16 bg-background w-screen">
         <Link to={"/"}>
           <img src={Logo} alt="brand logo" />
         </Link>

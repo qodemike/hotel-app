@@ -8,6 +8,7 @@ const HotelDisplayGrid = () => {
   const [page, setPage] = useState<number>(1);
 
   const { data, isLoading } = useHotels(page);
+  
 
   return (
     <section className="py-[80px]  " id="hotel_display_grid">

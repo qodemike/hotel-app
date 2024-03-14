@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div id="footer"  className="py-6 md:py-10 px-5 md:px-10 lg:px-20 bg-primary ">
       <div className="mb-5 flex flex-col md:flex-row justify-between gap-7 md:gap-20">
-       <img src={BrandLogo} alt="" className="w-[120px] object-cover "/>
+       <img src={BrandLogo} alt="" className=" "/>
 
           <div className="  text-zinc-300 flex gap-10 self-center md:self-end">
             <Link to={"#"} className="hover:text-white transition">

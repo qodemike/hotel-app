@@ -34,12 +34,12 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-5  bg-card shadow-lg flex flex-col lg:grid   lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
+      className="  bg-card  flex flex-col lg:grid   lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
     >
       <div className="px-4 py-2 lg:pt-1  border border-border rounded-md ">
         <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
-        <div className="mt-1 flex">
-          <MdTravelExplore size={25} className="mr-4" />
+        <div className="mt-1 flex gap-2">
+          <MdTravelExplore size={25}  />
           <input
             placeholder="Where are you going? "
             className=" text-lg w-full bg-transparent focus:outline-none "
@@ -84,7 +84,7 @@ const SearchBar = () => {
 
       {/* =============================================================== */}
 
-      <div className=" w-full px-4 py-2 border border-border rounded-md flex  justify-between  ">
+      <div className=" w-full px-4 py-2 border border-border rounded-md flex justify-between  ">
         <div className="  ">
           <span className=" mr-3 text-xs">CHECK-IN</span>
           <DatePicker
@@ -102,7 +102,7 @@ const SearchBar = () => {
 
         {/* ========================================= */}
 
-        <div className=" relative lg:left-5">
+        <div className=" relative left-5">
           <span className=" mr-3 text-xs    ">CHECK-OUT</span>
           <DatePicker
             title={"check Out"}

@@ -46,7 +46,6 @@ const NavBar = () => {
   };
 
 
-
   useEffect(() => {
     window.addEventListener("scroll", handleHideOnScroll);
     return () => {
@@ -61,20 +60,8 @@ const NavBar = () => {
       >
         <div className="flex">
           <Link to="/" className="">
-            <img src={BrandLogo} alt="brand logo" />
+            <img src={BrandLogo} className=" object-cover" alt="brand logo" />
           </Link>
-
-          <div className="hidden  pl-5 lg:pl-20  text-foreground font-bold md:flex items-end gap-3 lg:gap-8 ">
-            <Link to="/" className=" text-sm  ">
-              Home
-            </Link>
-            <Link to="/search" className="text-sm  ">
-              Search
-            </Link>
-            <Link to="footer" className="text-sm  ">
-              Contact
-            </Link>
-          </div>
         </div>
 
         <IoMenuOutline
@@ -84,8 +71,17 @@ const NavBar = () => {
         />
 
         <div
-          className={`hidden text-foreground md:flex justify-between items-end `}
+          className={`hidden  md:flex  items-end gap-8`}
         >
+          <Link to="/" className=" text-xs">
+              HOME
+            </Link>
+            <Link to="/search" className="text-xs  ">
+              SEARCH
+            </Link>
+            <Link to="#" className="text-xs  ">
+              CONTACT
+            </Link>
           {isLoggedIn ? (
             <div className="  flex items-end gap-4 lg:gap-8">
               <Link
@@ -100,26 +96,27 @@ const NavBar = () => {
               >
                 MY HOTELS
               </Link>
-              <div className="flex">
+              <div className="flex items-end">
                 <div className=" relative top-1 h-7 mr-5 border-l  border-black "></div>
                 <button
                   onClick={handleSignOut}
-                  className="relative top-[3px]  font-bold"
+                  className=" font-bold "
                 >
                   Log Out
                 </button>
               </div>
             </div>
+            
           ) : (
-            <>
-              <div className=" relative top-1 h-7 mr-5 border-l  border-black "></div>
+            <div className="flex items-end">
+              <div className="  h-7 mr-5 border-l  border-black "></div>
               <Link
                 to="/auth/sign-in"
-                className=" relative top-[3px]  font-bold  "
+                className=" font-bold  "
               >
                 Log In
               </Link>
-            </>
+            </div>
           )}
         </div>
       </nav>

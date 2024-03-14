@@ -102,7 +102,7 @@ const SearchPage = () => {
     <>
       <div className=" mb-20 mx-6  lg:mx-16 ">
         <div className=" flex flex-col  ">
-          <div className="">
+          <div className="p-5 bg-card shadow-lg">
             <SearchBar />
           </div>
           <div className="mt-5 mb-3 flex flex-col lg:flex-row justify-between gap-4 ">

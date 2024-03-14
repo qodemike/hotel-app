@@ -1,6 +1,4 @@
 
-const currentDate = new Date();
+const date = new Date()
 
-const nextDate = new Date(`${currentDate.getFullYear}-${currentDate.getMonth()}-${currentDate.getDate()+1}`)
-
-console.log(nextDate.toDateString())
+console.log(typeof date)
