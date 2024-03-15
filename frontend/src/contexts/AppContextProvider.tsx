@@ -10,15 +10,14 @@ interface Props {
 
 
 export const AppContextProvider = ({ children }: Props) => {
-  const [toast, setToast] = useState<ToastMessage | null>(null);
 
+  const [toast, setToast] = useState<ToastMessage | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
     <AppContext.Provider
       value={{
         showModal: (value: boolean) =>{  setIsVisible(value) },
-        showToast: (toastMessage) => { setToast(toastMessage)},
       }}
     >
       { isVisible && <div className="  fixed z-30 w-screen h-screen backdrop-grayscale bg-black bg-opacity-50  "></div>}

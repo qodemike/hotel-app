@@ -20,7 +20,7 @@ interface GuestInfoFormData {
 
 const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   const search = useSearchContext();
-  const { isAuthenticated } = useAuthContext()
+  const { user } = useAuthContext()
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -81,7 +81,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
         <form
           onSubmit={
-            isAuthenticated ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)
+            user ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)
           }
         >
           <div className="grid grid-cols-1 gap-4 items-center ">
@@ -163,7 +163,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
 
             {/* ===================================================================== */}
 
-            {isAuthenticated ? (
+            {user ? (
               <button className=" py-3 mt-2 rounded-lg  text-white font-medium border-2 border-solid border-white transition  hover:text-black hover:bg-white ">
                 BOOK NOW
               </button>

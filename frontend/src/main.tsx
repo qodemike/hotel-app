@@ -8,7 +8,7 @@ import { SearchContextProvider } from "./contexts/search/SearchContextProvider.t
 import AuthContextProvider from "./contexts/Auth/AuthContextProvider.tsx";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./index.css";
-
+import {Toaster} from '@/components/ui/toaster.tsx'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <SearchContextProvider>
           <AuthContextProvider>
           <RouterProvider router={router} />
+          <Toaster />
           </AuthContextProvider>
         </SearchContextProvider>
       </AppContextProvider>

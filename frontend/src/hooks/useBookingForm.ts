@@ -1,11 +1,10 @@
 import { useMutation } from "react-query";
-import { useAppContext } from "../contexts/AppContext";
 import { BookingFormData } from "../../../backend/entities/BookingFormData";
+import { toast } from "@/components/ui/use-toast";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const useBookingForm = () => {
-  const { showToast } = useAppContext();
 
   return useMutation({
     mutationFn: async (formData: BookingFormData) => {
@@ -26,10 +25,18 @@ const useBookingForm = () => {
       }
     },
     onSuccess: () => {
-      showToast({ message: "Booking Saved!", type: "SUCCESS" });
+      toast({
+        variant: "default",
+        title: "Booking Saved Successfully!",
+        description: "Booking was saved successfully!"
+      })
     },
     onError: () => {
-      showToast({ message: "Error saving booking", type: "ERROR" });
+      toast({
+        variant: "destructive",
+        title: "Booking Failed to Save!",
+        description: "An error occurred while saving booking!"
+      })
     },
   });
 };

@@ -28,11 +28,9 @@ const NavBar = () => {
   const menu = useRef<HTMLDivElement>({} as HTMLDivElement);
 
   const handleOpenMenu = () => {
-    showModal(true);
     menu.current.style.transform = "translateX(0%)";
   };
   const handleCloseMenu = () => {
-    showModal(false);
     menu.current.style.transform = "translateX(100%)";
   };
 

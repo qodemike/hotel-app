@@ -81,7 +81,7 @@ const MyHotelCard = ({ hotel }: Props) => {
             <AlertDialog>
               <AlertDialogTrigger>
                 <Button
-                  className="flex justify-center items-center gap-1"
+                  className="w-full bg-red-700 hover:bg-red-800 rounded  flex justify-center items-center gap-1"
                 >
                   <TfiTrash size={20} />
                   Delete Issue
@@ -97,7 +97,7 @@ const MyHotelCard = ({ hotel }: Props) => {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => console.log(hotel._id)}>
+                  <AlertDialogAction onClick={() => mutate(hotel._id)}>
                     Confirm
                   </AlertDialogAction>
                 </AlertDialogFooter>

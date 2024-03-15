@@ -1,12 +1,11 @@
 import { useMutation, useQueryClient } from "react-query";
-import { useAppContext } from "../contexts/AppContext";
 import { useAuthContext } from "../contexts/Auth/AuthContext";
+import { toast } from "@/components/ui/use-toast";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const useSignOut = () => {
   const queryClient = useQueryClient();
-  const { showToast } = useAppContext();
   const {setUser} = useAuthContext()
 
   return useMutation({
@@ -17,12 +16,21 @@ const useSignOut = () => {
       });
     },
     onSuccess: async () => {
+      toast({
+        variant: "default",
+        title: "Signed Out!",
+        description: "Sign out was successful"
+      })
       setUser(null)
       await queryClient.invalidateQueries("userPayload");
-      showToast({ message: "Signed Out!", type: "SUCCESS" });
+      
     },
     onError: (error: Error) => {
-      showToast({ message: error.message, type: "ERROR" });
+      toast({
+        variant: "destructive",
+        title: error.message,
+        description: "Failed to Sign Out.Try again!"
+      })
     },
   });
 };
