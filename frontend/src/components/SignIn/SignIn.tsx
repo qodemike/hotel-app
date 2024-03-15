@@ -17,7 +17,7 @@ const SignIn = () => {
     handleSubmit,
   } = useForm<SignInFormData>();
 
-  const {mutate, isLoading} = useLogin();
+  const {mutate, isLoading,} = useLogin();
 
   const onSubmit = handleSubmit((data) => {
     mutate(data);

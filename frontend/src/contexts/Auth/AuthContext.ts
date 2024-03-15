@@ -1,13 +1,18 @@
-import { createContext, useContext } from "react";
+import { Dispatch, SetStateAction, createContext, useContext } from "react";
 
-interface AuthContextType{
-    isAuthenticated: Boolean;
+export interface UserPayload {
+  userId: string;
+}
+
+interface AuthContextType {
+  user: UserPayload | null;
+  setUser: Dispatch<SetStateAction<UserPayload | null>>;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const useAuthContext = () => {
-    return useContext(AuthContext);
-}
+  return useContext(AuthContext);
+};
 
 export default AuthContext;

@@ -4,8 +4,8 @@ const SearchResultsSkeletons = () => {
   const skeletons = Array(5).fill(0);
   return (
     <div className="flex flex-col gap-6">
-      {skeletons.map((skeleton) => (
-        <div className=" lg:p-3 bg-card drop-shadow-lg grid grid-cols-1 xl:grid-cols-2  ">
+      {skeletons.map((skeleton, index) => (
+        <div key={index} className=" lg:p-3 bg-card drop-shadow-lg grid grid-cols-1 xl:grid-cols-2  ">
           <Skeleton className=" h-[250px] " />
 
           {/* =============================================== */}

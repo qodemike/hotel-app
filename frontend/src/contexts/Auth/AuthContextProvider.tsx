@@ -1,24 +1,26 @@
-import React, { ReactNode, useState } from "react";
-import AuthContext from "./AuthContext";
-import APICLIENT from "../../services/api-client";
+import { ReactNode, useEffect, useState } from "react";
+import AuthContext, { UserPayload } from "./AuthContext";
 import { useQuery } from "react-query";
+import APICLIENT from "../../services/api-client";
+
+const apiClient = new APICLIENT();
 
 interface Props {
   children: ReactNode;
 }
 
-const apiClient = new APICLIENT();
-
 const AuthContextProvider = ({ children }: Props) => {
-  const [] = useState(false);
+  const [user, setUser] = useState<UserPayload | null>(null);
 
-  const {  } = useQuery({
-    queryKey: ["authToken"],
-    queryFn: () => apiClient.get("/api/auth/validate-token"),
+  useQuery({
+    queryKey: ["userPayload"],
+    queryFn: () => apiClient.get("/api/auth/validate-token").then((data) => {setUser(data as UserPayload)} ),
+    retry: false
   });
 
+  
   return (
-    <AuthContext.Provider value={{ }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

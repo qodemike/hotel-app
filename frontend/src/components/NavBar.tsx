@@ -20,7 +20,7 @@ const NavBar = () => {
   ];
 
   const {  showModal } = useAppContext();
-  const { isAuthenticated } = useAuthContext()
+  const { user } = useAuthContext()
   const { mutate } = useSignOut();
 
   const handleSignOut = () => mutate();
@@ -57,6 +57,7 @@ const NavBar = () => {
         <div className={`hidden  md:flex  items-end gap-8`}>
           {links.map((link) => (
             <Link
+            key={link.name}
               to={link.href}
               className={`text-xs transition-all duration-100 `}
             >
@@ -64,10 +65,11 @@ const NavBar = () => {
             </Link>
           ))}
 
-          { isAuthenticated ? (
+          { user ? (
             <div className="  flex items-end gap-4 lg:gap-8">
               {protectedlinks.map((link) => (
                 <Link
+                  key={link.name}
                   className={` text-xs  flex md:flex-col items-center `}
                   to={link.href}
                 >
@@ -112,7 +114,7 @@ const NavBar = () => {
             Contact
           </Link>
         </div>
-        { isAuthenticated ? (
+        { user ? (
           <>
             <Link
               className=" text-xs  font-light  text-neutral-300 flex items-center hover:text-white   "

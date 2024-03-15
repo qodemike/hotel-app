@@ -1,11 +1,13 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useAppContext } from "../contexts/AppContext";
+import { useAuthContext } from "../contexts/Auth/AuthContext";
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const useSignOut = () => {
   const queryClient = useQueryClient();
   const { showToast } = useAppContext();
+  const {setUser} = useAuthContext()
 
   return useMutation({
     mutationFn: async () => {
@@ -15,7 +17,8 @@ const useSignOut = () => {
       });
     },
     onSuccess: async () => {
-      await queryClient.invalidateQueries("validateToken");
+      setUser(null)
+      await queryClient.invalidateQueries("userPayload");
       showToast({ message: "Signed Out!", type: "SUCCESS" });
     },
     onError: (error: Error) => {

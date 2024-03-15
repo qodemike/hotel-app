@@ -28,6 +28,8 @@ class APICLIENT {
     const body = await response.json();
 
     if (!response.ok) throw new Error(body.message);
+
+    return body
   };
 
   update = async <T>(data: T, route: string) => {

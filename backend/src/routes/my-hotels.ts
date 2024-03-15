@@ -61,8 +61,8 @@ router.post(
       await hotel.save();
 
       res.status(201).send(hotel);
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
       res.status(500).json({ message: "Something went wrong!" });
     }
   }
@@ -76,8 +76,6 @@ router.put(
   async (req: Request, res: Response) => {
     try {
       const updatedHotel: HotelType = req.body;
-
-      console.log(updatedHotel)
 
       updatedHotel.lastUpdated = new Date();
 
