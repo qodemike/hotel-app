@@ -4,7 +4,7 @@ import { HotelType } from "../../../backend/entities";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 
-const API_BASE_URL = import.meta.env.VITE_BASE_URL || '';
+const API_BASE_URL = import.meta.env.VITE_BASE_API || '';
 const apiClient = new APICLIENT();
 const route = "/api/my-hotels/";
 

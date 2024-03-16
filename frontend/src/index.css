@@ -51,7 +51,10 @@
   .auth-input{
     @apply w-full h-[43px] px-5 my-1  rounded-md outline outline-0 focus:outline-[3px] outline-blue-300 transition-all  ;
   }
-  .hotel-attribute{
+  .hotelform-input{
+    @apply  w-full mt-1 p-2 border border-border rounded outline outline-0 focus:outline-2 outline-blue-300 transition-all duration-75
+  }
+  .hoteldescription-attribute{
     @apply p-2 border-2 border-gray-400 rounded-sm  font-medium flex items-center  flex-1 ;
   }
 }

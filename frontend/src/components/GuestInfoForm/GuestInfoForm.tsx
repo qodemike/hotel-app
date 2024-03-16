@@ -110,23 +110,11 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                     mode="single"
                     selected={checkIn}
                     onSelect={(date) => setValue("checkIn", date!)}
-                    disabled={(date) => date < new Date(new Date().getDate())  }
+                    disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
                   />
                 </PopoverContent>
               </Popover>
-              {/* <DatePicker
-                required
-                selected={checkIn}
-                onChange={(date) => setValue("checkIn", date as Date)}
-                selectsStart
-                startDate={checkIn}
-                endDate={checkOut}
-                minDate={minDate}
-                maxDate={maxDate}
-                placeholderText="Check-in Date"
-                className="min-w-full p-2 mt-2 bg-silver hover:bg-white rounded-lg  focus:outline-none "
-                wrapperClassName="min-w-full"
-              /> */}
+              
             </div>
             <div className="flex flex-col ">
               <span className="text-muted ">Check-out</span>
@@ -149,24 +137,12 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                     mode="single"
                     selected={checkIn}
                     onSelect={(date) => setValue("checkOut", date!)}
-                    disabled={minDate}
+                    disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
+
                   />
                 </PopoverContent>
               </Popover>
-              {/* <DatePicker
-                {...register("checkOut")}
-                required
-                selected={checkOut}
-                onChange={(date) => setValue("checkOut", date as Date)}
-                selectsStart
-                startDate={checkIn}
-                endDate={checkOut}
-                minDate={minDate}
-                maxDate={maxDate}
-                placeholderText="Check-out Date"
-                className="p-2 mt-2 min-w-full rounded-lg focus:outline-none "
-                wrapperClassName="min-w-full"
-              /> */}
+              
             </div>
             {/* ===================================================================== */}
 

@@ -9,10 +9,10 @@ const FacilitiesSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-card border-2 border-neutral-300 p-7  " >
+    <div className="bg-white border-2 border-neutral-300 p-7  " >
       <div className="mb-5">
-      <h3 className="text-lg font-bold inline ">3. FACILITIES</h3>
-      <span className="text-sm  ml-1"> (select facilities available in your hotel)</span>
+      <h3 className="text-lg font-bold inline ">4. FACILITIES</h3>
+      <span className="text-sm  ml-2 text-muted-foreground font-bold"> (Select facilities available in your hotel)</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
         {hotelFacilities.map((facility, index) => (

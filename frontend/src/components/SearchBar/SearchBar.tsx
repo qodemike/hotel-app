@@ -114,7 +114,7 @@ const SearchBar = () => {
                 mode="single"
                 selected={checkIn}
                 onSelect={(date) => setCheckIn(date!)}
-                disabled={minDate}
+                disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
               />
             </PopoverContent>
           </Popover>
@@ -141,23 +141,11 @@ const SearchBar = () => {
                 mode="single"
                 selected={checkOut}
                 onSelect={(date) => setCheckOut(date!)}
-                disabled={minDate}
+                disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
               />
             </PopoverContent>
           </Popover>
-
-          {/* <DatePicker
-            title={"check Out"}
-            selected={checkOut}
-            onChange={(date) => setCheckOut(date as Date)}
-            selectsStart
-            startDate={checkIn}
-            endDate={checkOut}
-            minDate={minDate}
-            maxDate={maxDate}
-            placeholderText="Check-out Date"
-            className=" w-[110px] mt-1 md:text-lg font-medium bg-transparent focus:outline-none "
-          /> */}
+          
         </div>
       </div>
 

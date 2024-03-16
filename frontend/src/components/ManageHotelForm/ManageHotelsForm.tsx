@@ -7,12 +7,13 @@ import ImagesSection from "./ImagesSection";
 import { HotelType } from "../../../../backend/entities";
 import { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
+import LocationSection, { Coordinates } from "./LocationSection";
 
 
 export type HotelFormData = {
   name: string;
-  city: string;
-  country: string;
+  address: string;
+  coordinates: Coordinates;
   description: string;
   type: string;
   pricePerNight: number;
@@ -47,14 +48,15 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
   const onSubmit = (formDataJson: HotelFormData) => {
     const formData = new FormData();
 
-    // If In edit mode
+    /**
+     * If edit mode
+     */
     if (hotel) {
       formData.append("hotelId", hotel._id);
     }
 
     formData.append("name", formDataJson.name);
-    formData.append("city", formDataJson.city);
-    formData.append("country", formDataJson.country);
+    formData.append("address", formDataJson.address);
     formData.append("description", formDataJson.description);
     formData.append("type", formDataJson.type);
     formData.append("pricePerNight", formDataJson.pricePerNight.toString());
@@ -90,6 +92,7 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
       >
         <h2 className="text-3xl font-bold ">Please fill the form below</h2>
         <DetailsSection />
+        <LocationSection/>
         <TypeSection />
         <FacilitiesSection />
         <GuestsSection />

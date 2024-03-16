@@ -2,7 +2,7 @@ import { useMutation } from "react-query";
 import { BookingFormData } from "../../../backend/entities/BookingFormData";
 import { toast } from "@/components/ui/use-toast";
 
-const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_BASE_API;
 
 const useBookingForm = () => {
 

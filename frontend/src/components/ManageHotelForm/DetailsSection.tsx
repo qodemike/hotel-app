@@ -8,76 +8,65 @@ const DetailsSection = () => {
   } = useFormContext<HotelFormData>();
 
   return (
-    <div className="bg-card border-2 border-neutral-300  p-7  flex flex-col gap-4">
+    <div className="bg-white border-2 border-neutral-300  p-7  flex flex-col gap-4">
       <h3 className=" text-lg font-bold">1. HOTEL INFORMATION</h3>
-      <label className="text-gray-700  text-sm font-bold flex-1">
+      <label className=" text-sm font-bold ">
         Hotel Name
         <input
           {...register("name", { required: "This field is required" })}
           type="text"
-          className="border border-gray-400 focus:outline-none   focus:border-blue-500 rounded w-full py-2 px-2 font-normal"
-        ></input>
-        {errors.name && (<span className="text-red-500">{errors.name.message}</span>)}
+          className=" hotelform-input"
+        />
+        {errors.name && (
+          <span className="text-red-500">{errors.name.message}</span>
+        )}
       </label>
 
-      <div className="flex gap-4">
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          City
-          <input
-            type="text"
-            className="border border-gray-400 focus:outline-none   focus:border-blue-500 rounded w-full py-2 px-2 font-normal"
-            {...register("city", { required: "This field is required" })}
-          ></input>
-          {errors.city && (
-            <span className="text-red-500">{errors.city.message}</span>
-          )}
+      <div>
+        <label className=" text-sm font-bold">
+          Description
+          <span className="text-xs ml-1 ">(maximum 1000 characters)</span>
         </label>
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          Country
-          <input
-            type="text"
-            className="border border-gray-400 focus:outline-none   focus:border-blue-500 rounded w-full py-2 px-2 font-normal"
-            {...register("country", { required: "This field is required" })}
-          ></input>
-          {errors.country && (
-            <span className="text-red-500">{errors.country.message}</span>
-          )}
-        </label>
-      </div>
-      <div >
-      <label className="text-gray-700 text-sm font-bold  flex-1"> Description <span className="text-xs  text-neutral-500 ml-1 ">(maximum 1000 characters)</span></label>
         <textarea
           rows={5}
           placeholder="Write a description of your hotel"
-          className="border border-gray-400 focus:outline-none   focus:border-blue-500 rounded w-full  p-4 font-normal  mt-1"
-          {...register("description", { required: "This field is required", max: 'Exceeding 1000 characters limit' })}
-        ></textarea>
+          className=" hotelform-input w-full  p-4"
+          {...register("description", {
+            required: "This field is required",
+            max: "Exceeding 1000 characters limit",
+          })}
+        />
         {errors.description && (
           <span className="text-red-500">{errors.description.message}</span>
         )}
       </div>
-      <label className="text-gray-700 text-sm font-bold max-w-[50%]  ">
-        <div className="relative h-[58px] overflow-hidden">
-        <div className="absolute inset-0 font-bold text-lg top-5 pt-1 pl-3 bg-silver  border border-gray-400 rounded-tl rounded-bl  w-8 ">$</div>
-        Price Per Night
-        <input
-          type="number"
-          min={1}
-          className="border border-gray-400   focus:border-blue-500 focus:outline-none rounded w-full py-2 pl-12 px-2 font-normal"
-          {...register("pricePerNight", { required: "This field is required" })}
-        />
+      <div className=" text-sm font-bold md:max-w-[50%]  ">
+        <label>Price Per Night</label>
+        <div className="h-[37px] relative overflow-hidden  mt-1 rounded  border border-border outline outline-0 focus:outline-2 outline-blue-300  ">
+          <input
+            type="number"
+            min={1}
+            className=" w-full h-full  p-2 pl-10 focus:outline-none  "
+            {...register("pricePerNight", {
+              required: "This field is required",
+            })}
+          />
+          <div className="absolute inset-0 text-lg w-8 bg-background  border-r flex justify-center items-center">
+            <span>$</span>
+          </div>
         </div>
         {errors.pricePerNight && (
           <span className="text-red-500">{errors.pricePerNight.message}</span>
         )}
-      </label>
-      <label className="text-gray-700 text-sm    font-bold max-w-[50%]">
-        Star Rating
+      </div>
+
+      <div className=" text-sm  font-bold md:max-w-[50%]">
+        <label>Star Rating</label>
         <select
           {...register("starRating", {
             required: "This field is required",
           })}
-          className="border border-gray-400 focus:border-blue-500 focus:outline-none rounded w-full p-2  text-gray-700 font-normal"
+          className=" hotelform-input "
         >
           <option value="" className="text-sm font-bold">
             Select a Rating
@@ -91,7 +80,7 @@ const DetailsSection = () => {
         {errors.starRating && (
           <span className="text-red-500">{errors.starRating.message}</span>
         )}
-      </label>
+      </div>
     </div>
   );
 };

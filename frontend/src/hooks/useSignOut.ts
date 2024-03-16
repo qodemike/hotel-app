@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { useAuthContext } from "../contexts/Auth/AuthContext";
 import { toast } from "@/components/ui/use-toast";
 
-const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_BASE_API;
 
 const useSignOut = () => {
   const queryClient = useQueryClient();
