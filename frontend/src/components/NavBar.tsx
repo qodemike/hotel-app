@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { useAppContext } from "../contexts/AppContext";
 import BrandLogo from "../assets/Logo-black.png";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSignOut from "../hooks/useSignOut";
 import { useAuthContext } from "../contexts/Auth/AuthContext";
 
@@ -19,9 +18,20 @@ const NavBar = () => {
     { name: "MY HOTELS", href: "/my-hotels" },
   ];
 
-  const {  showModal } = useAppContext();
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { mutate } = useSignOut();
+
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        setIsAtTop(false)
+        return
+      };
+      setIsAtTop(true);
+    });
+  }, []);
 
   const handleSignOut = () => mutate();
 
@@ -34,11 +44,10 @@ const NavBar = () => {
     menu.current.style.transform = "translateX(100%)";
   };
 
-
   return (
     <>
       <nav
-        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background   flex justify-between items-center transition duration-500  `}
+        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background ${!isAtTop && "shadow-md"}  flex justify-between items-center transition duration-300`}
       >
         <div className="flex">
           <Link to="/" className="">
@@ -55,7 +64,7 @@ const NavBar = () => {
         <div className={`hidden  md:flex  items-end gap-8`}>
           {links.map((link) => (
             <Link
-            key={link.name}
+              key={link.name}
               to={link.href}
               className={`text-xs transition-all duration-100 `}
             >
@@ -63,7 +72,7 @@ const NavBar = () => {
             </Link>
           ))}
 
-          { user ? (
+          {user ? (
             <div className="  flex items-end gap-4 lg:gap-8">
               {protectedlinks.map((link) => (
                 <Link
@@ -112,7 +121,7 @@ const NavBar = () => {
             Contact
           </Link>
         </div>
-        { user ? (
+        {user ? (
           <>
             <Link
               className=" text-xs  font-light  text-neutral-300 flex items-center hover:text-white   "

@@ -1,4 +1,8 @@
 
-const date = new Date()
+const date = new Date(new Date().toDateString())
 
-console.log(typeof date)
+console.log(date.toDateString())
+
+
+
+

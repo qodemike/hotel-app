@@ -19,7 +19,7 @@ export type SearchParams = {
 };
 
 const useSearch = (searchParams: SearchParams) => {
-  // Create a  query string parameter
+  // Create a query string parameter
   const queryParams = new URLSearchParams();
 
   queryParams.append("destination", searchParams.destination || "");

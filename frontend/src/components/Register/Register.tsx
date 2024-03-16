@@ -28,7 +28,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="">
+      <div className=" py-20">
         <form className=" flex flex-col gap-5 " onSubmit={onSubmit}>
           <h2 className=" self-center text-3xl  font-bold">
             Create an Account
@@ -44,7 +44,7 @@ const Register = () => {
                 {...register("firstName", {
                   required: "first name field is required",
                 })}
-              ></input>
+              />
               {errors.firstName && (
                 <span className="text-sm text-red-500">{errors.firstName.message}</span>
               )}
@@ -60,7 +60,7 @@ const Register = () => {
                 {...register("lastName", {
                   required: "last name field is required",
                 })}
-              ></input>
+              />
               {errors.lastName && (
                 <span className="text-sm text-red-500">{errors.lastName.message}</span>
               )}
@@ -74,7 +74,7 @@ const Register = () => {
               className="auth-input "
               placeholder="Enter your email"
               {...register("email", { required: "Email is required" })}
-            ></input>
+            />
             {errors.email && (
               <span className="text-sm text-red-500">{errors.email.message}</span>
             )}
@@ -95,7 +95,7 @@ const Register = () => {
                   message: "Password must be at least 6 characters",
                 },
               })}
-            ></input>
+            />
             {errors.password && (
               <span className="text-sm text-red-500">{errors.password.message}</span>
             )}
@@ -118,7 +118,7 @@ const Register = () => {
                   }
                 },
               })}
-            ></input>
+            />
             {errors.confirmPassword && (
               <span className="text-sm text-red-500">
                 {errors.confirmPassword.message}

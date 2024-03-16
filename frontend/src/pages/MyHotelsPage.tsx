@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
-import { BsBuilding } from "react-icons/bs";
-import { BiHotel, BiMoney, BiStar } from "react-icons/bi";
-import { FaLocationDot } from "react-icons/fa6";
 import QueryHotel from "../hooks/useMyHotels";
 import MiniFooter from "../components/MiniFooter";
-import { TfiTrash } from "react-icons/tfi";
 import { Oval } from "react-loader-spinner";
-import { BiEdit } from "react-icons/bi";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
-import Button from "../components/Button";
 import MyHotelCard from "../components/MyHotelCard";
 
 const queryHotel = new QueryHotel();
@@ -20,8 +14,8 @@ const MyHotelsPage = () => {
     <>
       <section className=" mx-5 md:mx-10 lg:mx-16 ">
         <div className=" flex flex-col md:flex-row justify-between items-center lg:items-end gap-4 md:gap-0">
-          <div className="">
-            <h1 className="text-3xl font-poppins font-bold inline">My Hotel Listings</h1>
+          <div >
+            <h1 className="text-3xl font-bold inline">My Hotels</h1>
             <span className="font-md font-bold ml-2 ">
               {`(${hotelData?.length})`}
             </span>

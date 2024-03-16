@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useLogin from "../../hooks/useSignIn";
+import useSignin from "../../hooks/useSignIn";
 import googleIcon from "../../assets/google.svg";
 import { Oval } from "react-loader-spinner";
 
@@ -17,7 +17,7 @@ const SignIn = () => {
     handleSubmit,
   } = useForm<SignInFormData>();
 
-  const {mutate, isLoading,} = useLogin();
+  const {mutate, isLoading,} = useSignin();
 
   const onSubmit = handleSubmit((data) => {
     mutate(data);
@@ -25,7 +25,7 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="w-full max-w-xl">
+      <div className="w-full max-w-xl m-auto  pt-20">
         <form className=" flex flex-col gap-4" onSubmit={onSubmit}>
           <h2 className="text-3xl font-bold self-center">Login</h2>
           <div>
@@ -37,7 +37,7 @@ const SignIn = () => {
               {...register("email", { required: "Enter your email" })}
             ></input>
             {errors.email && (
-              <span className="text-red-500">{errors.email.message}</span>
+              <span className={`text-red-500 text-sm`}>{errors.email.message}</span>
             )}
           </div>
           <div>
@@ -56,7 +56,7 @@ const SignIn = () => {
               })}
             ></input>
             {errors.password && (
-              <span className="text-red-500">{errors.password.message}</span>
+              <span className="text-red-500 text-sm">{errors.password.message}</span>
             )}
           </div>
           <button

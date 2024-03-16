@@ -14,7 +14,7 @@ const AuthPage = () => {
           <img src={Logo} alt="brand logo" />
         </Link>
       </div>
-      <div className="  min-h-screen px-4 py-20 flex justify-center items-center   ">
+      <div className="  max-w-[750px] px-4  m-auto   ">
           <Outlet />
       </div>
     </div>

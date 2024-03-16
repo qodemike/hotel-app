@@ -2,9 +2,15 @@ import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSearchContext } from "../../contexts/search/SearchContext";
-import 'react-datepicker/dist/react-datepicker.css';
-import './CustomDatePicker.css'
+import "react-datepicker/dist/react-datepicker.css";
+import "./CustomDatePicker.css";
 import { useAuthContext } from "../../contexts/Auth/AuthContext";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 
 interface Props {
   hotelId: string;
@@ -20,7 +26,7 @@ interface GuestInfoFormData {
 
 const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   const search = useSearchContext();
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -80,14 +86,35 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
         {/* ===================================================================== */}
 
         <form
-          onSubmit={
-            user ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)
-          }
+          onSubmit={user ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)}
         >
           <div className="grid grid-cols-1 gap-4 items-center ">
-            <div>
-              <span className="text-muted ">Check-in</span>
-              <DatePicker
+            <div className="flex flex-col">
+              <span className="text-muted  ">Check-in</span>
+              <Popover>
+                <PopoverTrigger>
+                  <div className="w-full mt-2  py-2 px-2 bg-white rounded-lg flex justify-start   ">
+                    <span>
+                      {checkIn
+                        .toLocaleDateString()
+                        .split("/")
+                        .map((element) =>
+                          element.length === 1 ? "0" + element : element
+                        )
+                        .join("/")}
+                    </span>
+                  </div>
+                </PopoverTrigger>
+                <PopoverContent className="bg-card">
+                  <Calendar
+                    mode="single"
+                    selected={checkIn}
+                    onSelect={(date) => setValue("checkIn", date!)}
+                    disabled={(date) => date < new Date(new Date().getDate())  }
+                  />
+                </PopoverContent>
+              </Popover>
+              {/* <DatePicker
                 required
                 selected={checkIn}
                 onChange={(date) => setValue("checkIn", date as Date)}
@@ -99,12 +126,35 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                 placeholderText="Check-in Date"
                 className="min-w-full p-2 mt-2 bg-silver hover:bg-white rounded-lg  focus:outline-none "
                 wrapperClassName="min-w-full"
-              />
+              /> */}
             </div>
-            <div>
+            <div className="flex flex-col ">
               <span className="text-muted ">Check-out</span>
-              <DatePicker
-              {...register('checkOut',  )}
+              <Popover>
+                <PopoverTrigger>
+                  <div className="w-full mt-2  py-2 px-2 bg-white rounded-lg flex justify-start   ">
+                    <span>
+                      {checkIn
+                        .toLocaleDateString()
+                        .split("/")
+                        .map((element) =>
+                          element.length === 1 ? "0" + element : element
+                        )
+                        .join("/")}
+                    </span>
+                  </div>
+                </PopoverTrigger>
+                <PopoverContent className="bg-card">
+                  <Calendar
+                    mode="single"
+                    selected={checkIn}
+                    onSelect={(date) => setValue("checkOut", date!)}
+                    disabled={minDate}
+                  />
+                </PopoverContent>
+              </Popover>
+              {/* <DatePicker
+                {...register("checkOut")}
                 required
                 selected={checkOut}
                 onChange={(date) => setValue("checkOut", date as Date)}
@@ -116,7 +166,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                 placeholderText="Check-out Date"
                 className="p-2 mt-2 min-w-full rounded-lg focus:outline-none "
                 wrapperClassName="min-w-full"
-              />
+              /> */}
             </div>
             {/* ===================================================================== */}
 

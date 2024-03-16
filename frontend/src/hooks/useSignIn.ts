@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SignInFormData } from "../components/SignIn/SignIn";
 import APICLIENT from "../services/api-client";
-import { useAuthContext } from "../contexts/Auth/AuthContext";
 import { toast } from "@/components/ui/use-toast";
 
 const apiClient = new APICLIENT();
@@ -11,8 +10,6 @@ const useSignin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryClient = useQueryClient();
-
-  const { setUser } = useAuthContext();
 
   return useMutation({
     mutationFn: (data: SignInFormData) =>
