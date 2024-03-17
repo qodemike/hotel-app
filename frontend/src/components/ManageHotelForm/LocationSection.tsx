@@ -47,23 +47,20 @@ const LocationSection = () => {
     }
   };
 
-  if (loadError) return <div>Error loading maps. Refresh</div>;
-
   return (
     <div className="bg-white border-2 border-neutral-300  p-7">
       <div className="mb-8">
         <h3 className=" mb-3 text-lg font-bold">2. HOTEL LOCATION</h3>
         <p className="text-sm">
-          Find location on the map and <span className="font-bold">Double click</span> to place a marker. 
+          Find location on the map and{" "}
+          <span className="font-bold">Double click</span> to place a marker.
         </p>
       </div>
       <div className=" lg:grid  lg:grid-cols-[1fr_1fr]">
         <div className="mb-5 flex flex-col gap-2">
-          <span className="text-sm  font-bold">
-            Selected Location Address
-          </span>
+          <span className="text-sm  font-bold">Selected Location Address</span>
           <span className="p-2 border flex items-center gap-2">
-            <FaLocationDot size={18}  />
+            <FaLocationDot size={18} />
             {getValues().address || (
               <span className="text-muted-foreground ">
                 {"Pick a location from the map"}
@@ -71,7 +68,6 @@ const LocationSection = () => {
             )}
           </span>
         </div>
-        
       </div>
 
       <div className=" h-[400px]">
@@ -86,6 +82,11 @@ const LocationSection = () => {
           </GoogleMap>
         ) : (
           <Skeleton className="w-full h-full" />
+        )}
+        {loadError && (
+          <div className="w-full h-full text-destructive ">
+            Could not load the Map. Refresh the page
+          </div>
         )}
       </div>
     </div>

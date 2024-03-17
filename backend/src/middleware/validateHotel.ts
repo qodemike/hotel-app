@@ -7,7 +7,6 @@ const coordinateSchema = Joi.object({
 });
 
 const validateHotel = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.body)
 
   const createHotelSchema = Joi.object({
     name: Joi.string().min(2).max(200).required(),

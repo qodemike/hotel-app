@@ -5,7 +5,6 @@ import verifyToken from "../middleware/auth";
 import { HotelType } from "../../entities/HotelType";
 import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import validateHotel from "../middleware/validateHotel";
-import validateHotelUpdate from "../middleware/validateHotelUpdate";
 
 const router = express.Router();
 
@@ -48,6 +47,7 @@ router.post(
   async (req: Request, res: Response) => {
     try {
       const imageFiles = req.files as Express.Multer.File[];
+      
       // Returns a URL after uploading to Cloudinary.
       const imageUrls = await uploadToCloudinary(imageFiles);
 
@@ -59,6 +59,7 @@ router.post(
         lastUpdated: new Date(),
         userId: req.userId,
       });
+
       await hotel.save();
 
       res.status(201).send(hotel);
@@ -73,8 +74,8 @@ router.post(
 router.put(
   "/:hotelId",
   verifyToken,
-  validateHotelUpdate,
   upload.array("imageFiles"),
+  validateHotel,
   async (req: Request, res: Response) => {
     try {
       const updatedHotel: HotelType = req.body;
