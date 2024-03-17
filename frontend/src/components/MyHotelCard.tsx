@@ -41,32 +41,31 @@ const MyHotelCard = ({ hotel }: Props) => {
           />
           <div className=" px-6 lg:px-0 lg:pr-10 self-center">
             <h2 className="text-2xl font-bold mb-4  ">{hotel.name}</h2>
-            <div className="whitespace-pre-line text-sm  ">
+            <div className="whitespace-pre-line text-[15px]">
               {hotel.description.substring(0, 300) + "..."}
             </div>
-            
           </div>
         </div>
 
         <div className="px-5 pb-5 lg:px-0 flex flex-col gap-5">
           <div className=" flex flex-col lg:flex-row justify-between gap-2">
-            <div className=" hoteldescription-attribute ">
-              <FaLocationDot className="mr-1" />
-              {hotel.city}, {hotel.country}
+            <div className=" hotel-attribute ">
+              <FaLocationDot />
+              <span className="">{hotel.address}</span>
             </div>
-            <div className=" hoteldescription-attribute ">
-              <BsBuilding className="mr-1" />
+            <div className=" hotel-attribute ">
+              <BsBuilding />
               {hotel.type}
             </div>
-            <div className=" hoteldescription-attribute ">
-              <BiMoney className="mr-1" />${hotel.pricePerNight} per night
+            <div className=" hotel-attribute ">
+              <BiMoney />${hotel.pricePerNight} per night
             </div>
-            <div className=" hoteldescription-attribute ">
-              <BiHotel className="mr-1" />
+            <div className=" hotel-attribute ">
+              <BiHotel />
               {hotel.adultCount} adults, {hotel.childCount} children
             </div>
-            <div className=" hoteldescription-attribute ">
-              <BiStar className="mr-1" />
+            <div className=" hotel-attribute ">
+              <BiStar />
               {hotel.starRating} Star Rating
             </div>
           </div>

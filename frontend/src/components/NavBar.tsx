@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import BrandLogo from "../assets/HotelApp-black.svg";
 import { IoMenuOutline } from "react-icons/io5";
-import { IoCloseOutline } from "react-icons/io5";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import useSignOut from "../hooks/useSignOut";
 import { useAuthContext } from "../contexts/Auth/AuthContext";
+import RightSheet from "./RightSheet";
 
 const NavBar = () => {
   const links = [
@@ -20,6 +20,7 @@ const NavBar = () => {
 
   const { user } = useAuthContext();
   const { mutate } = useSignOut();
+  const [isDisplayingSheet, setIsDisplayingSheet] = useState(false);
 
   const [isAtTop, setIsAtTop] = useState(true);
 
@@ -35,15 +36,6 @@ const NavBar = () => {
 
   const handleSignOut = () => mutate();
 
-  const menu = useRef<HTMLDivElement>({} as HTMLDivElement);
-
-  const handleOpenMenu = () => {
-    menu.current.style.transform = "translateX(0%)";
-  };
-  const handleCloseMenu = () => {
-    menu.current.style.transform = "translateX(100%)";
-  };
-
   return (
     <>
       <nav
@@ -51,12 +43,12 @@ const NavBar = () => {
           !isAtTop && "shadow-md"
         }  flex justify-between items-center transition duration-300`}
       >
-          <Link to="/" className="">
-            <img src={BrandLogo} />
-          </Link>
+        <Link to="/" className="">
+          <img src={BrandLogo} />
+        </Link>
 
         <IoMenuOutline
-          onClick={handleOpenMenu}
+          onClick={() => setIsDisplayingSheet(true)}
           size={50}
           className=" md:hidden text-primary cursor-pointer "
         />
@@ -100,63 +92,12 @@ const NavBar = () => {
           )}
         </div>
       </nav>
-
-      <div
-        ref={menu}
-        className={`fixed md:hidden z-40 top-0 right-0 w-[60vw] h-screen p-10 py-20 bg-primary  flex flex-col gap-10 justify-center transition translate-x-full `}
-      >
-        <IoCloseOutline
-          onClick={handleCloseMenu}
-          size={40}
-          className="absolute top-0 right-0 m-5 text-white cursor-pointer"
-        />
-        <div className="h-full     text-neutral-300 flex flex-col gap-8 ">
-          <Link to="/" className=" text-sm hover:text-white ">
-            Home
-          </Link>
-          <Link to="/search" className="text-sm hover:text-white ">
-            Search
-          </Link>
-          <Link to="footer" className="text-sm hover:text-white ">
-            Contact
-          </Link>
-        </div>
-        {user ? (
-          <>
-            <Link
-              className=" text-xs  font-light  text-neutral-300 flex items-center hover:text-white   "
-              to="/my-bookings"
-            >
-              MY BOOKINGS
-            </Link>
-            <Link
-              className=" text-xs text-neutral-300 hover:text-white flex items-center"
-              to="/my-hotels"
-            >
-              MY HOTELS
-            </Link>
-            <div className="flex">
-              <div className=" relative top-1 h-7 mr-5 border-l  border-neutral-100 "></div>
-              <button
-                onClick={handleSignOut}
-                className="relative top-[3px] text-neutral-300 hover:text-white font-bold"
-              >
-                Log Out
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="flex">
-            <div className=" relative -top-1 h-7 mr-5 border-l  border-neutral-100 "></div>
-            <Link
-              to="/auth/sign-in"
-              className="  text-sm text-neutral-300 hover:text-white font-bold"
-            >
-              Log In
-            </Link>
-          </div>
-        )}
-      </div>
+      <RightSheet
+        isDisplayingSheet={isDisplayingSheet}
+        onSheetDisplay={(isDisplayingSheet) =>
+          setIsDisplayingSheet(isDisplayingSheet)
+        }
+      />
     </>
   );
 };

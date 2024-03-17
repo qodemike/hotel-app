@@ -55,23 +55,24 @@ const HotelDetailPage = () => {
               <HotelDetailsImageSlider hotel={hotel} />
             </div>
             <div>
+              <h2 className=" mb-5 text-2xl md:text-3xl font-medium font-poppins">
+                About {hotel.name}
+              </h2>
+              <p className="">{hotel.description}</p>
+            </div>
+            <div>
               <h2 className="mb-5 text-2xl md:text-3xl font-medium font-poppins">
                 Featured Amenities
               </h2>
               <div className=" flex flex-wrap gap-x-12 gap-y-7">
                 {hotel.facilities.map((facility, index) => (
-                  <div className=" flex-1 basis-[50px] ">
+                  <div key={facility} className=" flex-1 basis-[50px] md:flex-none ">
                     <HotelFacility key={index} facilityName={facility} />
                   </div>
                 ))}
               </div>
             </div>
-            <div>
-              <h2 className=" mb-5 text-2xl md:text-3xl font-medium font-poppins">
-                About {hotel.name}
-              </h2>
-              <p className="text-sm">{hotel.description}</p>
-            </div>
+            
           </div>
 
           <div className="mt-10 lg:mt-0">

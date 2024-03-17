@@ -34,7 +34,7 @@ const Footer = () => {
 
       <div className=" mb-7 border-b border-zinc-500"></div>
       <div className="  text-zinc-500 text-xs lg:text-sm flex md:justify-between  ">
-        <span> @2024 Qode Mike. All rights reserved</span>
+        <span> @2024 QodeMike. All rights reserved</span>
 
         <div className=" flex gap-8 self-center  md:self-end">
           <span>Terms & Conditions</span>

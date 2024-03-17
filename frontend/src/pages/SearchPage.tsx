@@ -12,8 +12,6 @@ import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
 import { useAppContext } from "../contexts/AppContext";
 import SearchResultsSkeletons from "../components/SearchResultsSkeletons";
-import {Select, SelectTrigger} from "@/components/ui/select"
-import { SelectContent } from "@radix-ui/react-select";
 import SortByFilter from "../components/Filters/SortByFilter";
 
 const SearchPage = () => {
