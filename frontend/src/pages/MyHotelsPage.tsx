@@ -8,13 +8,14 @@ import MyHotelCard from "../components/MyHotelCard";
 const queryHotel = new QueryHotel();
 
 const MyHotelsPage = () => {
-  const { data: hotelData, isLoading: isFetchingHotels } = queryHotel.fetchMyHotels();
+  const { data: hotelData, isLoading: isFetchingHotels } =
+    queryHotel.fetchMyHotels();
 
   return (
     <>
       <section className=" mx-5 md:mx-10 lg:mx-16 ">
         <div className=" flex flex-col md:flex-row justify-between items-center lg:items-end gap-4 md:gap-0">
-          <div >
+          <div>
             <h1 className="text-3xl font-bold inline">My Hotels</h1>
             <span className="font-md font-bold ml-2 ">
               {`(${hotelData?.length})`}
@@ -44,7 +45,11 @@ const MyHotelsPage = () => {
           </div>
         ) : hotelData?.length ? (
           <div className=" grid grid-cols-1 ">
-            {hotelData?.map((hotel) => (<MyHotelCard hotel={hotel}/>))}
+            {hotelData?.map((hotel) => (
+              <div key={hotel._id}>
+                <MyHotelCard hotel={hotel} />
+              </div>
+            ))}
           </div>
         ) : (
           <div

@@ -9,9 +9,11 @@ const AddHotelPage = () => {
 
   return (
     <>
-      <div className="mb-24">
+      <div className="  md:mx-6 lg:mx-16 mb-24">
         <ManageHotelsForm
           onSave={(hotelFormData: FormData) => {
+            
+            for ( const entry of hotelFormData.entries()) console.log(entry)
             mutate(hotelFormData);
           }}
           isLoading={isLoading}

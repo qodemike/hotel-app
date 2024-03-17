@@ -6,9 +6,15 @@ import { bookingSchema } from "./booking";
 const hotelSchema = new mongoose.Schema<HotelType>({
   userId: { type: String, required: true },
   name: { type: String, required: true },
-  city: { type: String, required: true },
-  country: { type: String, required: true },
   description: { type: String, required: true },
+  address: { type: String, required: true },
+  coordinates: {
+    type: {
+      lat: { type: Number, required: true },
+      lng: { type: Number, required: true },
+    },
+    required: true,
+  },
   type: { type: String, required: true },
   adultCount: { type: Number, required: true },
   childCount: { type: Number, required: true, default: 0 },

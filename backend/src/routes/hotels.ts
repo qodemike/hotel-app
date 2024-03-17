@@ -1,4 +1,3 @@
-import { param, validationResult } from "express-validator";
 import { BookingType } from "../../entities";
 import verifyToken from "../middleware/auth";
 import express, { Request, Response } from "express";
@@ -6,6 +5,7 @@ import { constructSearchQuery } from "../utils/constructSearchQuery";
 import { HotelSearchResponse } from "../../entities/HotelSearchResponse";
 import Hotel from "../models/hotel";
 import Stripe from "stripe";
+import mongoose from "mongoose";
 
 const router = express.Router();
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string);
@@ -88,13 +88,9 @@ router.get("/search", async (req: Request, res: Response) => {
   }
 });
 
-router.get(
-  "/:id",
-  [param("id").notEmpty().withMessage("Hotel ID is required")],
-  async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+router.get("/:id", async (req: Request, res: Response) => {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid Id" });
     }
 
     const id = req.params.id.toString();
@@ -161,9 +157,7 @@ router.post(
     try {
       const paymentIntentId: string = req.body.paymentIntentId;
 
-      const paymentIntent = await stripe.paymentIntents.retrieve(
-        paymentIntentId
-      );
+      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
       if (!paymentIntent) {
         return res.status(400).json({ message: "payment intent not found" });

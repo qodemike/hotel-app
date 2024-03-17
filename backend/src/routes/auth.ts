@@ -1,23 +1,30 @@
 import express, { Request, Response } from "express";
-import { check, validationResult } from "express-validator";
 import User from "../models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import verifyToken from "../middleware/auth";
+import Joi from "joi";
 
 const router = express.Router();
 
+
+const validateLogin = (req: Request) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required()
+  })
+
+  const result = schema.validate(req.body)
+  return result
+}
+
 router.post( "/login",
-  [
-    check("email", "Email is required").isEmail(),
-    check("password", "Password with 6 or more characters required").isLength({
-      min: 6,
-    }),
-  ],
   async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ message: errors.array() });
+
+    const {error} = validateLogin(req);
+    
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message});
     }
 
     const { email, password } = req.body;

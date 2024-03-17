@@ -4,14 +4,11 @@ import { useFormContext } from "react-hook-form";
 import { HotelFormData } from "./ManageHotelsForm";
 import { FaLocationDot } from "react-icons/fa6";
 import Skeleton from "react-loading-skeleton";
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { CoordinatesType } from "../../../../backend/entities/CoordinateType";
 
 const GOOGLEMAPS_API_KEY = import.meta.env.VITE_GOOGLEMAPS_API_KEY;
 const GEOCODING_API_KEY = import.meta.env.VITE_GEOCODING_API_KEY;
-
-export interface Coordinates {
-  lat: number;
-  lng: number;
-}
 
 const LocationSection = () => {
   const { isLoaded, loadError } = useLoadScript({
@@ -19,19 +16,20 @@ const LocationSection = () => {
   });
 
   const { setValue, getValues } = useFormContext<HotelFormData>();
-  const [coordinates, setCoordinates] = useState<Coordinates>({
+  const [coordinates, setCoordinates] = useState<CoordinatesType>({
     lat: 0,
     lng: 0,
   });
 
   const handleLocationSelection = async (e: google.maps.MapMouseEvent) => {
     setCoordinates({
-      lat: e.latLng!.lat(),
-      lng: e.latLng!.lng(),
+      lat: Math.round(e.latLng!.lat() * 1000000) / 1000000,
+      lng: Math.round(e.latLng!.lng() * 1000000) / 1000000,
     });
+
     setValue("coordinates", coordinates);
 
-    // Make a request to the Geocoding API
+    // Make a request to the reverse Geocoding API
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${e.latLng?.lat()},${e.latLng?.lng()}&key=${GEOCODING_API_KEY}`
     );
@@ -41,9 +39,9 @@ const LocationSection = () => {
     if (data.status === "OK") {
       const { results } = data;
       if (results && results.length > 0) {
-        setValue(
+        await setValue(
           "address",
-          results[0].formatted_address.split(" ").slice(-2).join(" ")
+          results[0].formatted_address.split(" ").slice(-3).join(" ")
         );
       }
     }
@@ -53,28 +51,34 @@ const LocationSection = () => {
 
   return (
     <div className="bg-white border-2 border-neutral-300  p-7">
-      <h3 className=" text-lg font-bold mb-5 flex flex-col md:flex-row items-center ">
-        2. HOTEL LOCATION
-      </h3>
-
-      <div className="mb-5 flex flex-col gap-2">
-        <span className="text-sm  font-bold">
-          Selected Location Address
-          <span className=" ml-2 text-sm text-muted-foreground ">
-            (Double click to place location)
+      <div className="mb-8">
+        <h3 className=" mb-3 text-lg font-bold">2. HOTEL LOCATION</h3>
+        <p className="text-sm">
+          Find location on the map and <span className="font-bold">Double click</span> to place a marker. 
+        </p>
+      </div>
+      <div className=" lg:grid  lg:grid-cols-[1fr_1fr]">
+        <div className="mb-5 flex flex-col gap-2">
+          <span className="text-sm  font-bold">
+            Selected Location Address
           </span>
-        </span>
-        <span className="p-2 border flex items-center gap-2">
-          <FaLocationDot />
-          {getValues().address || "Pick a location from the map"}
-        </span>
+          <span className="p-2 border flex items-center gap-2">
+            <FaLocationDot size={18}  />
+            {getValues().address || (
+              <span className="text-muted-foreground ">
+                {"Pick a location from the map"}
+              </span>
+            )}
+          </span>
+        </div>
+        
       </div>
 
       <div className=" h-[400px]">
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={{ width: "100%", height: "100%" }}
-            zoom={1.5}
+            zoom={2}
             center={coordinates}
             onDblClick={handleLocationSelection}
           >

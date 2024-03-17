@@ -7,13 +7,14 @@ import ImagesSection from "./ImagesSection";
 import { HotelType } from "../../../../backend/entities";
 import { useEffect } from "react";
 import { Oval } from "react-loader-spinner";
-import LocationSection, { Coordinates } from "./LocationSection";
+import LocationSection from "./LocationSection";
+import { CoordinatesType } from "../../../../backend/entities/CoordinateType";
 
 
 export type HotelFormData = {
   name: string;
   address: string;
-  coordinates: Coordinates;
+  coordinates: CoordinatesType;
   description: string;
   type: string;
   pricePerNight: number;
@@ -45,11 +46,11 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
     reset(hotel);
   }, [hotel, reset]);
 
-  const onSubmit = (formDataJson: HotelFormData) => {
+  const onSubmit = async (formDataJson: HotelFormData) => {
     const formData = new FormData();
 
     /**
-     * If edit mode
+     * If edit mode append hotel id
      */
     if (hotel) {
       formData.append("hotelId", hotel._id);
@@ -67,6 +68,9 @@ const ManageHotelsForm = ({ onSave, isLoading, hotel }: Props) => {
     formDataJson.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);
     });
+
+    formData.append("coordinates[lat]", formDataJson.coordinates.lat.toString())
+    formData.append("coordinates[lng]", formDataJson.coordinates.lng.toString())
 
     /**
      * If in edit more and some image alredy exist

@@ -2,24 +2,20 @@ import { Request, Response, NextFunction } from "express";
 import Joi from "joi";
 
 const coordinateSchema = Joi.object({
-  lat: Joi.string().required().messages({'string.base': "latitude is required."}),
-  lng: Joi.string().required().messages({"string.base": "longitude is required."}),
+  lat: Joi.number().required(),
+  lng: Joi.number().required(),
 });
 
-const validateHotel = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.body)
-
+const validateHotelUpdate = (req: Request, res: Response, next: NextFunction) => {
   const createHotelSchema = Joi.object({
     name: Joi.string().min(2).max(200).required(),
     description: Joi.string().min(3).max(1000).required(),
     address: Joi.string().min(2).max(200).required(),
     coordinates: coordinateSchema.required(),
-    adultCount: Joi.string().min(0).max(20).required(),
-    childCount: Joi.string().min(0).max(20).required(),
-    starRating: Joi.string().required(),
     type: Joi.string().max(50).required(),
     pricePerNight: Joi.number().min(0).required(),
     facilities: Joi.array().items(Joi.string()).required(),
+    imageFiles: Joi.array().items(Joi.object()).min(1).max(5)
   });
 
   const { error } = createHotelSchema.validate(req.body);
@@ -29,4 +25,4 @@ const validateHotel = (req: Request, res: Response, next: NextFunction) => {
   next()
 };
 
-export default validateHotel;
+export default validateHotelUpdate;

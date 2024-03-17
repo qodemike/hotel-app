@@ -2,11 +2,11 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
-import userRoutes from "./routes/users";
-import authRoutes from "./routes/auth";
-import myHotelRoutes from "./routes/my-hotels";
-import hotelRoutes from "./routes/hotels";
-import myBookingsRoutes from "./routes/my-bookings";
+import users from "./routes/users";
+import auth from "./routes/auth";
+import myHotels from "./routes/my-hotels";
+import hotels from "./routes/hotels";
+import myBookings from "./routes/my-bookings";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 import morgan from "morgan";
@@ -33,18 +33,16 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 
 app.use(morgan('tiny'));
 app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: true,
   credentials: true
 }));
 
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/hotels", hotelRoutes);
-app.use("/api/my-hotels", myHotelRoutes);
-app.use("/api/my-bookings", myBookingsRoutes);
+app.use("/api/auth", auth);
+app.use("/api/users", users);
+app.use("/api/hotels", hotels);
+app.use("/api/my-hotels", myHotels);
+app.use("/api/my-bookings", myBookings);
 
 const port = process.env.PORT || 7000;
 
