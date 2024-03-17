@@ -5,6 +5,7 @@ import verifyToken from "../middleware/auth";
 import { HotelType } from "../../entities/HotelType";
 import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import validateHotel from "../middleware/validateHotel";
+import validateHotelUpdate from "../middleware/validateHotelUpdate";
 
 const router = express.Router();
 
@@ -75,7 +76,7 @@ router.put(
   "/:hotelId",
   verifyToken,
   upload.array("imageFiles"),
-  validateHotel,
+  validateHotelUpdate,
   async (req: Request, res: Response) => {
     try {
       const updatedHotel: HotelType = req.body;

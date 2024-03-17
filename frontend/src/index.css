@@ -54,6 +54,9 @@
   .hotelform-input{
     @apply  w-full mt-1 p-2 border border-border rounded outline outline-0 focus:outline-2 outline-blue-300 transition-all duration-75
   }
+  .hotelform-card{
+    @apply bg-white border-2 border-border  p-4 md:p-7
+  }
   .hoteldescription-attribute{
     @apply p-2 border-2 border-gray-400 rounded-sm  font-medium flex items-center  flex-1 ;
   }

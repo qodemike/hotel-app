@@ -33,22 +33,18 @@ const LocationSection = () => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${e.latLng?.lat()},${e.latLng?.lng()}&key=${GEOCODING_API_KEY}`
     );
-    const data = await response.json();
+    const {results, status} = await response.json();
 
     // Extract country and city from the formatted address
-    if (data.status === "OK") {
-      const { results } = data;
+    if (status === "OK") {
       if (results && results.length > 0) {
-        await setValue(
-          "address",
-          results[0].formatted_address.split(" ").slice(-3).join(" ")
-        );
+        setValue( "address", results[0].formatted_address.split(" ").slice(-3).join(" "));
       }
     }
   };
 
   return (
-    <div className="bg-white border-2 border-neutral-300  p-7">
+    <div className="hotelform-card">
       <div className="mb-8">
         <h3 className=" mb-3 text-lg font-bold">2. HOTEL LOCATION</h3>
         <p className="text-sm">
@@ -62,8 +58,8 @@ const LocationSection = () => {
           <span className="p-2 border flex items-center gap-2">
             <FaLocationDot size={18} />
             {getValues().address || (
-              <span className="text-muted-foreground ">
-                {"Pick a location from the map"}
+              <span className=" text-sm text-muted-foreground ">
+                {"Pin a location on the map"}
               </span>
             )}
           </span>
@@ -75,10 +71,10 @@ const LocationSection = () => {
           <GoogleMap
             mapContainerStyle={{ width: "100%", height: "100%" }}
             zoom={2}
-            center={coordinates}
+            center={getValues().coordinates || coordinates}
             onDblClick={handleLocationSelection}
           >
-            <MarkerF position={coordinates} />
+            <MarkerF position={getValues().coordinates || coordinates} />
           </GoogleMap>
         ) : (
           <Skeleton className="w-full h-full" />

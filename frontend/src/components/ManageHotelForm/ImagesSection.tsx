@@ -23,7 +23,7 @@ const ImagesSection = () => {
   };
 
   return (
-    <div className="bg-white border-2 border-neutral-300  p-7">
+    <div className="hotelform-card">
       <div className=" mb-3">
         <h2 className="text-lg font-bold  inline">6. IMAGES</h2>
         <span className="ml-2 text-sm font-bold text-muted-foreground ">
