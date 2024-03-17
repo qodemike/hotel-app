@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import Logo from "../assets/Logo-black.png";
+import Logo from "../assets/HotelApp-black.svg";
 
 export type SignInFormData = {
   email: string;

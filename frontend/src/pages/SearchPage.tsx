@@ -12,6 +12,9 @@ import { IoFilterOutline } from "react-icons/io5";
 import MiniFooter from "../components/MiniFooter";
 import { useAppContext } from "../contexts/AppContext";
 import SearchResultsSkeletons from "../components/SearchResultsSkeletons";
+import {Select, SelectTrigger} from "@/components/ui/select"
+import { SelectContent } from "@radix-ui/react-select";
+import SortByFilter from "../components/Filters/SortByFilter";
 
 const SearchPage = () => {
 
@@ -118,21 +121,8 @@ const SearchPage = () => {
                 <IoFilterOutline size={17} className="" />
                 <span>Filters</span>
               </div>
-
-              <select
-                value={sortOption}
-                onChange={(event) => setSortOption(event.target.value)}
-                className=" max-w-[190px] p-2 text-sm border-2 rounded-md outline-none  focus:border-blue-300 focus:border-2 "
-              >
-                <option value="">Sort By</option>
-                <option value="starRating">Star Rating</option>
-                <option value="pricePerNightAsc">
-                  Price Per Night (low to high)
-                </option>
-                <option value="pricePerNightDesc">
-                  Price Per Night (high to low)
-                </option>
-              </select>
+            <SortByFilter setSortOption={(value) => setSortOption(value)}/>
+              
             </div>
           </div>
           <div className="lg:ml-[280px] mb-5 border-b border-neutral-300 "></div>

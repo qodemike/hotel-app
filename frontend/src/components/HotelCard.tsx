@@ -26,9 +26,9 @@ const HotelCard = ({ hotel }: Props) => {
             className={`w-full h-full rounded object-cover `}
           />
           <div
-            className={`px-4 py-2 text-white bg-black relative top-[-24%] md:top-[-31%] bg-opacity-70  transition duration-500 ${
+            className={`px-4 py-2 pb-5 text-white bg-black relative top-[-24%] md:top-[-32%] bg-opacity-70  transition duration-500 flex flex-col font-poppins gap-1 ${
               hover ? "translate-y-full" : ""
-            } flex flex-col font-poppins gap-1 `}
+            }  `}
           >
             <span className="text-lg font-poppins font-medium ">{hotel.name}</span>
             <div className="flex">

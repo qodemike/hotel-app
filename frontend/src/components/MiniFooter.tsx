@@ -1,4 +1,4 @@
-import BrandLogo from "../assets/Logo-white.png";
+import BrandLogo from "../assets/HotelApp-white.svg";
 
 const MiniFooter = () => {
   return (

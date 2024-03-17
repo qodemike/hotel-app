@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import BrandLogo from "../assets/Logo-black.png";
+import BrandLogo from "../assets/HotelApp-black.svg";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
@@ -26,9 +26,9 @@ const NavBar = () => {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
-        setIsAtTop(false)
-        return
-      };
+        setIsAtTop(false);
+        return;
+      }
       setIsAtTop(true);
     });
   }, []);
@@ -47,13 +47,13 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background ${!isAtTop && "shadow-md"}  flex justify-between items-center transition duration-300`}
+        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background ${
+          !isAtTop && "shadow-md"
+        }  flex justify-between items-center transition duration-300`}
       >
-        <div className="flex">
           <Link to="/" className="">
-            <img src={BrandLogo} className=" object-cover" alt="brand logo" />
+            <img src={BrandLogo} />
           </Link>
-        </div>
 
         <IoMenuOutline
           onClick={handleOpenMenu}
