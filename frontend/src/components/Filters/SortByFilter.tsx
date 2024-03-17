@@ -1,6 +1,7 @@
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -10,7 +11,7 @@ interface Props {
   setSortOption: (value: string) => void;
 }
 
-const SortByFilter = ({setSortOption}: Props) => {
+const SortByFilter = ({ setSortOption }: Props) => {
   const sortOptions = [
     { sortOpt: "Star Rating", value: "starRating" },
     { sortOpt: "Price per night (Asc)", value: "pricePerNightAsc" },
@@ -18,17 +19,24 @@ const SortByFilter = ({setSortOption}: Props) => {
   ];
 
   return (
-    <Select  onValueChange={(value) => setSortOption(value)}>
-      <SelectTrigger className="bg-white min-w-[160px]">
+    <Select
+      onValueChange={(value) => {
+        value === "0" ? setSortOption("") : setSortOption(value);
+      }}
+    >
+      <SelectTrigger className="bg-white w-[180px]  md:w-[200px]">
         <SelectValue placeholder="Sort By... " />
-        </SelectTrigger>
-        <SelectContent>
-          {sortOptions.map((option) => (
-            <SelectItem key={option.sortOpt} value={option.value}>
-              {option.sortOpt}
-            </SelectItem>
-          ))}
-        </SelectContent>
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+            <SelectItem value={"0"}>Sort By...</SelectItem>
+        {sortOptions.map((option) => (
+          <SelectItem key={option.sortOpt} value={option.value}>
+            {option.sortOpt}
+          </SelectItem>
+        ))}
+        </SelectGroup>
+      </SelectContent>
     </Select>
   );
 };
