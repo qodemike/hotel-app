@@ -9,6 +9,7 @@ import { useSearchContext } from "../contexts/search/SearchContext";
 import { useNavigate, useParams } from "react-router-dom";
 import QueryBooking from "../hooks/useCreateBooking";
 import { BookingFormData } from "../../../backend/entities/BookingFormData";
+import { Oval } from "react-loader-spinner";
 
 interface Props {
   currentUser: UserType;
@@ -65,7 +66,6 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
         mutate(formdata);
         navigate("/");
       }
-
       setIsLoading(false);
     } catch (err) {
       console.log(err);
@@ -84,10 +84,20 @@ const CheckoutForm = ({ currentUser, paymentIntent }: Props) => {
         </p>
       </div>
       <button
+        disabled={isLoading}
         onClick={handleSubmit}
-        className=" w-full mt-3 p-4 text-white  font-bold bg-primary hover:bg-neutral-800 rounded-lg "
+        className=" h-[56px] w-full mt-3 p-4 text-white  font-bold bg-primary hover:bg-neutral-800 rounded-lg flex justify-center "
       >
-        <span className="text-sm">COMPLETE YOUR BOOKING</span>
+        {isLoading ? (
+          <Oval
+            secondaryColor="#ECECEC"
+            color="white"
+            height={"24px"}
+            width={"24px"}
+          />
+        ) : (
+          <span className="text-sm">COMPLETE YOUR BOOKING</span>
+        )}
       </button>
     </>
   );

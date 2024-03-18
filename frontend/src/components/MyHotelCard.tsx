@@ -39,10 +39,10 @@ const MyHotelCard = ({ hotel }: Props) => {
             className=" w-full h-[250px] object-cover "
             alt=""
           />
-          <div className=" px-6 lg:px-0 lg:pr-10 self-center">
+          <div className=" px-6 lg:px-0 lg:pr-10 ">
             <h2 className="text-2xl font-bold mb-4  ">{hotel.name}</h2>
             <div className="whitespace-pre-line text-[15px]">
-              {hotel.description.substring(0, 300) + "..."}
+              {hotel.description.substring(0, 400) + "..."}
             </div>
           </div>
         </div>

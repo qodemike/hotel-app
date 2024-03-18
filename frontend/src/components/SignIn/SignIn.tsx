@@ -68,8 +68,8 @@ const SignIn = () => {
                 <Oval
                   secondaryColor="#ECECEC"
                   color="white"
-                  height={"30px"}
-                  width={"30px"}
+                  height={"24px"}
+                  width={"24px"}
                 />
               ) : (
                 "Login"

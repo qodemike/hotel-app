@@ -28,9 +28,9 @@ const BookingDetailsSummary = ({
 
         <div className="bg-white px-5 lg:px-7 pt-2 pb-8 flex flex-col gap-6">
           <div className=" border-b py-2">
-            <p className="mb-1">Hotel Info: </p>
+            <p className="mb-1">Hotel </p>
             <div>
-              <span className="font-bold">{hotel.name}</span>
+              <span className="font-bold mr-2">{hotel.name}</span>
               <span>{hotel.address}</span>
             </div>
           </div>
@@ -45,7 +45,7 @@ const BookingDetailsSummary = ({
             </div>
           </div>
           <div className="border-t border-b py-3">
-            Total length of stay:
+            Total Length of stay
             <div className="font-bold">{numberOfNights} nights</div>
           </div>
 

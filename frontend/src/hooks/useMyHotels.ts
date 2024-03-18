@@ -9,6 +9,8 @@ const apiClient = new APICLIENT();
 const route = "/api/my-hotels/";
 
 class QueryHotel {
+
+
   fetchMyHotels = () => {
     return useQuery({
       queryKey: ["MyHotels"],
@@ -58,6 +60,7 @@ class QueryHotel {
   };
 
   updateHotelById = (hotelId: string) => {
+    const navigate = useNavigate()
 
     return useMutation({
       mutationFn: async (data: FormData) => {
@@ -77,6 +80,7 @@ class QueryHotel {
           title: "Hotel Update Successfull!",
           description: "Hotel was updated successfully!"
         })
+        navigate("/my-hotels")
       },
       onError: () => {
         toast({
