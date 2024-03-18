@@ -122,7 +122,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                 <PopoverTrigger>
                   <div className="w-full mt-2  py-2 px-2 bg-white rounded-lg flex justify-start   ">
                     <span>
-                      {checkIn
+                      {checkOut
                         .toLocaleDateString()
                         .split("/")
                         .map((element) =>
@@ -135,7 +135,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                 <PopoverContent className="bg-card">
                   <Calendar
                     mode="single"
-                    selected={checkIn}
+                    selected={checkOut}
                     onSelect={(date) => setValue("checkOut", date!)}
                     disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
 

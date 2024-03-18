@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
@@ -10,7 +10,10 @@ import myBookings from "./routes/my-bookings";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 import morgan from "morgan";
-import path, { dirname } from "path";
+import path  from "path";
+import bodyParser from "body-parser";
+
+
 
 const app = express();
 
@@ -33,6 +36,8 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 
 app.use(morgan('tiny'));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 app.use(cors({
   origin: true,
   credentials: true

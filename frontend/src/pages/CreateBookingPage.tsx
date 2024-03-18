@@ -44,46 +44,48 @@ const CreateBookingPage = () => {
 
   return (
     <>
-    <div className=" min-h-screen mb-24 ">
-    <div className="mx-5  md:mx-10 lg:mx-16 ">
-      <h2 className="mb-8 pb-2 text-2xl lg:text-3xl font-bold border-b border-slate-300">Complete Your Booking</h2>
-      <div className=" grid md:grid-cols-[1.2fr_1fr] gap-5  ">
-        <BookingDetailsSummary
-          checkIn={search.checkIn}
-          checkOut={search.checkOut}
-          adultCount={search.adultCount}
-          childCount={search.childCount}
-          numberOfNights={numberOfNights}
-          hotel={hotel}
-        />
-        <div className=" h-[450px] max-w-lg p-10 border-4 border-slate-200 rounded  bg-white ">
-          <div className="flex flex-col ">
-            {currentUser && paymentIntentData && (
-              <Elements
-                options={{
-                  clientSecret: paymentIntentData.clientSecret,
-                  appearance: {
-                    theme: "flat",
-                    variables: {
-                      colorText: "",
-                      fontFamily: "Inter",
-                    },
-                  },
-                }}
-                stripe={stripePromise}
-              >
-                <CheckoutForm
-                  currentUser={currentUser}
-                  paymentIntent={paymentIntentData}
-                />
-              </Elements>
-            )}
+      <div className=" min-h-screen mb-20 ">
+        <div className="mx-5 md:mx-6 lg:mx-16 ">
+          <h2 className="mb-8 pb-2 text-2xl lg:text-3xl font-bold border-b border-slate-300">
+            Complete Your Booking
+          </h2>
+          <div className=" grid md:grid-cols-[1.5fr_1fr] gap-5  ">
+            <BookingDetailsSummary
+              checkIn={search.checkIn}
+              checkOut={search.checkOut}
+              adultCount={search.adultCount}
+              childCount={search.childCount}
+              numberOfNights={numberOfNights}
+              hotel={hotel}
+            />
+            <div className=" h-[450px] md:h-full  p-10 border-4 border-slate-200 rounded  bg-white ">
+              <div className="flex flex-col ">
+                {currentUser && paymentIntentData && (
+                  <Elements
+                    options={{
+                      clientSecret: paymentIntentData.clientSecret,
+                      appearance: {
+                        theme: "flat",
+                        variables: {
+                          colorText: "",
+                          fontFamily: "Inter",
+                        },
+                      },
+                    }}
+                    stripe={stripePromise}
+                  >
+                    <CheckoutForm
+                      currentUser={currentUser}
+                      paymentIntent={paymentIntentData}
+                    />
+                  </Elements>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    <MiniFooter/>
+      <MiniFooter />
     </>
   );
 };

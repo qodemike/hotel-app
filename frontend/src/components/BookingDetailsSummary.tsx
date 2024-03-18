@@ -19,17 +19,20 @@ const BookingDetailsSummary = ({
 }: Props) => {
   return (
     <div>
-      <div className=" rounded-lg  shadow-lg overflow-hidden">
+      <div className=" rounded  shadow-lg overflow-hidden">
         <img
           src={hotel.imageUrls[0]}
           alt=""
-          className="w-full  md:h-44 lg:h-64 object-cover"
+          className="w-full  h-[300px] object-cover"
         />
 
         <div className="bg-white px-5 lg:px-7 pt-2 pb-8 flex flex-col gap-6">
           <div className=" border-b py-2">
-            <p className="mb-1">Hotel Details: </p>
-            <div className="font-bold">{`${hotel.name}, ${hotel.city}, ${hotel.country}`}</div>
+            <p className="mb-1">Hotel Info: </p>
+            <div>
+              <span className="font-bold">{hotel.name}</span>
+              <span>{hotel.address}</span>
+            </div>
           </div>
           <div className="flex gap-10 lg:gap-52">
             <div>
@@ -47,11 +50,12 @@ const BookingDetailsSummary = ({
           </div>
 
           <div>
-            Guests{" "}
+            Guests
             <div className="font-bold">
               {adultCount} adults & {childCount} children
             </div>
           </div>
+
         </div>
       </div>
     </div>
