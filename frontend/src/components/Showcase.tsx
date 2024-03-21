@@ -3,9 +3,9 @@ import showCaseImage1 from "../assets/Loft.png";
 const Showcase = () => {
   return (
     <>
-      <section className=" md:custom-container relative -top-[170px] pt-[215px] pb-12 bg-accent md:bg-background flex flex-col-reverse md:grid grid-cols-2 lg:grid-cols-[1.2fr_1fr] md:items-center gap-12 md:gap-10 lg:gap-0 ">
+      <section className=" md:custom-container relative -top-[170px] pt-[215px] pb-12 bg-primaryLight md:bg-background flex flex-col-reverse md:grid grid-cols-2 lg:grid-cols-[1.2fr_1fr] md:items-center gap-12 md:gap-10 lg:gap-0 ">
         <div className=" relative lg:justify-self-center ">
-          <div className=" hidden lg:block  w-[400px] h-[450px] bg-accent " />
+          <div className=" hidden lg:block  w-[400px] h-[450px] bg-accentBg " />
           <img
             src={showCaseImage1}
             alt="hotel interior sample 1"
