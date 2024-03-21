@@ -39,7 +39,7 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`fixed z-20 w-full py-5 px-6  lg:px-16 bg-background ${
+        className={`fixed z-40 w-full py-5 px-6  lg:px-16 bg-background ${
           !isAtTop && "shadow-md"
         }  flex justify-between items-center transition duration-300`}
       >

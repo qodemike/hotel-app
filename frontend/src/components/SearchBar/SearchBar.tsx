@@ -1,6 +1,5 @@
 import { FormEvent, useState } from "react";
 import { MdTravelExplore } from "react-icons/md";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "../../contexts/search/SearchContext";
@@ -40,7 +39,7 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="  bg-card  flex flex-col lg:grid   lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
+      className=" bg-card flex flex-col lg:grid lg:grid-cols-[1fr_1fr_1fr_0.6fr] gap-5 md:gap-4 "
     >
       <div className="px-4 py-2 lg:pt-1  border border-border rounded-md ">
         <span className="text-xs mr-6 md:mr-0 ">DESTINATION</span>
@@ -57,7 +56,7 @@ const SearchBar = () => {
 
       {/* =============================================================== */}
 
-      <div className=" py-2  pt-3  border border-border rounded-md overflow-hidden ">
+      <div className=" py-2  pt-3  border border-border rounded-md overflow-hidden flex  ">
         <div className=" relative left-4 ">
           <p className="text-xs">GUESTS</p>
           <div className="mt-1 flex gap-8 md:gap-0 lg:gap-8 ">
@@ -94,9 +93,9 @@ const SearchBar = () => {
 
       {/* =============================================================== */}
 
-      <div className=" w-full px-4 py-2 border border-border rounded-md flex justify-between  ">
-        <div className="  ">
-          <span className=" mr-3 text-xs">CHECK-IN</span>
+      <div className="  px-4 py-2 border border-border rounded-md flex justify-between  ">
+        <div className=" w-fit ">
+          <span className="  mr-3 text-xs">CHECK-IN</span>
           <Popover>
             <PopoverTrigger>
               <span className=" md:text-lg font-medium ">
@@ -122,7 +121,7 @@ const SearchBar = () => {
 
         {/* ========================================= */}
 
-        <div className=" relative left-5">
+        <div className="  relative left-10 md:left-0 lg:left-7">
           <span className=" mr-3 text-xs ">CHECK-OUT</span>
           <Popover>
             <PopoverTrigger>

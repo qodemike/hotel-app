@@ -32,7 +32,7 @@ const RightSheet = ({onSheetDisplay, isDisplayingSheet} : Props) => {
     <>
       <div
         ref={menu}
-        className={`fixed md:hidden z-40 top-0 right-0 w-[60vw] h-screen p-10 py-20 bg-primary  flex flex-col gap-10 justify-center transition translate-x-full `}
+        className={`fixed md:hidden z-50 top-0 right-0 w-[60vw] h-screen p-10 py-20 bg-primary  flex flex-col gap-10 justify-center transition translate-x-full `}
       >
         <IoCloseOutline
           onClick={handleCloseSheet}

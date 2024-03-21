@@ -1,31 +1,27 @@
-import showCaseImage1 from "../assets/hotel_showcase_1.webp";
-import showCaseImage2 from "../assets/hotel_showcase_2.webp";
+import showCaseImage1 from "../assets/Loft.png";
 
 const Showcase = () => {
   return (
     <>
-      <section className="   mx-6 md:mx-10 lg:mx-16   flex flex-col lg:flex-row  ">
-        <div className="flex gap-4 justify-center ">
+      <section className=" md:custom-container relative -top-[170px] pt-[215px] pb-12 bg-accent md:bg-background flex flex-col-reverse md:grid grid-cols-2 lg:grid-cols-[1.2fr_1fr] md:items-center gap-12 md:gap-10 lg:gap-0 ">
+        <div className=" relative lg:justify-self-center ">
+          <div className=" hidden lg:block  w-[400px] h-[450px] bg-accent " />
           <img
             src={showCaseImage1}
             alt="hotel interior sample 1"
-            className=""
-          />
-          <img
-            src={showCaseImage2}
-            alt="hotel interior sample 2"
-            className=" hidden md:block relative top-[50px]"
+            className=" relative lg:absolute md:top-12 lg:left-12 px-8 md:px-0 h-[450px] lg:h-[480px] object-cover  "
           />
         </div>
 
-        <article className="max-w-lg  md:mx-auto px-7 md:mt-20">
-          <h2 className="font-medium text-2xl md:text-3xl mt-5 ">
-            Enjoy an unforgettable stay with the best charms
+        <article className=" max-w-md text-white md:text-black flex flex-col items-center md:items-start  gap-5  ">
+          <h2 className=" text-2xl md:text-3xl font-bold   ">
+            Enjoy the Best of Stays
           </h2>
-          <p className="mt-4  md:ml-10 lg:mt-10 ">
-            Welcome to our hotel booking platform, where your travel experience
-            becomes easier and more. You can discover the perfect accommodation
-            for your stay worldwide.
+          <p className=" px-6 md:px-0 text-sm text-center md:text-left ">
+            Welcome to our hotel booking platform, where your travels have never
+            been made easier. Let us be incharge of your accommodation as you
+            tour the world. Find affordable and secure hotels from all around
+            the world
           </p>
         </article>
       </section>

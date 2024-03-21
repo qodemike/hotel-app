@@ -11,8 +11,8 @@ const HotelDisplayGrid = () => {
   
 
   return (
-    <section className="py-[80px]  " id="hotel_display_grid">
-      <article className=" py-8 px-5 md:px-10 lg:px-20 bg-primary ">
+    <section className="  " id="hotel_display_grid">
+      <article className="  py-8 px-5 md:px-10 lg:px-20 bg-accent ">
         <h2 className="text-xl md:text-3xl text-white font-bold ">
           Explore the Best Listings
         </h2>
