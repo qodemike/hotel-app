@@ -16,7 +16,11 @@ const GeoLocation = ({ coordinates }: Props) => {
 
   return (
     <div className=" h-[400px] md:h-[350px]">
-      {isLoaded ? (
+      {loadError ? (
+        <div className="w-full h-full text-destructive flex justify-center items-center">
+          Could not load the map. Please refresh the page
+        </div>
+      ) : isLoaded ? (
         <GoogleMap
           mapContainerStyle={{ width: "100%", height: "100%" }}
           zoom={12}
@@ -26,11 +30,6 @@ const GeoLocation = ({ coordinates }: Props) => {
         </GoogleMap>
       ) : (
         <Skeleton className="w-full h-full" />
-      )}
-      {loadError && (
-        <div className="w-full h-full text-destructive">
-          Could not load the Map. Refresh the page
-        </div>
       )}
     </div>
   );

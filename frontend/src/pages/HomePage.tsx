@@ -1,6 +1,7 @@
 import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hero/Hero";
 import HotelDisplayGrid from "../components/HotelsDisplayGrid";
+import HowItWorksSection from "../components/HowItWorks/HowItWorksSection";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Showcase from "../components/Showcase";
 
@@ -23,6 +24,7 @@ const HomePage = () => {
           <SearchBar />
         </div>
           <Showcase />
+          <HowItWorksSection/>
         <HotelDisplayGrid />
         <Footer />
       </div>

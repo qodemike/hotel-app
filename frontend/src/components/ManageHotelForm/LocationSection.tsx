@@ -33,12 +33,15 @@ const LocationSection = () => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${e.latLng?.lat()},${e.latLng?.lng()}&key=${GEOCODING_API_KEY}`
     );
-    const {results, status} = await response.json();
+    const { results, status } = await response.json();
 
     // Extract country and city from the formatted address
     if (status === "OK") {
       if (results && results.length > 0) {
-        setValue( "address", results[0].formatted_address.split(" ").slice(-3).join(" "));
+        setValue(
+          "address",
+          results[0].formatted_address.split(" ").slice(-3).join(" ")
+        );
       }
     }
   };
@@ -67,7 +70,11 @@ const LocationSection = () => {
       </div>
 
       <div className=" h-[400px]">
-        {isLoaded ? (
+        {loadError ? (
+          <div className="w-full h-full text-destructive ">
+            Could not load the map. Please refresh the page
+          </div>
+        ) : isLoaded ? (
           <GoogleMap
             mapContainerStyle={{ width: "100%", height: "100%" }}
             zoom={2}
@@ -78,11 +85,6 @@ const LocationSection = () => {
           </GoogleMap>
         ) : (
           <Skeleton className="w-full h-full" />
-        )}
-        {loadError && (
-          <div className="w-full h-full text-destructive ">
-            Could not load the Map. Refresh the page
-          </div>
         )}
       </div>
     </div>

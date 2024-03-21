@@ -12,16 +12,16 @@ const HotelDisplayGrid = () => {
 
   return (
     <section className="  " id="hotel_display_grid">
-      <article className="  py-8 px-5 md:px-10 lg:px-20 bg-accent ">
-        <h2 className="text-xl md:text-3xl text-white font-bold ">
+      <article className=" py-10 px-5 md:px-10 lg:px-20 flex flex-col items-center gap-3 ">
+        <h2 className="text-2xl md:text-3xl font-bold ">
           Explore the Best Listings
         </h2>
-        <p className=" mt-2 text-xs md:text-base text-white">
+        <p className="  text-xs md:text-base ">
           Explore newly added hotels from all around the world.
         </p>
       </article>
 
-      <div className=" py-10 mx-5 md:mx-10 ">
+      <div className=" pb-10 mx-5 md:mx-10 ">
         {isLoading ? (
           <HotelDisplayGridSkeleton />
         ) : (
