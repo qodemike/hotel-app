@@ -1,0 +1,27 @@
+
+const hotels = [
+  {
+    name: "kempo",
+    bookings: [
+      { date: "2024-01-01", price: 1500 },
+      { date: "2024-02-01", price: 740 },
+    ],
+  },
+  {
+    name: "Raddisson",
+    bookings: [
+      { date: "2024-03-01", price: 1500 },
+      { date: "2024-04-01", price: 740 },
+    ],
+  },
+];
+
+const bookings = [ 
+    {hotel: "hotel name", date: "2024-01-01", price: 1500 },
+    {hotel: "hotel name", date: "2024-02-01", price: 740 }
+  ]
+
+  const newBookings = []
+hotels.forEach(hotel => hotel.bookings.forEach(booking => newBookings.push({ hotel: hotel.name,  ...booking})) )
+
+console.log(bookings)

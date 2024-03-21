@@ -6,18 +6,46 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { HotelType } from "../../../backend/entities";
+import dateToString from "../utils/dateToString";
+
+interface BookingsList {
+  hotelName: string;
+  hotelAddress: string;
+  _id: string;
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  adultCount: number;
+  childCount: number;
+  checkIn: Date;
+  checkOut: Date;
+  totalCost: number;
+}
 
 interface Props {
   hotels: HotelType[];
 }
 
 const BookingsTable = ({ hotels }: Props) => {
+  const bookingsList: BookingsList[] = [];
+
+  hotels.forEach((hotel) =>
+    hotel.bookings.forEach((booking) =>
+      bookingsList.push({
+        hotelName: hotel.name,
+        hotelAddress: hotel.address,
+        ...booking,
+      })
+    )
+  );
+
   return (
     <div>
-      <Table>
+      <Table className=" min-w-[836px] overflow-x-scroll">
         <TableHeader className="font-bold">
-          <TableRow>
-            <TableCell>Hotel </TableCell>
+          <TableRow className={`bg-accent text-white`}>
+            <TableCell>Hotel</TableCell>
             <TableCell>Check In</TableCell>
             <TableCell>Check Out</TableCell>
             <TableCell>Persons</TableCell>
@@ -25,28 +53,16 @@ const BookingsTable = ({ hotels }: Props) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {hotels.map((hotel) => (
-            <TableRow>
-              <TableCell>
-                <div className="flex flex-col gap-2">
-                  <span className="font-bold">{hotel.name}</span>
-                  <span className="">{hotel.city+', '+hotel.country}</span>
-                </div>
+          {bookingsList.map((booking, index) => (
+            <TableRow className={`${index % 2 === 0 && "bg-primary/5"}`}>
+              <TableCell >
+                <span className="font-bold mr-1" >{booking.hotelName},</span>
+                {booking.hotelAddress}
               </TableCell>
-              {hotel.bookings.map((booking) => (
-                <>
-                  <TableCell>
-                    {new Date(booking.checkIn).toDateString()}
-                  </TableCell>
-                  <TableCell>
-                    {new Date(booking.checkOut).toDateString()}
-                  </TableCell>
-                  <TableCell>
-                    {booking.adultCount + booking.childCount}
-                  </TableCell>
-                  <TableCell><span className="font-bold">{"$" + booking.totalCost}</span></TableCell>
-                </>
-              ))}
+              <TableCell>{new Date(booking.checkIn).toDateString()}</TableCell>
+              <TableCell>{new Date(booking.checkOut).toDateString()}</TableCell>
+              <TableCell>{booking.adultCount + booking.childCount}</TableCell>
+              <TableCell className="font-bold">$ {booking.totalCost}</TableCell>
             </TableRow>
           ))}
         </TableBody>

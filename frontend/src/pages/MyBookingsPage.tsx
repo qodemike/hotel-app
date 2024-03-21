@@ -17,8 +17,8 @@ const MyBookingsPage = () => {
   return (
     <>
       <div className=" mb-24 mx-5 md:mx-10 lg:mx-16 min-h-screen ">
-        <h1 className="mb-4 pb-2 text-3xl font-bold border-b border-slate-300">
-          My Bookings
+        <h1 className="mb-4  text-2xl text-center font-bold ">
+          MY BOOKINGS
         </h1>
 
         {isFetchingBookings ? (
