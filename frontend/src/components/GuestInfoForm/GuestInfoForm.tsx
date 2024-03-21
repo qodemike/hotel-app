@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import DatePicker from "react-datepicker";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSearchContext } from "../../contexts/search/SearchContext";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,6 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { useEffect, useState } from "react";
 
 interface Props {
   hotelId: string;
@@ -29,6 +29,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
+  const [nightsError, setNightsError] = useState(false);
 
   const {
     watch,
@@ -48,10 +49,6 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   const checkIn = watch("checkIn");
   const checkOut = watch("checkOut");
 
-  const minDate = new Date();
-  const maxDate = new Date();
-  maxDate.setFullYear(maxDate.getFullYear() + 1);
-
   const onSignInClick = (data: GuestInfoFormData) => {
     search.saveSearchValues(
       "",
@@ -64,6 +61,14 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   };
 
   const onSubmit = (data: GuestInfoFormData) => {
+    const nights = Math.floor((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
+
+    console.log(nights)
+    if (nights < 1) {
+      setNightsError(true);
+      return;
+    }
+
     search.saveSearchValues(
       "",
       data.checkIn,
@@ -83,8 +88,17 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
             {"$" + pricePerNight}
           </span>
         </div>
-        {/* ===================================================================== */}
 
+        {/* ===================================================================== */}
+        {nightsError && (
+          <span
+            className={` h-0 text-destructive text-sm transition-all ${
+              nightsError && "h-[12px]"
+            } `}
+          >
+            {"Select at least One night of stay"}
+          </span>
+        )}
         <form
           onSubmit={user ? handleSubmit(onSubmit) : handleSubmit(onSignInClick)}
         >
@@ -93,7 +107,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
               <span className="text-muted  ">Check-in</span>
               <Popover>
                 <PopoverTrigger>
-                  <div className="w-full mt-2  py-2 px-2 bg-white rounded-lg flex justify-start   ">
+                  <div className="w-full mt-2  py-2 px-2 bg-white rounded-lg flex justify-start ">
                     <span>
                       {checkIn
                         .toLocaleDateString()
@@ -110,11 +124,13 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                     mode="single"
                     selected={checkIn}
                     onSelect={(date) => setValue("checkIn", date!)}
-                    disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
+                    disabled={(date) =>
+                      date <
+                      new Date(new Date().getTime() - 1000 * 60 * 60 * 24)
+                    }
                   />
                 </PopoverContent>
               </Popover>
-              
             </div>
             <div className="flex flex-col ">
               <span className="text-muted ">Check-out</span>
@@ -137,12 +153,13 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                     mode="single"
                     selected={checkOut}
                     onSelect={(date) => setValue("checkOut", date!)}
-                    disabled={(date) => date < new Date(new Date().getTime() - (1000 * 60 * 60 * 24))}
-
+                    disabled={(date) =>
+                      date <
+                      new Date(new Date().getTime() - 1000 * 60 * 60 * 24)
+                    }
                   />
                 </PopoverContent>
               </Popover>
-              
             </div>
             {/* ===================================================================== */}
 
@@ -180,7 +197,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
                   />
                 </label>
                 {errors.adultCount && (
-                  <span className="text-red-500 font-semibold text-sm">
+                  <span className="text-destructive font-semibold text-sm">
                     {errors.adultCount.message}
                   </span>
                 )}

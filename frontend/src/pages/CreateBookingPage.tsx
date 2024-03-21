@@ -44,10 +44,10 @@ const CreateBookingPage = () => {
 
   return (
     <>
-      <div className=" min-h-screen mb-20 ">
+      <div className=" min-h-screen max-w-[1200px] m-auto mb-20 ">
         <div className="mx-5 md:mx-6 lg:mx-16 ">
-          <h2 className="mb-8 pb-2 text-2xl lg:text-3xl font-bold border-b border-slate-300">
-            Complete Your Booking
+          <h2 className=" mb-5 text-2xl  font-bold text-center  ">
+            COMPLETE YOUR BOOKING
           </h2>
           <div className=" grid md:grid-cols-[1.5fr_1fr] gap-5  ">
             <BookingDetailsSummary
