@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import BrandLogo from "../assets/HotelApp-black.svg";
 import { IoMenuOutline } from "react-icons/io5";
 import { useEffect,  useState } from "react";
@@ -12,6 +12,8 @@ const NavBar = () => {
     { name: "SEARCH", href: "/search" },
     { name: "ABOUT", href: "#" },
   ];
+  const router = useLocation()
+  
 
   const protectedlinks = [
     { name: "MY BOOKINGS", href: "/my-bookings" },
@@ -58,7 +60,7 @@ const NavBar = () => {
             <Link
               key={link.name}
               to={link.href}
-              className={`text-xs transition-all duration-100 `}
+              className={` lg:w-[47px] text-xs transition-all duration-100 ${router.pathname === link.href && "font-bold"}`}
             >
               {link.name}
             </Link>
@@ -69,7 +71,7 @@ const NavBar = () => {
               {protectedlinks.map((link) => (
                 <Link
                   key={link.name}
-                  className={` text-xs  flex md:flex-col items-center `}
+                  className={`lg:w-[90px] text-xs  flex md:flex-col items-center ${router.pathname === link.href && "font-bold"} `}
                   to={link.href}
                 >
                   {link.name}

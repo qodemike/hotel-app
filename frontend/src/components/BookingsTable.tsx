@@ -42,9 +42,9 @@ const BookingsTable = ({ hotels }: Props) => {
 
   return (
     <div>
-      <Table className=" min-w-[836px] overflow-x-scroll">
+      <Table className=" min-w-[836px] border-b overflow-x-scroll">
         <TableHeader className="font-bold">
-          <TableRow className={`bg-accent text-white`}>
+          <TableRow className={`bg-accentBg text-white`}>
             <TableCell>Hotel</TableCell>
             <TableCell>Check In</TableCell>
             <TableCell>Check Out</TableCell>

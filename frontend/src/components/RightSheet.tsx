@@ -41,25 +41,25 @@ const RightSheet = ({onSheetDisplay, isDisplayingSheet} : Props) => {
         />
         <div className="h-full     text-neutral-300 flex flex-col gap-8 ">
           <Link to="/" className=" text-sm hover:text-white ">
-            Home
+            HOME
           </Link>
           <Link to="/search" className="text-sm hover:text-white ">
-            Search
+            SEARCH
           </Link>
           <Link to="footer" className="text-sm hover:text-white ">
-            Contact
+            ABOUT
           </Link>
         </div>
         {user ? (
           <>
             <Link
-              className=" text-xs  font-light  text-neutral-300 flex items-center hover:text-white   "
+              className=" text-sm  font-light  text-neutral-300 flex items-center hover:text-white   "
               to="/my-bookings"
             >
               MY BOOKINGS
             </Link>
             <Link
-              className=" text-xs text-neutral-300 hover:text-white flex items-center"
+              className=" text-sm text-neutral-300 hover:text-white flex items-center"
               to="/my-hotels"
             >
               MY HOTELS

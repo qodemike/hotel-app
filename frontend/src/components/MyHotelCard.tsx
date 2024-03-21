@@ -41,13 +41,13 @@ const MyHotelCard = ({ hotel }: Props) => {
           />
           <div className=" px-6 lg:px-0 lg:pr-10 ">
             <h2 className="text-2xl font-bold mb-4  ">{hotel.name}</h2>
-            <div className="whitespace-pre-line text-[15px]">
+            <div className=" whitespace-pre-line text-[15px]">
               {hotel.description.substring(0, 400) + "..."}
             </div>
           </div>
         </div>
 
-        <div className="px-5 pb-5 lg:px-0 flex flex-col gap-5">
+        <div className="px-5 pb-5 lg:pb-0 lg:px-0 flex flex-col gap-5">
           <div className=" flex flex-col lg:flex-row justify-between gap-2">
             <div className=" hotel-attribute ">
               <FaLocationDot />
@@ -87,7 +87,7 @@ const MyHotelCard = ({ hotel }: Props) => {
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
-                  <AlertDialogDescription>
+                  <AlertDialogDescription className="text-black">
                     Are you sure you want to delete this listing? This action is
                     irreversible.
                   </AlertDialogDescription>

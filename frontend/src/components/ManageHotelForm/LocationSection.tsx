@@ -71,7 +71,7 @@ const LocationSection = () => {
 
       <div className=" h-[400px]">
         {loadError ? (
-          <div className="w-full h-full text-destructive ">
+          <div className="w-full h-full text-destructive flex justify-center items-center ">
             Could not load the map. Please refresh the page
           </div>
         ) : isLoaded ? (

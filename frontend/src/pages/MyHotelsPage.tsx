@@ -16,10 +16,8 @@ const MyHotelsPage = () => {
       <section className=" mx-5 md:mx-10 lg:mx-16 ">
         <div className=" flex flex-col md:flex-row justify-between items-center lg:items-end gap-4 md:gap-0">
           <div>
-            <h1 className="text-3xl font-bold inline">My Hotels</h1>
-            <span className="font-md font-bold ml-2 ">
-              {`(${hotelData?.length})`}
-            </span>
+            <h1 className="text-2xl font-bold inline">MY HOTELS</h1>
+            
           </div>
           <Link
             to="/add-hotel"
