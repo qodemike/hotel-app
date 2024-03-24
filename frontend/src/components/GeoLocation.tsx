@@ -1,5 +1,4 @@
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
-import React from "react";
 import Skeleton from "react-loading-skeleton";
 import { CoordinatesType } from "../../../backend/entities/CoordinateType";
 

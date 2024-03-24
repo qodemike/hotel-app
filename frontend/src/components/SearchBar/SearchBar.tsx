@@ -32,7 +32,6 @@ const SearchBar = () => {
     navigate("/search");
   };
 
-  const minDate = new Date();
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() + 1);
 

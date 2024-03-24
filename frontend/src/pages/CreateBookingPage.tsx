@@ -44,7 +44,7 @@ const CreateBookingPage = () => {
 
   return (
     <>
-      <div className=" min-h-screen max-w-[1200px] m-auto mb-20 ">
+      <div className=" min-h-screen max-w-[1300px] m-auto mb-20 ">
         <div className="mx-5 md:mx-6 lg:mx-16 ">
           <h2 className=" mb-5 text-2xl  font-bold text-center  ">
             COMPLETE YOUR BOOKING

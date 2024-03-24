@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   hotelId: string;

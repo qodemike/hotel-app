@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode,  useState } from "react";
 import AuthContext, { UserPayload } from "./AuthContext";
 import { useQuery } from "react-query";
 import APICLIENT from "../../services/api-client";

@@ -6,7 +6,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { HotelType } from "../../../backend/entities";
-import dateToString from "../utils/dateToString";
 
 interface BookingsList {
   hotelName: string;

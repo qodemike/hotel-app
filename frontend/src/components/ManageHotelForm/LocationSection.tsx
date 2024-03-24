@@ -4,7 +4,6 @@ import { useFormContext } from "react-hook-form";
 import { HotelFormData } from "./ManageHotelsForm";
 import { FaLocationDot } from "react-icons/fa6";
 import Skeleton from "react-loading-skeleton";
-import { FaLocationCrosshairs } from "react-icons/fa6";
 import { CoordinatesType } from "../../../../backend/entities/CoordinateType";
 
 const GOOGLEMAPS_API_KEY = import.meta.env.VITE_GOOGLEMAPS_API_KEY;

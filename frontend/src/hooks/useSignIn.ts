@@ -25,12 +25,13 @@ const useSignin = () => {
       navigate(location.state?.from?.pathname || "/");
     },
 
-    onError: (error: Error) => {
+    onError: (err: Error) => {
       toast({
         variant: "destructive",
         title: "Sign In Failed!",
         description: "Failed to Sign In!"
       })
+      console.log(err)
     },
   });
 };

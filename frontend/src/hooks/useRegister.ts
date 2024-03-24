@@ -23,12 +23,13 @@ const useRegister = () => {
       await queryClient.invalidateQueries("userPayload");
       navigate("/");
     },
-    onError: (error: Error) => {
+    onError: (err: Error) => {
       toast({
         variant: "destructive",
         title: "Registration Failed!",
         description: "An error occured while creating your account!"
       })
+      console.log(err)
     },
   });
 };
